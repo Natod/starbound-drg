@@ -6,17 +6,17 @@
   "description" : "",
   "shortdescription" : "Material Sprinkler",
   "category" : "wire",
-  "price" : 999,
+  "price" : 0,
 
-  "inventoryIcon" : "sprinklericon.png",
+  "inventoryIcon" : "sprinkler.png",
   "orientations" : [
     {
       "image" : "sprinkler.png:<color>.<frame>",
-      "imagePosition" : [-8, 0],
+      "imagePosition" : [0, 0],
       "direction" : "left",
       "flipImages" : true,
 
-      "animationPosition" : [-8, 0],
+      "animationPosition" : [0, 0],
       "animationParts" : {
         "bg" : "sprinkler.png",
         "fg" : "sprinkler.png"
