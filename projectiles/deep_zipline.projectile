@@ -1,0 +1,19 @@
+{
+  "projectileName" : "deep_zipline",
+  "physics" : "grenade",
+  "image" : "deep_zipline.png",
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "power" : 0,
+
+  "speed" : 500,
+
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smallregularexplosion/smallregularexplosion.config"
+    }
+  ],
+  "scripts" : [ "deep_zipline.lua" ],
+  "damageKind" : "default"
+}

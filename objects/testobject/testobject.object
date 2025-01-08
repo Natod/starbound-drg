@@ -1,0 +1,31 @@
+{
+  "objectName" : "testobject",
+  "colonyTags" : ["office","misc"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 40,
+  "description" : "A bright red stapler.",
+  "shortdescription" : "Test Stapler",
+  "race" : "generic",
+
+  "inventoryIcon" : "testobjecticon.png",
+  "orientations" : [
+    {
+      "image" : "testobject.png:<color>",
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "testobject.png:<color>",
+      "imagePosition" : [-8, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ]
+    }
+  ]
+}

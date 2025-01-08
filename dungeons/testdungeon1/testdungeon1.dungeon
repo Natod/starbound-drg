@@ -1,0 +1,49 @@
+{
+  "metadata" : {
+    "name" : "testdungeon1",
+    "species" : "human",
+    "rules" : [
+    ],
+    "anchor" : [ "testdungeon_left", "testdungeon_right" ],
+    "gravity" : 80,
+    "maxRadius" : 1000000,
+    "maxParts" : 30,
+    "extendSurfaceFreeSpace" : 20,
+    "protected" : false
+  },
+
+  "parts" : [
+    {
+      "name" : "testdungeon_meat",
+      "rules" : [
+        [ "maxSpawnCount", [3] ]
+      ],
+      "def" : [ "tmx",  "testdungeon_meat.json"  ]
+    },
+    {
+      "name" : "testdungeon_anchor",
+      "rules" : [
+        [ "maxSpawnCount", [1] ],
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", [ "testdungeon_anchor.json" ] ],
+      "chance" : 1
+    },
+    {
+      "name" : "testdungeon_left",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", [ "testdungeon_left.json" ] ],
+      "chance" : 0
+    },
+    {
+      "name" : "testdungeon_right",
+      "rules" : [
+        [ "ignorePartMaximumRule" ]
+      ],
+      "def" : [ "tmx", [ "testdungeon_right.json" ] ],
+      "chance" : 0
+    }
+  ]
+}

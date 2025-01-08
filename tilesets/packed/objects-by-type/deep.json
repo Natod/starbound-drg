@@ -1,0 +1,26 @@
+{
+       "margin" : 0,
+       "name" : "objects-by-type/deep",
+       "properties" : {
+       },
+       "spacing" : 0,
+       "tilecount" : 10,
+       "tileheight" : 8,
+       "tileproperties" : {
+              "0" : {
+              "//description" : "A bright red stapler.",
+              "//name" : "testobject",
+              "//shortdescription" : "Test Stapler",
+              "imagePositionX" : "-8",
+              "imagePositionY" : "0",
+              "object" : "testobject",
+              "tilesetDirection" : "right"
+              }
+       },
+       "tiles" : {
+              "0" : {
+              "image" : "../../../objects/testobject/testobject.png"
+              }
+       },
+       "tilewidth" : 8
+}

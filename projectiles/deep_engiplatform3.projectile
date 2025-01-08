@@ -1,0 +1,15 @@
+{
+  "projectileName" : "deep_engiplatform3",
+  "physics" : "grenade",
+  "image" : "deep_engiplatform.png",
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "power" : 0,
+
+  "speed" : 400,
+
+  "actionOnReap" : [
+  ],
+  "scripts" : [ "deep_engiplatform.lua" ],
+  "damageKind" : "default"
+}

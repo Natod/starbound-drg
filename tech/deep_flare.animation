@@ -1,0 +1,21 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "dashing" : {
+        "default" : "off",
+        "states" : {
+          "off" : {},
+          "on" : {}
+        }
+      }
+    }
+  },
+
+
+  "sounds" : {
+    "activate" : [ "/sfx/projectiles/throw_item.ogg" ],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown2.ogg" ],
+      "refire" : [  ],
+    "chargeUp" : [  ]
+  }
+}

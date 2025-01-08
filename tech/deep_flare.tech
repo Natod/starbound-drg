@@ -1,0 +1,15 @@
+{
+  "name" : "deep_flare",
+  "type" : "head",
+
+  "scripts" : ["deep_flare.lua"],
+  "animator" : "deep_flare.animation",
+
+  "description" : "Throw Flare: ^green;[F]^reset;.",
+  "shortDescription" : "Flare",
+  "rarity" : "Legendary",
+  "icon" : "/interface/statuses/rage.png",
+  "chipCost" : 1,
+  "energyCostPerSecond" : 1.2,
+  "maximumDoubleTapTime" : 0.25
+}

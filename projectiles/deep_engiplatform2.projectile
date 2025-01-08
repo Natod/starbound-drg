@@ -1,0 +1,49 @@
+{
+  "projectileName" : "deep_engiplatform2",
+  "physics" : "grenade",
+  "image" : "deep_engiplatform.png",
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "power" : 0,
+
+  "speed" : 90,
+
+  "actionOnReap" : [
+    {
+      "action" : "projectile",
+      "type" : "deep_engiplatform",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.625,
+      "angleAdjust" : 0
+    },
+    {
+      "action" : "projectile",
+      "type" : "deep_engiplatform",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.625,
+      "angleAdjust" : 90
+    },
+    {
+      "action" : "projectile",
+      "type" : "deep_engiplatform",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.625,
+      "angleAdjust" : 180
+    },
+    {
+      "action" : "projectile",
+      "type" : "deep_engiplatform",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.625,
+      "angleAdjust" : 180
+    },
+    {
+      "action" : "projectile",
+      "type" : "deep_engiplatform",
+      "fuzzAngle" : 0,
+      "inheritDamageFactor" : 0.625,
+      "angleAdjust" : 270
+    }
+  ],
+  "damageKind" : "default"
+}

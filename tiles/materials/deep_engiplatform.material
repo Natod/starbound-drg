@@ -1,0 +1,22 @@
+{
+  "materialId" : 4803,
+  "materialName" : "deep_engiplatform",
+  "particleColor" : [255, 255, 30, 240],
+  "description" : "PLASCRETE FOAM",
+  "shortdescription" : "Plascrete Foam",
+  "footstepSound" : "/sfx/blocks/footstep_stone.ogg",
+  "falling" : false,
+  "cascading" : false,
+  "health" : 1,
+  "category" : "materials",
+  
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "deep_engiplatform.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 1770
+  }
+}

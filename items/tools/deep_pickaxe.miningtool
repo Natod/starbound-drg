@@ -1,0 +1,26 @@
+{
+  "itemName" : "deep_pickaxe",
+  "price" : 0,
+  "category" : "Tool",
+  "inventoryIcon" : "deep_pickaxeicon.png",
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "-- todo --",
+  "shortdescription" : "Pickaxe",
+  "tooltipKind" : "tool",
+  "largeImage" : "deep_pickaxebig.png",
+
+  "image" : "deep_pickaxe.png",
+  "handPosition" : [-4, -4],
+  "fireTime" : 0.5,
+  "swingStart" : 90,
+  "swingFinish" : -40,
+  "blockRadius" : 2,
+  "altBlockRadius" : 1,
+  "twoHanded" : true,
+  "strikeSounds" : [ "/sfx/tools/pickaxe_hit.ogg" ],
+  "durability" : 10,
+  
+  "tileDamage" : 2,
+  "harvestLevel" : 99
+}

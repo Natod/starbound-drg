@@ -1,0 +1,10 @@
+{
+  "itemName" : "deep_nitra",
+  "price" : 2,
+  "rarity" : "Common",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "deep_nitra.png",
+  "description" : "Nitra.",
+  "shortdescription" : "Nitra",
+  "itemTags" : [ "reagent" ]
+}

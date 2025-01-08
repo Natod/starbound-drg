@@ -1,0 +1,23 @@
+{
+  "margin" : 0,
+  "name" : "deep_materials",
+  "properties" : {
+  },
+  "spacing" : 0,
+  "tilecount" : 1,
+  "tileheight" : 8,
+  "tileproperties" : {
+    "0" : {
+      "//description" : "diggy dirt",
+      "//name" : "deep_dirt",
+      "//shortdescription" : "Loose Dirt",
+      "material" : "deep_dirt"
+    }
+  },
+  "tiles" : {
+    "0" : {
+      "image" : "../images/deep_dirt.png"
+    }
+  },
+  "tilewidth" : 8
+}

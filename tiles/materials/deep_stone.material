@@ -1,0 +1,23 @@
+{
+  "materialId" : 4801,
+  "materialName" : "deep_stone",
+  "particleColor" : [50, 50, 50, 240],
+  //"itemDrop" : "waste",
+  "description" : "Stone",
+  "shortdescription" : "Stone",
+  "footstepSound" : "/sfx/blocks/footstep_stone.ogg",
+  "falling" : false,
+  "cascading" : false,
+  "health" : 6,
+  "category" : "materials",
+  
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "deep_stone.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 1718
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "materialId" : 4802,
+  "materialName" : "deep_dirt",
+  "particleColor" : [50, 40, 30, 240],
+  "description" : "A pile of loose dirt",
+  "shortdescription" : "Loose Dirt",
+  "footstepSound" : "/sfx/blocks/footstep_stone.ogg",
+  "falling" : false,
+  "cascading" : false,
+  "health" : 3,
+  "category" : "materials",
+  
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "deep_dirt.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "zLevel" : 1717
+  }
+}

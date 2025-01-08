@@ -1,0 +1,20 @@
+{
+  "projectileName" : "deep_engiplatform",
+  "physics" : "grenade",
+  "image" : "deep_engiplatform.png",
+  "animationCycle" : 1,
+  "frameNumber" : 1,
+  "power" : 0,
+
+  "speed" : 10,
+
+  "actionOnReap" : [
+    {
+      "action" : "tile",
+      "materials" : [
+        {"kind" : "deep_engiplatform"}
+      ]
+    }
+  ],
+  "damageKind" : "default"
+}
