@@ -14,7 +14,6 @@ function uninit()
   --  world.placeMaterial(mcontroller.position(), "foreground", "deep_engiplatform", nil, true)
   --end
   local centered = true
-  player.giveEssentialItem("beamaxe","superfishaxe")
 
   if not world.placeMaterial( {mcontroller.xPosition() + 1, mcontroller.yPosition() }, "foreground", "deep_engiplatform") then
     world.placeMaterial( { mcontroller.xPosition()-2, mcontroller.yPosition() }, "foreground", "deep_engiplatform")
