@@ -1,0 +1,13 @@
+{
+  "projectileName" : "materialsprinklerprojectile",
+  "image" : "image.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "actionOnReap" : [],
+  "scripts" : [ "materialsprinkler.lua" ],
+  "power" : 0,
+  "speed" : 75,
+  "damageKind" : "default"
+}
