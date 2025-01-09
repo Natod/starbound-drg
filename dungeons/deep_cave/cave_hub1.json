@@ -5,7 +5,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJzt0EENADAMA7Hwx9rfCAzF1EXywwDuJskAAAAAAAAAAAAAAAAAAADAY2fZdr9\/\/jXzzz\/\/evnnn3+9\/PPPv17++edfL\/\/886+Xf\/4BAAD84ALEcR7a",
+         "data":"eJzt0LENACAIAEH2n5XOBZzBmIiQK67\/fEZEAgAAAAAAAAAAAAAAAAAAwCfWoereTq98ffNu+sdX7\/zzsPrdtIf+9Xvnn3\/++VfNv57v\/PPPP\/\/868s\/\/6p5BwAAcG8Dj7MdWQ==",
          "encoding":"base64",
          "height":80,
          "id":1,
@@ -19,7 +19,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJzt10EOgjAQQFHuf1WWXsCQ6IaUWFLoMON7STduZvoDUZcFAAAAAAAAAAAAAAAAAADye006lcxqVq1jZLfM\/e644780jLpH5X6RszP321s\/Z9Z8\/cbmV+g3o9nR\/Cr9ouZn69faW79+0Ttn\/\/6N3lm\/a3eI3uWsszuvg+fXDpX7jbZr9VuXvO02vXtf0U4\/\/fae1i+byH7fz7K22\/S+O3f1y\/zsbfQb1\/MfYKRXq1\/m33wtRw1nnYo0AwAgszeqC9kI",
+         "data":"eJzt0sEJgDAURMH032qONiCCN70kawT9M7ANPLY1AAAAAAAAAAAAAAAAAAAAABjTzzFHv3GaZbTL6Adw1cNVlra761el6RPt9NNvln6ZFf2qtDus+l8V+mWSXtX6bS\/vr3QDAODLdqaKzlY=",
          "encoding":"base64",
          "height":80,
          "id":2,
@@ -62,30 +62,6 @@
                  "y":520
                 }, 
                 {
-                 "gid":6629,
-                 "height":8,
-                 "id":696,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":8,
-                 "x":280,
-                 "y":560
-                }, 
-                {
-                 "gid":6629,
-                 "height":8,
-                 "id":697,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":8,
-                 "x":352,
-                 "y":560
-                }, 
-                {
                  "gid":7670,
                  "height":8,
                  "id":709,
@@ -98,27 +74,51 @@
                  "y":560
                 }, 
                 {
-                 "gid":7672,
+                 "gid":7673,
                  "height":8,
-                 "id":715,
+                 "id":721,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":8,
-                 "x":248,
+                 "x":232,
+                 "y":480
+                }, 
+                {
+                 "gid":7673,
+                 "height":8,
+                 "id":722,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":240,
+                 "y":480
+                }, 
+                {
+                 "gid":7674,
+                 "height":8,
+                 "id":723,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":408,
                  "y":472
                 }, 
                 {
-                 "gid":7672,
+                 "gid":7674,
                  "height":8,
-                 "id":716,
+                 "id":724,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":8,
-                 "x":368,
+                 "x":416,
                  "y":472
                 }],
          "opacity":1,
@@ -190,6 +190,30 @@
                  "width":8,
                  "x":320,
                  "y":560
+                }, 
+                {
+                 "gid":247,
+                 "height":8,
+                 "id":719,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":432,
+                 "y":544
+                }, 
+                {
+                 "gid":247,
+                 "height":8,
+                 "id":720,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":200,
+                 "y":544
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -209,7 +233,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":717,
+ "nextobjectid":725,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.0",
@@ -320,7 +344,7 @@
          "source":"..\/..\/tilesets\/packed\/objects-by-type\/deep.json"
         }, 
         {
-         "firstgid":7673,
+         "firstgid":7675,
          "source":"..\/..\/tilesets\/packed\/deep_materials.json"
         }],
  "tilewidth":8,

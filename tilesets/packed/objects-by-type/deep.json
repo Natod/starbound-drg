@@ -33,6 +33,24 @@
               "imagePositionY" : "0",
               "object" : "deep_nitraspawner",
               "tilesetDirection" : "right"
+              },
+              "3" : {
+              "//description" : ".",
+              "//name" : "deep_morkitespawner",
+              "//shortdescription" : "Morkite Spawner",
+              "imagePositionX" : "0",
+              "imagePositionY" : "0",
+              "object" : "deep_morkitespawner",
+              "tilesetDirection" : "right"
+              },
+              "4" : {
+              "//description" : ".",
+              "//name" : "deep_goldspawner",
+              "//shortdescription" : "gold Spawner",
+              "imagePositionX" : "0",
+              "imagePositionY" : "0",
+              "object" : "deep_goldspawner",
+              "tilesetDirection" : "right"
               }
        },
        "tiles" : {
@@ -44,7 +62,14 @@
               },
               "2" : {
               "image" : "../../../objects/materialsprinkler/nitra.png"
+              },
+              "3" : {
+              "image" : "../../../objects/materialsprinkler/morkite.png"
+              },
+              "4" : {
+              "image" : "../../../objects/materialsprinkler/gold.png"
               }
+              
        },
        "tilewidth" : 8
 }

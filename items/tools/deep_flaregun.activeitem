@@ -1,7 +1,7 @@
 {
   "itemName" : "deep_flaregun",
   "price" : 1500,
-  "inventoryIcon" : "deep_pickaxe.png",
+  "inventoryIcon" : "deep_flaregunicon.png",
   "maxStack" : 1,
   "rarity" : "Essential",
   "description" : "-- todo --",
@@ -15,7 +15,7 @@
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "deep_pickaxe.png",
+    "middle" : "deep_flaregun.png",
     "barrel" : "",
     "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
   },

@@ -8,7 +8,7 @@
   "footstepSound" : "/sfx/blocks/footstep_stone.ogg",
   "falling" : false,
   "cascading" : false,
-  "health" : 6,
+  "health" : 2,
   "category" : "materials",
   
   "renderTemplate" : "/tiles/classicmaterialtemplate.config",

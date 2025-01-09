@@ -1,0 +1,10 @@
+{
+  "itemName" : "deep_gold",
+  "price" : 2,
+  "rarity" : "Common",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "deep_gold.png",
+  "description" : "Gold.",
+  "shortdescription" : "Gold",
+  "itemTags" : [ "reagent" ]
+}

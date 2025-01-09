@@ -12,7 +12,7 @@
 
   "image" : "deep_pickaxe.png",
   "handPosition" : [-4, -4],
-  "fireTime" : 0.5,
+  "fireTime" : 0.7,
   "swingStart" : 90,
   "swingFinish" : -40,
   "blockRadius" : 2,
@@ -22,6 +22,6 @@
   "durability" : 10,
   "durabilityPerUse" : 0,
   
-  "tileDamage" : 2,
+  "tileDamage" : 1.5,
   "harvestLevel" : 99
 }

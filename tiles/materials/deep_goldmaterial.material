@@ -1,9 +1,10 @@
 {
-  "materialId" : 4802,
-  "materialName" : "deep_dirt",
-  "particleColor" : [50, 40, 30, 240],
-  "description" : "A pile of loose dirt",
-  "shortdescription" : "Loose Dirt",
+  "materialId" : 4806,
+  "materialName" : "deep_goldmaterial",
+  "particleColor" : [175, 175, 0, 255],
+  "itemDrop" : "deep_gold",
+  "description" : "A chunk of gold.",
+  "shortdescription" : "Gold",
   "footstepSound" : "/sfx/blocks/footstep_stone.ogg",
   "falling" : false,
   "cascading" : false,
@@ -12,11 +13,12 @@
   
   "renderTemplate" : "/tiles/classicmaterialtemplate.config",
   "renderParameters" : {
-    "texture" : "deep_dirt.png",
+    "texture" : "deep_goldmaterial.png",
     "variants" : 5,
     "lightTransparent" : false,
     "occludesBelow" : true,
     "multiColored" : false,
-    "zLevel" : 1717
+    "radiantLight" : [1, 1, 0],
+    "zLevel" : 1720
   }
 }
