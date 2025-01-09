@@ -1,0 +1,21 @@
+{
+  "projectileName" : "deep_flareblue",
+  "physics" : "grenadenobounce",
+  "bounces" : -1,
+  "timeToLive" : 50,
+  "image" : "deep_flareblue.png",
+  //"animationCycle" : 0.25,
+  "lightColor" : [100, 100, 155],
+  //"frameNumber" : 2,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smoke/smoke.config"
+    }
+  ],
+  "power" : 0,
+
+  "onlyHitTerrain" : true,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

@@ -24,7 +24,7 @@ function uninit()
 end
 
 function activeAbility()
-    world.spawnProjectile("flare", mcontroller.position(), entity.id(), aimVector(), false)
+    world.spawnProjectile("deep_flareblue", mcontroller.position(), entity.id(), aimVector(), false)
 end
 
 function aimVector()
