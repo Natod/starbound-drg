@@ -1,0 +1,24 @@
+{
+  "materialId" : 4804,
+  "materialName" : "deep_nitramaterial",
+  "particleColor" : [255, 0, 0, 255],
+  "itemDrop" : "deep_nitra",
+  "description" : "A chunk of nitra.",
+  "shortdescription" : "Nitra",
+  "footstepSound" : "/sfx/blocks/footstep_stone.ogg",
+  "falling" : false,
+  "cascading" : false,
+  "health" : 1,
+  "category" : "materials",
+  
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "deep_nitramaterial.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "radiantLight" : [10, 0, 0],
+    "zLevel" : 1720
+  }
+}

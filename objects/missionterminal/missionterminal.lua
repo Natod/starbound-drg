@@ -1,5 +1,5 @@
 function init()
-    --object.setInteractive(true)
+    object.setInteractive(true)
 end
 
 function onInteraction(args)

@@ -15,11 +15,35 @@
               "imagePositionY" : "0",
               "object" : "testobject",
               "tilesetDirection" : "right"
+              },
+              "1" : {
+              "//description" : ".",
+              "//name" : "materialsprinkler",
+              "//shortdescription" : "Material Sprinkler",
+              "imagePositionX" : "0",
+              "imagePositionY" : "0",
+              "object" : "materialsprinkler",
+              "tilesetDirection" : "right"
+              },
+              "2" : {
+              "//description" : ".",
+              "//name" : "deep_nitraspawner",
+              "//shortdescription" : "Nitra Spawner",
+              "imagePositionX" : "0",
+              "imagePositionY" : "0",
+              "object" : "deep_nitraspawner",
+              "tilesetDirection" : "right"
               }
        },
        "tiles" : {
               "0" : {
               "image" : "../../../objects/testobject/testobject.png"
+              },
+              "1" : {
+              "image" : "../../../objects/materialsprinkler/sprinkler.png"
+              },
+              "2" : {
+              "image" : "../../../objects/materialsprinkler/nitra.png"
               }
        },
        "tilewidth" : 8
