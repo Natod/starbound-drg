@@ -1,0 +1,10 @@
+{
+  "itemName" : "deep_morkite",
+  "price" : 2,
+  "rarity" : "Common",
+  "category" : "craftingMaterial",
+  "inventoryIcon" : "deep_morkite.png",
+  "description" : "Morkite.",
+  "shortdescription" : "Morkite",
+  "itemTags" : [ "reagent" ]
+}

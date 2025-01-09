@@ -9,5 +9,7 @@
   "scripts" : [ "materialsprinkler.lua" ],
   "power" : 0,
   "speed" : 75,
+  "onlyHitTerrain" : true,
+  "damageType" : "NoDamage",
   "damageKind" : "default"
 }

@@ -1,0 +1,24 @@
+{
+  "materialId" : 4805,
+  "materialName" : "deep_morkitematerial",
+  "particleColor" : [255, 0, 0, 255],
+  "itemDrop" : "deep_morkite",
+  "description" : "A chunk of morkite.",
+  "shortdescription" : "Morkite",
+  "footstepSound" : "/sfx/blocks/footstep_stone.ogg",
+  "falling" : false,
+  "cascading" : false,
+  "health" : 1,
+  "category" : "materials",
+  
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "deep_morkitematerial.png",
+    "variants" : 5,
+    "lightTransparent" : false,
+    "occludesBelow" : true,
+    "multiColored" : false,
+    "radiantLight" : [0, 5, 5],
+    "zLevel" : 1720
+  }
+}
