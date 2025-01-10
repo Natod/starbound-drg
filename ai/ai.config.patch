@@ -1,0 +1,10 @@
+[{
+		"op" : "add",
+		"path" : "/species/deep_dwarf",
+		"value" : {
+			"aiFrames" : "humanAi.png",
+     		"portraitFrames" : "portraits/humanportrait.png",
+    		"staticFrames" : "staticHuman.png"
+		}
+	}
+]
