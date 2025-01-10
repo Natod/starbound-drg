@@ -1,0 +1,16 @@
+[
+	{ "op" : "add",
+		"path" : "/speciesShips/deep_dwarf",
+		"value" : [
+		    "/ships/deep_dwarf/deep_dwarfT0.structure",
+			"/ships/deep_dwarf/deep_dwarfT0.structure",
+			"/ships/deep_dwarf/deep_dwarfT0.structure",
+			"/ships/deep_dwarf/deep_dwarfT0.structure",
+			"/ships/deep_dwarf/deep_dwarfT0.structure",
+			"/ships/deep_dwarf/deep_dwarfT0.structure",
+			"/ships/deep_dwarf/deep_dwarfT0.structure",
+			"/ships/deep_dwarf/deep_dwarfT0.structure",
+			"/ships/deep_dwarf/deep_dwarfT0.structure"
+		]
+	}
+]
