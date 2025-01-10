@@ -28,9 +28,8 @@ function activeAbility()
 end
 
 function aimVector()
-  local aimVector = vec2.rotate({1, 0}, sb.nrand(0, 0))
-  aimVector[1] = aimVector[1] * mcontroller.facingDirection()
-  return aimVector
+	local diff = world.distance(tech.aimPosition(), mcontroller.position())
+	return vec2.norm(diff)
 end
 
 
@@ -68,6 +67,7 @@ function update(args)
 	if args.moves["special1"] and self.firetimer == 0 and self.flareCount >= 1 then 
 		animator.playSound("activate")
 		self.firetimer = 0.5
+		sb.logInfo("Aim Position: %s", tech.aimPosition())
 		activeAbility()
 		self.dashCooldownTimer = 0.5
 		self.flashCooldownTimer = 0.5
