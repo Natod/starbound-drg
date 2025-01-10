@@ -21,7 +21,14 @@
   },
   "animationCustom" : {
     "sounds" : {
-      "fire" : [ "/sfx/gun/rifle1.ogg", "/sfx/gun/rifle2.ogg" ]
+      "fire" : [
+        "/sfx/gun/flaregun/FlareGunFireCombinedA_1.ogg",
+        "/sfx/gun/flaregun/FlareGunFireCombinedA_2.ogg",
+        "/sfx/gun/flaregun/FlareGunFireCombinedA_3.ogg",
+        "/sfx/gun/flaregun/FlareGunFireCombinedA_4.ogg",
+        "/sfx/gun/flaregun/FlareGunFireCombinedA_5.ogg",
+        "/sfx/gun/flaregun/FlareGunFireCombinedA_6.ogg"
+      ]
     }
   },
 
