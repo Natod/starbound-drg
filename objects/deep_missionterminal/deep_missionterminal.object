@@ -1,5 +1,5 @@
 {
-  "objectName" : "missionterminal",
+  "objectName" : "deep_missionterminal",
   "colonyTags" : ["station","electronic"],
   "rarity" : "Common",
   "category" : "decorative",
@@ -51,7 +51,7 @@
   ],
 
   "scripts" : [
-    "/objects/missionterminal/missionterminal.lua"
+    "/objects/deep_missionterminal/missionterminal.lua"
   ],
   "scriptDelta" : 5,
 

@@ -1,0 +1,29 @@
+{
+  "objectName" : "deep_droppod",
+  "colonyTags" : ["office","misc"],
+  "rarity" : "Common",
+  "category" : "decorative",
+  "price" : 40,
+  "description" : "Foreign objects in the launch bay",
+  "shortdescription" : "Drop Pod",
+  "race" : "generic",
+
+  "inventoryIcon" : "droppod.png",
+  "orientations" : [
+    {
+      "image" : "droppod.png:<color>",
+      "imagePosition" : [0, 0],
+      "spaceScan" : 0.1,
+
+      "anchors" : [ "bottom" ],
+      "direction" : "right",
+
+      "detectArea" : [ [0, 0], [10, 10] ]
+    }
+  ],
+
+  "scripts" : [
+    "/objects/deep_droppod/droppod.lua"
+  ],
+  "scriptDelta" : 5
+}
