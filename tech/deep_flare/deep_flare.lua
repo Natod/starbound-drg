@@ -67,7 +67,6 @@ function update(args)
 	if args.moves["special1"] and self.firetimer == 0 and self.flareCount >= 1 then 
 		animator.playSound("activate")
 		self.firetimer = 0.5
-		sb.logInfo("Aim Position: %s", tech.aimPosition())
 		activeAbility()
 		self.dashCooldownTimer = 0.5
 		self.flashCooldownTimer = 0.5
