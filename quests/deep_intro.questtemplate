@@ -1,0 +1,41 @@
+{
+  "id" : "deep_intro",
+  "mainQuest" : true,
+  "title" : "Introduction",
+  "text" : "Welcome to DRG",
+  "completionText" : "you done it",
+  "moneyRange" : [0, 0],
+  "canBeAbandoned" : false,
+  "showAcceptDialog" : false,
+  "showCompleteDialog" : false,
+  "showFailDialog" : false,
+
+  "updateDelta" : 10,
+  "script" : "/quests/deep_intro.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "player"
+    },
+    "startingMusicTime" : 11.5,
+    "startingMusicTracks" : ["/music/planetarium.ogg"],
+    "midpointMusicTime" : 48.0,
+    "midpointMusicTracks" : ["/music/arctic-battle1-loop.ogg"],
+    "midpointCinematic" : "/cinematics/intro/introstage.cinematic",
+    "midpointTeleportPosition" : [495, 823.5],
+    "endpointCinematic" : "/cinematics/intro/introcomplete.cinematic",
+    "confiscateItems" : [
+      
+    ],
+    "skipIntroItems" : [
+      "testobject"
+    ],
+
+    "descriptions" : {
+      "graduate" : "Attend your graduation ceremony",
+      "matterManipulator" : "Take the matter manipulator",
+      "escape" : "Escape the destruction"
+    } //,
+
+    //"followUp" : "bootship"
+  }
+}

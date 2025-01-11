@@ -3,7 +3,7 @@
 		"op": "add",
 		"path": "/initialquests/deep_dwarf",
 		"value": [
-			"protectorate"
+			"deep_intro"
 		]
 	}
 ]
