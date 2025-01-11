@@ -16,8 +16,14 @@ function questStart()
   player.makeTechAvailable("deep_flare")
   player.enableTech("deep_flare")
   player.equipTech("deep_flare")
-  player.warp("ownship")
+  setPortraits()
+
+  if not player.introComplete() then
+    player.warp("ownship")
+  end
+
   quest.complete()
+
   return
 
 end
