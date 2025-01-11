@@ -12,6 +12,14 @@
   ],
   "power" : 1,
 
+  "scripts" : [ "deep_gunflare.lua" ],
+
+  "initAction" : {
+    "action" : "projectile",
+    "type" : "deep_gunflare2",
+    "inheritSpeedFactor" : 1
+  },
+
   "onlyHitTerrain" : true,
   "damageType" : "NoDamage",
   "damageKind" : "default"
