@@ -1,25 +1,18 @@
 {
   "projectileName" : "deep_gunflare",
-  "physics" : "grenadenobounce",
-  //"bounces" : 0,
+  "physics" : "arrow",
   "timeToLive" : 100,
   "image" : "deep_gunflare.png",
   "lightColor" : [255, 255, 255],
   "actionOnReap" : [
-//    {
-//      "action" : "projectile",
-//      "type" : "deep_gunflare2",
-//      "fuzzAngle" : 0,
-//      "inheritDamageFactor" : 0,
-//      "inheritSpeedFactor" : 0.2,
-//      "angleAdjust" : 0
-//    }
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smoke/smoke.config"
+    }
   ],
   "power" : 1,
-  
-  "scripts" : [ "deep_gunflare.lua" ],
 
-  //"onlyHitTerrain" : true,
-  //"damageType" : "NoDamage",
+  "onlyHitTerrain" : true,
+  "damageType" : "NoDamage",
   "damageKind" : "default"
 }
