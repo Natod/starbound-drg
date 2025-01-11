@@ -1,11 +1,9 @@
 {
   "projectileName" : "deep_gunflare2",
-  "physics" : "grenadenobounce",
-  "bounces" : 0,
+  "physics" : "arrownosticky",
   "timeToLive" : 100,
-  "image" : "deep_gunflare.png",
-  //"lightColor" : [255, 255, 255],
-  "power" : 0,
+  "image" : "projectiles/weather/water/water.png",
+  "power" : 10,
 
   "damageKind" : "default"
 }

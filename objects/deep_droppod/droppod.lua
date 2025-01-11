@@ -17,7 +17,9 @@ function update(dt)
 
         object.say(string.format("%s out of %s", #inPlayers, #allPlayers))
         if #inPlayers > 0 and #inPlayers >= #allPlayers then
-            for i,inPlayer in ipairs(inPlayers) do world.sendEntityMessage(inPlayer, "warp", "InstanceWorld:testmission1") end
+            for i,inPlayer in ipairs(inPlayers) do
+                world.sendEntityMessage(inPlayer, "warp", "InstanceWorld:testmission1")
+            end
             self.warped = true
         end
     end
