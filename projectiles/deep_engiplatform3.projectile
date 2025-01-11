@@ -11,5 +11,7 @@
   "actionOnReap" : [
   ],
   "scripts" : [ "deep_engiplatform.lua" ],
+  "onlyHitTerrain" : true,
+  "damageType" : "NoDamage",
   "damageKind" : "default"
 }

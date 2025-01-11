@@ -1,0 +1,20 @@
+{
+  "projectileName" : "deep_gunflare2",
+  "physics" : "arrow",
+  "bounces" : -1,
+  "timeToLive" : 100,
+  "image" : "deep_gunflare.png",
+  "lightColor" : [255, 255, 255],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/smoke/smoke.config"
+    }
+  ],
+  "power" : 0,
+  "scripts" : [ "deep_gunflare2.lua" ],
+
+  "onlyHitTerrain" : true,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}
