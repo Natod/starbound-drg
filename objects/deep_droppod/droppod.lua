@@ -5,6 +5,8 @@ function init()
     self.detectArea[1] = object.toAbsolutePosition(self.detectArea[1])
     self.detectArea[2] = object.toAbsolutePosition(self.detectArea[2])
     self.warped = false
+    self.warpTime = config.getParameter("warpTime")
+    self.warpCounter = self.warpTime
 end
 
 function update(dt)
@@ -15,12 +17,20 @@ function update(dt)
             boundMode = "CollisionArea"
         })
 
-        object.say(string.format("%s out of %s", #inPlayers, #allPlayers))
+        -- counter display
+        object.say(string.format("%s out of %s : %s", #inPlayers, #allPlayers, math.floor(self.warpCounter+0.9)))
         if #inPlayers > 0 and #inPlayers >= #allPlayers then
-            for i,inPlayer in ipairs(inPlayers) do
-                world.sendEntityMessage(inPlayer, "warp", "InstanceWorld:testmission1")
+            if self.warpCounter <= 0 then
+                -- warp players when counter is 0
+                for i,inPlayer in ipairs(inPlayers) do
+                    world.sendEntityMessage(inPlayer, "warp", "InstanceWorld:testmission1")
+                end
+                self.warped = true
+            else
+                self.warpCounter = self.warpCounter-(1*dt)
             end
-            self.warped = true
+        else
+            self.warpCounter = self.warpTime
         end
     end
 end

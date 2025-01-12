@@ -5,8 +5,11 @@
   "category" : "decorative",
   "price" : 40,
   "description" : "Foreign objects in the launch bay",
+  "scannable" : false,
+  "printable" : false,
   "shortdescription" : "Drop Pod",
   "race" : "generic",
+  "warpTime" : 15,
 
   "inventoryIcon" : "droppod.png",
   "orientations" : [
@@ -18,6 +21,7 @@
       "anchors" : [  ],
       "direction" : "right",
       "renderLayer" : "BackgroundOverlay",
+      "metaBoundBox" : [-1, -1, 1, 1],
 
       "detectArea" : [ [0, 0], [10, 10] ]
     }

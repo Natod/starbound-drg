@@ -1,0 +1,26 @@
+{
+  "objectName" : "deep_invisiblelight",
+  "colonyTags" : [],
+  "rarity" : "Common",
+  "description" : "invisible light source (no collision)",
+  "shortdescription" : "Invisible Light",
+  "race" : "generic",
+  "scannable" : false,
+
+  "category" : "light",
+  "price" : 20,
+  "printable" : false,
+  "lightColor" : [220, 220, 220],
+
+  "inventoryIcon" : "invisiblelight.png",
+  "orientations" : [
+    {
+      "image" : "invisiblelight.png:<color>.<frame>",
+      "imagePosition" : [-0, 0],
+      "frames" : 1,
+      "animationCycle" : 0.3,
+      "spaceScan" : 0.1,
+      "anchors" : [  ]
+    }
+  ]
+}
