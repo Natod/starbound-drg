@@ -21,8 +21,10 @@ function questStart()
   if not player.introComplete() then
     player.warp("ownship")
   end
-
+  --player.upgradeShip({shipLevel=1})
+  player.upgradeShip(config.getParameter("shipUpgrade"))
   quest.complete()
+  
 
   return
 

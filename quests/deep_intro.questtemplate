@@ -29,6 +29,9 @@
     "skipIntroItems" : [
       "superfishaxe"
     ],
+    "shipUpgrade" : {
+      "capabilities" : ["teleport"]
+    },
 
     "descriptions" : {
       "graduate" : "Attend your graduation ceremony",

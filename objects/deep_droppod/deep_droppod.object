@@ -1,6 +1,6 @@
 {
   "objectName" : "deep_droppod",
-  "colonyTags" : ["office","misc"],
+  "colonyTags" : [],
   "rarity" : "Common",
   "category" : "decorative",
   "price" : 40,
@@ -15,8 +15,9 @@
       "imagePosition" : [0, 0],
       "spaceScan" : 0.1,
 
-      "anchors" : [ "bottom" ],
+      "anchors" : [  ],
       "direction" : "right",
+      "renderLayer" : "BackgroundOverlay",
 
       "detectArea" : [ [0, 0], [10, 10] ]
     }
