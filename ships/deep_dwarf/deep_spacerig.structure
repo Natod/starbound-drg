@@ -1,0 +1,19 @@
+{
+  "config" : {
+    "shipUpgrades" : {
+      "capabilities" : ["teleport"],
+      "crewSize" : 0
+    }
+  },
+
+  "backgroundOverlays" : [
+    {
+      "image" : "deep_spacerigbg.png",
+      "position" : [0, 0],
+      "fullbright" : false
+    }
+  ],
+
+  "blockKey" : "blockKey.config:blockKey",
+  "blockImage" : "deep_spacerigblocks.png"
+}
