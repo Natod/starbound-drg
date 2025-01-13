@@ -1,0 +1,45 @@
+{
+  "itemName" : "deep_grapple",
+  "price" : 0,
+  "inventoryIcon" : "deep_grapplehookicon.png",
+  "rarity" : "Essential",
+  "maxStack" : 1,
+  "description" : "-- todo --",
+  "shortdescription" : "Grappling Hook",
+  "largeImage" : "deep_grapplehookbig.png",
+  "category" : "Tool",
+  "fireTime" : 0,
+  "twoHanded" : true,
+
+  "scripts" : ["/items/tools/deep_grapple/deep_grapplinghook.lua"],
+  "animationScripts" : ["/items/active/effects/renderrope.lua"],
+
+  "animation" : "deep_grapple.animation",
+
+  "fireOffset" : [0, 0.3],
+  "ropeOffset" : [-1.75, 0.3],
+  "ropeVisualOffset" : [0.75, 0.3],
+
+  "consumeOnUse" : false,
+
+  "projectileType" : "deep_grapplehook",
+  "projectileParameters" : {
+    "speed" : 220,
+    "timeToLive" : 0.35
+  },
+
+  "ropeWidth" : 1.0,
+  "ropeColor" : [120, 80, 30, 255],
+
+  "reelInDistance" : 3.5,
+  "reelOutLength" : 50,
+  "breakLength" : 220,
+
+  "minSwingDistance" : 1.5,
+
+  "reelSpeed" : 100,
+  "controlForce" : 1000,
+
+  "groundLagTime" : 0.2,
+  "rechargeTime" : 3
+}

@@ -10,7 +10,7 @@ function questStart()
   for _, item in pairs(config.getParameter("skipIntroItems", {})) do
     player.giveItem(item)
   end
-  player.giveEssentialItem("beamaxe","deep_pickaxe")
+  player.giveEssentialItem("beamaxe","deep_pickaxeold")
   player.giveEssentialItem("wiretool","deep_flaregun")
   player.giveEssentialItem("painttool","deep_platformgun")
   player.makeTechAvailable("deep_flare")

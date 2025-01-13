@@ -1,0 +1,65 @@
+{
+  "itemName" : "deep_pickaxe",
+  "price" : 0,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "category" : "tool",
+  "description" : "-- todo --",
+  "shortdescription" : "Pickaxe",
+  "tooltipKind" : "base",
+  "twoHanded" : true,
+  "itemTags" : ["miningtool", "pickaxe"],
+
+  "inventoryIcon" : "deep_pickaxebig.png",
+
+  "animation" : "/items/active/weapons/melee/pickaxe/energypickaxe.animation",
+  "animationParts" : {
+    "handle" : "deep_pickaxebig.png",
+    "blade" : "deep_pickaxebig.png"
+  },
+
+  "scripts" : ["/items/active/weapons/melee/meleeweapon.lua"],
+
+  "elementalType" : "physical",
+
+  "primaryAbilityType" : "deep_pickslash",
+  "primaryAbility" : {
+    "layer" : "foreground",
+
+    "activatingFireMode" : "primary",
+    "energyUsage" : 5,
+
+    "requisiteAnimationStates" : {
+      "blade" : "active"
+    },
+    "windupAnimationStates" : {
+      "blade" : "activating"
+    },
+    "onLeaveAnimationStates" : {
+      "blade" : "deactivating"
+    }
+  },
+
+  "altAbilityType" : "deep_pickslash",
+  "altAbility" : {
+    "layer" : "background",
+
+    "activatingFireMode" : "alt",
+    "energyUsage" : 5,
+
+    "requisiteAnimationStates" : {
+      "blade" : "active"
+    },
+    "windupAnimationStates" : {
+      "blade" : "activating"
+    },
+    "onLeaveAnimationStates" : {
+      "blade" : "deactivating"
+    },
+    "inactiveAnimationStates" : {
+      "blade" : "inactive"
+    }
+  },
+
+  "builder" : "/items/buildscripts/buildunrandweapon.lua"
+}
