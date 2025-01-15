@@ -38,9 +38,11 @@ function uninit()
 end
 
 function update(dt, fireMode, shiftHeld, moves)
-  if self.counter > 0 then
+  if self.counter > 0 and not self.projectileId then
     self.counter = self.counter - (1*dt)
-  elseif not self.playedSound then
+  end
+
+  if not self.playedSound and self.counter <= 0 then
     animator.playSound("recharge")
     self.playedSound = true
   end
