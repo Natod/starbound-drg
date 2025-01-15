@@ -15,9 +15,9 @@
   "renderParameters" : {
     "texture" : "deep_nitramaterial.png",
     "variants" : 5,
-    "lightTransparent" : false,
+    "lightTransparent" : false, 
     "occludesBelow" : true,
-    "multiColored" : false,
+    "multiColored" : false, 
     "radiantLight" : [10, 0, 0],
     "zLevel" : 1720
   }

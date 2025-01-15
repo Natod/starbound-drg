@@ -6,7 +6,7 @@
   "category" : "tool",
   "description" : "-- todo --",
   "shortdescription" : "Pickaxe",
-  "tooltipKind" : "base",
+  "tooltipKind" : "base", //ejaioj 
   "twoHanded" : true,
   "itemTags" : ["miningtool", "pickaxe"],
 

@@ -4,10 +4,10 @@
 
   "ability" : {
     "type" : "deep_pickslash",
-    "scripts" : ["/items/tools/deep_pickslash.lua"],
+    "scripts" : ["/items/tools/deep_pickaxe/deep_pickslash.lua"], 
     "class" : "DeepPickSlash",
     
-    "energyUsage" : 0,
+    "energyUsage" : 0, 
 
     "fireTime" : 0.3,
     "baseDps" : 0.0,
