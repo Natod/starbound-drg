@@ -3,27 +3,25 @@ require "/scripts/vec2.lua"
 require "/items/active/weapons/weapon.lua"
 
 -- Pickaxe primary ability
-DeepPickSlash = WeaponAbility:new()
+PickSlash = WeaponAbility:new()
 
-function DeepPickSlash:init()
+function PickSlash:init()
   self.weapon:setStance(self.stances.idle)
 
   self.weapon.onLeaveAbility = function()
     self.weapon:setStance(self.stances.idle)
-    --self:setAnimationStates(self.onLeaveAnimationStates)
+    self:setAnimationStates(self.onLeaveAnimationStates)
   end
 end
 
---[[
-function DeepPickSlash:setAnimationStates(states)
+function PickSlash:setAnimationStates(states)
   for stateType, state in pairs(states or {}) do
     animator.setAnimationState(stateType, state)
   end
 end
-]]
 
 -- Ticks on every update regardless if this is the active ability
-function DeepPickSlash:update(dt, fireMode, shiftHeld)
+function PickSlash:update(dt, fireMode, shiftHeld)
   WeaponAbility.update(self, dt, fireMode, shiftHeld)
 
   if not self.weapon.currentAbility and self:shouldFire() then
@@ -31,7 +29,7 @@ function DeepPickSlash:update(dt, fireMode, shiftHeld)
   end
 end
 
-function DeepPickSlash:bladeReady()
+function PickSlash:bladeReady()
   for stateType, state in pairs(self.requisiteAnimationStates or {}) do
     if animator.animationState(stateType) ~= state then
       return false
@@ -40,16 +38,16 @@ function DeepPickSlash:bladeReady()
   return true
 end
 
-function DeepPickSlash:canFire()
+function PickSlash:canFire()
   return not status.resourceLocked("energy") and status.resourcePositive("energy")
 end
 
-function DeepPickSlash:shouldFire()
+function PickSlash:shouldFire()
   return self:canFire() and self.fireMode == self.activatingFireMode
 end
 
 -- State: windup
-function DeepPickSlash:windup()
+function PickSlash:windup()
   self.weapon:setStance(self.stances.windup)
   self.weapon:updateAim()
 
@@ -67,7 +65,7 @@ function DeepPickSlash:windup()
 end
 
 -- State: fire
-function DeepPickSlash:fire()
+function PickSlash:fire()
   local entityPosition = world.entityPosition(activeItem.ownerEntityId())
   self.hitPosition = activeItem.ownerAimPosition()
   local distance = vec2.mag(world.distance(entityPosition, self.hitPosition))
@@ -104,7 +102,7 @@ function DeepPickSlash:fire()
   end
 end
 
-function DeepPickSlash:getBlockSound(brushArea)
+function PickSlash:getBlockSound(brushArea)
   local defaultFootstepSound = root.assetJson("/client.config:defaultFootstepSound")
 
   for _,pos in pairs(brushArea) do
@@ -132,7 +130,7 @@ function DeepPickSlash:getBlockSound(brushArea)
   return nil
 end
 
-function DeepPickSlash:tileAreaBrush(radius, centerPosition)
+function PickSlash:tileAreaBrush(radius, centerPosition)
   local result = jarray()
   local offset = {-radius/2, -radius/2}
   local intOffset = util.map(vec2.add(offset, centerPosition), util.round)
@@ -146,6 +144,6 @@ function DeepPickSlash:tileAreaBrush(radius, centerPosition)
   return result
 end
 
-function DeepPickSlash:uninit()
+function PickSlash:uninit()
   self:setAnimationStates(self.inactiveAnimationStates)
 end

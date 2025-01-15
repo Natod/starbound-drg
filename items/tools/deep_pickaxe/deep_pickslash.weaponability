@@ -4,8 +4,8 @@
 
   "ability" : {
     "type" : "deep_pickslash",
-    "scripts" : ["/items/tools/deep_pickaxe/deep_pickslash.lua"], 
-    "class" : "DeepPickSlash",
+    "scripts" : ["deep_pickslash.lua"],
+    "class" : "PickSlash",
     
     "energyUsage" : 0, 
 
