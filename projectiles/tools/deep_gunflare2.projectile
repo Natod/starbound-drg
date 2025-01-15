@@ -2,7 +2,7 @@
   "projectileName" : "deep_gunflare2",
   "physics" : "arrownosticky",
   "timeToLive" : 100,
-  "image" : "projectiles/weather/water/water.png",
+  "image" : "/projectiles/weather/water/water.png",
   "power" : 10,
 
   "damageKind" : "default"

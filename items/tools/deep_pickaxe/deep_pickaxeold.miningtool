@@ -2,7 +2,7 @@
   "itemName" : "deep_pickaxeold",
   "price" : 0,
   "category" : "Tool",
-  "inventoryIcon" : "deep_pickaxeicon.png",
+  "inventoryIcon" : "/items/tools/deep_pickaxe/deep_pickaxeicon.png",
   "maxStack" : 1,
   "rarity" : "Essential",
   "description" : "-- todo --",
@@ -10,7 +10,7 @@
   "tooltipKind" : "tool",
   "largeImage" : "deep_pickaxebig.png",
 
-  "image" : "deep_pickaxe.png",
+  "image" : "/items/tools/deep_pickaxe/deep_pickaxe.png",
   "handPosition" : [-4, -4],
   "fireTime" : 0.7,
   "swingStart" : 90,

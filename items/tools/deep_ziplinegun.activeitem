@@ -1,7 +1,7 @@
 {
   "itemName" : "deep_ziplinegun",
   "price" : 1500,
-  "inventoryIcon" : "deep_pickaxe.png",
+  "inventoryIcon" : "/items/tools/deep_pickaxe/deep_pickaxe.png",
   "maxStack" : 1,
   "rarity" : "Essential",
   "description" : "-- todo --",
@@ -15,7 +15,7 @@
   "animation" : "/items/active/weapons/ranged/gun.animation",
   "animationParts" : {
     "butt" : "",
-    "middle" : "deep_pickaxe.png",
+    "middle" : "/items/tools/deep_pickaxe/deep_pickaxe.png",
     "barrel" : "",
     "muzzleFlash" : "/items/active/weapons/ranged/muzzleflash.png"
   },
