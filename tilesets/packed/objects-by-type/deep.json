@@ -54,11 +54,11 @@
               },
               "5" : {
               "//description" : ".",
-              "//name" : "dmissionman",
-              "//shortdescription" : "dmissionman",
+              "//name" : "deep_missionmanager",
+              "//shortdescription" : "deep_missionmanager",
               "imagePositionX" : "0",
               "imagePositionY" : "0",
-              "object" : "dmissionman",
+              "object" : "deep_missionmanager",
               "tilesetDirection" : "right"
               }
        },
@@ -79,7 +79,7 @@
               "image" : "../../../objects/materialsprinkler/gold.png"
               },
               "5" : {
-              "image" : "../../../objects/testobject/testobject.png"
+              "image" : "../../../objects/deep_missionmanager/deep_missionmanager.png"
               }
               
        },
