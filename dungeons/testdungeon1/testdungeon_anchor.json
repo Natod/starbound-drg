@@ -53,11 +53,17 @@
                  "height":64,
                  "id":717,
                  "name":"",
-                 "properties":
-                    {
-                     "parameters":"{\"uniqueId\":\"missionmanager\"}",
-                     "stagehand":"deep_manager"
-                    },
+                 "properties":[
+                        {
+                         "name":"parameters",
+                         "type":"string",
+                         "value":"{\"uniqueId\":\"missionmanager\"}"
+                        }, 
+                        {
+                         "name":"stagehand",
+                         "type":"string",
+                         "value":"deep_manager"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -138,27 +144,15 @@
                  "y":80
                 }, 
                 {
-                 "gid":7670,
+                 "gid":7675,
                  "height":8,
-                 "id":714,
+                 "id":718,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":104,
-                 "y":80
-                }, 
-                {
-                 "gid":7670,
-                 "height":8,
-                 "id":715,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":72,
+                 "x":112,
                  "y":80
                 }],
          "opacity":1,
@@ -297,7 +291,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":718,
+ "nextobjectid":719,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.0",

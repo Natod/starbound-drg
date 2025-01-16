@@ -1,0 +1,33 @@
+{
+  "objectName" : "dmissionman",
+  "colonyTags" : [],
+  "rarity" : "Legendary",
+  "category" : "decorative",
+  "price" : 40,
+  "description" : "faeafaefwsdfsfsdfszfdsr.",
+  "shortdescription" : "Mission Manager Test",
+  "race" : "generic",
+  "unbreakable" : true,
+  "scripts" : ["/objects/testobject/dmissionman.lua"],
+
+  "inventoryIcon" : "testobject.png",
+  "orientations" : [
+    {
+      "image" : "testobject.png:<color>",
+      "imagePosition" : [-8, 0],
+      "direction" : "left",
+      "flipImages" : true,
+
+      "spaceScan" : 0.1,
+      "anchors" : [  ]
+    },
+    {
+      "image" : "testobject.png:<color>",
+      "imagePosition" : [-8, 0],
+      "direction" : "right",
+
+      "spaceScan" : 0.1,
+      "anchors" : [ ]
+    }
+  ]
+}

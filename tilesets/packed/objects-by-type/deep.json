@@ -51,6 +51,15 @@
               "imagePositionY" : "0",
               "object" : "deep_goldspawner",
               "tilesetDirection" : "right"
+              },
+              "5" : {
+              "//description" : ".",
+              "//name" : "dmissionman",
+              "//shortdescription" : "dmissionman",
+              "imagePositionX" : "0",
+              "imagePositionY" : "0",
+              "object" : "dmissionman",
+              "tilesetDirection" : "right"
               }
        },
        "tiles" : {
@@ -68,6 +77,9 @@
               },
               "4" : {
               "image" : "../../../objects/materialsprinkler/gold.png"
+              },
+              "5" : {
+              "image" : "../../../objects/testobject/testobject.png"
               }
               
        },
