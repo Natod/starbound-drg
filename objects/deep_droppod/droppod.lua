@@ -31,15 +31,14 @@ function update(dt)
         object.say(string.format("%s %s out of %s : %s", self.drop, #inPlayers, #allPlayers, math.floor(self.warpCounter+0.9)))
 
         if self.drop == self.type.arrival then
+            self.warpCounter = self.warpCounter-(1*dt)
             if #inPlayers == 0 then
                 if self.warpCounter <= 0 then
                     object.smash(true)
                     self.warped = true
-                else
-                    self.warpCounter = self.warpCounter-(1*dt)
                 end
-            else
-                self.warpCounter = self.warpTime
+            elseif self.warpCounter < 2 then
+                self.warpCounter = 2
             end
         else
             if #inPlayers > 0 and #inPlayers >= #allPlayers then
