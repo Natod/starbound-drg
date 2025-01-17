@@ -36,7 +36,9 @@ function update(dt)
 end
 
 function spawnWave(position)
-  world.spawnMonster("iguarmor", playerPositions())
+  for _,pos in pairs(playerPositions()) do
+    world.spawnMonster("iguarmor", pos)
+  end
   self.waveCounter = self.waveDelay
 end
 
