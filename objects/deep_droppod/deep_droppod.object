@@ -26,6 +26,9 @@
     }
   ],
 
+  "soundEffect" : "/music/St_Ambience_Master_1.ogg",
+  "soundEffectRangeMultiplier" : 1.5,
+
   "scripts" : [
     "/objects/deep_droppod/droppod.lua"
   ],
