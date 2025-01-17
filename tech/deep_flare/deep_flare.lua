@@ -4,17 +4,13 @@ require "/scripts/interp.lua"
 
 function init()
   self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
-  self.active=false
-  self.available = true
-  self.species = world.entitySpecies(entity.id())
+  self.flareCount = config.getParameter("flareCount")
   self.firetimer = 0
   self.rechargeDirectives = "?fade=CC22CCFF=0.1"
-  self.rechargeDirectivesNil = nil
-  self.rechargeEffectTime = 0.1 
+  self.rechargeEffectTime = 0.1
   self.rechargeEffectTimer = 0
   self.flashCooldownTimer = 0
   self.halted = 0
-  self.flareCount = 4
   self.cooldownFinish = false
   self.regenFinish = false
 end

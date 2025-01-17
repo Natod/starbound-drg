@@ -49,7 +49,7 @@ function playerScan()
   end)
   for _,playerId in pairs(newPlayers) do
     if self.music then
-      world.sendEntityMessage(playerId, "playAltMusic", self.music, config.getParameter("musicFadeInTime"))
+      world.sendEntityMessage(playerId, "playAltMusic", self.music) --, config.getParameter("musicFadeInTime"))
     end
   end
   self.players = players

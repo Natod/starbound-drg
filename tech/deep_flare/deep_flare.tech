@@ -11,5 +11,5 @@
   "icon" : "/interface/statuses/rage.png",
   "chipCost" : 1,
   "energyCostPerSecond" : 1.2,
-  "maximumDoubleTapTime" : 0.25
+  "flareCount" : 4
 }

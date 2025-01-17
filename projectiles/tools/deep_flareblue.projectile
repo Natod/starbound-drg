@@ -3,10 +3,9 @@
   "physics" : "grenadenobounce",
   "bounces" : -1,
   "timeToLive" : 50,
+  "speed" : 35,
   "image" : "deep_flareblue.png",
-  //"animationCycle" : 0.25,
   "lightColor" : [100, 100, 155],
-  //"frameNumber" : 2,
   "actionOnReap" : [
     {
       "action" : "config",
