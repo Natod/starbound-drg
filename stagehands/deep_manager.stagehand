@@ -5,9 +5,9 @@
   "scripts" : ["/stagehands/deep_manager.lua"],
   "scriptDelta" : 1,
 
-  "broadcastArea" : [-5, -5, 5, 5],
+  "broadcastArea" : [-99999, -99999, 99999, 99999],
 
-  "missionArea" : [-120, -70, 300, 70],
+  "missionArea" : [-99999, -99999, 99999, 99999],
 
   "musicFadeInTime" : 1.0,
   "musicFadeOutTime" : 1.0,
@@ -19,7 +19,7 @@
   "waveSizeMin" : 10,
   "waveSizeMax" : 30,
   "waveDuration" : 60,
-  "waveDelay" : 5,
+  "waveDelay" : 20,
 
   "spawnPositionRange" : [-12, 15]
 }
