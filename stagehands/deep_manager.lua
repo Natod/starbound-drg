@@ -55,7 +55,7 @@ function spawnWave(position)
     local stagehandPos = {0,0}
     if #stagehands >2 then
       stagehandPos = world.entityPosition(stagehands[2])
-    elseif #stagehands == 1 then 
+    elseif #stagehands == 2 then 
       --sb.logInfo(sb.print(stagehands[1]))
       stagehandPos = world.entityPosition(stagehands[1])
     elseif #stagehands == 1 then
