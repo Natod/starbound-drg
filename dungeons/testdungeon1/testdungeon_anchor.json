@@ -50,7 +50,7 @@
          "name":"stagehands",
          "objects":[
                 {
-                 "height":26.9,
+                 "height":15.6116071428571,
                  "id":717,
                  "name":"",
                  "properties":[
@@ -67,9 +67,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":28,
-                 "x":44.75,
-                 "y":22.5
+                 "width":16.25,
+                 "x":29.75,
+                 "y":29.5383928571429
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -84,18 +84,6 @@
          "name":"objects",
          "objects":[
                 {
-                 "gid":6637,
-                 "height":8,
-                 "id":695,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":88,
-                 "y":40
-                }, 
-                {
                  "gid":6629,
                  "height":8,
                  "id":696,
@@ -104,7 +92,7 @@
                  "type":"",
                  "visible":true,
                  "width":8,
-                 "x":56,
+                 "x":32,
                  "y":80
                 }, 
                 {
@@ -116,31 +104,7 @@
                  "type":"",
                  "visible":true,
                  "width":8,
-                 "x":128,
-                 "y":80
-                }, 
-                {
-                 "gid":7670,
-                 "height":8,
-                 "id":712,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":144,
-                 "y":80
-                }, 
-                {
-                 "gid":7670,
-                 "height":8,
-                 "id":713,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":32,
+                 "x":152,
                  "y":80
                 }, 
                 {
@@ -152,8 +116,20 @@
                  "type":"",
                  "visible":true,
                  "width":8,
-                 "x":120,
-                 "y":56
+                 "x":32,
+                 "y":24
+                }, 
+                {
+                 "gid":7676,
+                 "height":80,
+                 "id":720,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":80,
+                 "x":56,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -291,7 +267,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":720,
+ "nextobjectid":721,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.0",
