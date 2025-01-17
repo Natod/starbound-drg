@@ -9,6 +9,7 @@
   "printable" : false,
   "shortdescription" : "Arrival Drop Pod",
   "race" : "generic",
+  "unbreakable" : true,
 
   "inventoryIcon" : "droppod.png",
   "orientations" : [

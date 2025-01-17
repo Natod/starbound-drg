@@ -11,3 +11,7 @@ end
 function update(dt)
 
 end
+
+function getStagehandType()
+    return "monsterspawnpoint"
+end

@@ -46,11 +46,10 @@ function spawnWave(position)
   local mSpawnPos = {0,0}
 
   for _,playerPos in pairs(playerPositions()) do
-
-    local stagehands = world.entityQuery(playerPos,150,{includedTypes={"stagehand"},order="nearest"})
-    stagehands = util.filter(stagehands, function(id)
-      return (world.entityUniqueId(id) == nil)
-    end)
+    -- queries in a radius around the player for stagehands of type monsterspawnpoint
+    local stagehands = world.entityQuery(playerPos,250,
+    {includedTypes={"stagehand"},order="nearest",callScript="getStagehandType",callScriptResult="monsterspawnpoint"})
+    Print(stagehands)
 
     local stagehandPos = {0,0}
     if #stagehands >2 then
@@ -94,4 +93,12 @@ function playerPositions()
     table.insert(positions, world.entityPosition(player))
   end
   return positions
+end
+
+function Print(data)
+  sb.logInfo(sb.print(data))
+end
+
+function getStagehandType()
+  return "missionmanager"
 end

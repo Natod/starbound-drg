@@ -9,6 +9,7 @@
   "printable" : false,
   "shortdescription" : "Retrieval Drop Pod",
   "race" : "generic",
+  "unbreakable" : true,
 
   "inventoryIcon" : "droppod.png",
   "orientations" : [

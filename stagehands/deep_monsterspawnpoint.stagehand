@@ -2,7 +2,7 @@
   "type" : "deep_monsterspawnpoint",
   "keepAlive" : true,
 
-  //"scripts" : ["/stagehands/deep_monsterspawnpoint.lua"],
+  "scripts" : ["/stagehands/deep_monsterspawnpoint.lua"],
   "scriptDelta" : 1,
 
   "broadcastArea" : [-99999, -99999, 99999, 99999],
