@@ -92,6 +92,8 @@ function update(dt, fireMode, shiftHeld, moves)
   end
 
   if self.anchored then
+    self.counter = self.rechargeTime
+    self.playedSound = false
     swing(moves, dt, fireMode)
   else
     activeItem.setArmAngle(self.aimAngle)
@@ -125,8 +127,6 @@ function trackGround(dt)
 end
 
 function fire()
-  self.counter = self.rechargeTime
-  self.playedSound = false
   cancel()
 
   local aimVector = vec2.rotate({1, 0}, self.aimAngle)

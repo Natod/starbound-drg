@@ -48,7 +48,7 @@ function spawnWave(position)
   for _,playerPos in pairs(playerPositions()) do
     -- queries in a radius around the player for stagehands of type monsterspawnpoint
     local stagehands = world.entityQuery(playerPos,250,
-    {includedTypes={"stagehand"},order="nearest",callScript="getStagehandType",callScriptResult="monsterspawnpoint"})
+    {includedTypes={"stagehand"},boundMode="position",order="nearest",callScript="getStagehandType",callScriptResult="monsterspawnpoint"})
     Print(stagehands)
 
     local stagehandPos = {0,0}
@@ -67,8 +67,8 @@ function spawnWave(position)
     for i=0,waveSize do --places enemies in a pi arc below
       local rayEnd = {math.cos(math.pi*i/waveSize)*150,-math.sin(math.pi*i/waveSize)*150}
       mSpawnPos = world.lineCollision(stagehandPos, vec2.add(stagehandPos,rayEnd),{"block"}) or rayEnd
-      --world.spawnMonster("iguarmor", mSpawnPos)
-      world.spawnProjectile("deep_flareblue",stagehandPos)
+      world.spawnMonster("iguarmor", mSpawnPos)
+      --world.spawnProjectile("deep_flareblue",stagehandPos)  -- for position testing
     end
   end
   self.waveCounter = self.waveDelay
