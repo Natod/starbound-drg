@@ -20,7 +20,7 @@
       "anchors" : [  ],
       "direction" : "right",
       "renderLayer" : "BackgroundOverlay",
-      "metaBoundBox" : [-1, -1, 1, 1],
+      "metaBoundBox" : [0, 0, 1, 1],
 
       "detectArea" : [ [0, 0], [10, 10] ]
     }

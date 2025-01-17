@@ -20,14 +20,11 @@
       "anchors" : [  ],
       "direction" : "right",
       "renderLayer" : "BackgroundOverlay",
-      "metaBoundBox" : [-1, -1, 1, 1],
+      "metaBoundBox" : [0, 0, 1, 1],
 
       "detectArea" : [ [0, 0], [10, 10] ]
     }
   ],
-
-  "soundEffect" : "/music/St_Ambience_Master_1.ogg",
-  "soundEffectRangeMultiplier" : 1.5,
 
   "scripts" : [
     "/objects/deep_droppod/droppod.lua"
@@ -35,5 +32,6 @@
   "scriptDelta" : 5,
 
   "warpTime" : 10,
-  "dropType" : "drop"
+  "dropType" : "drop",
+  "ambientMusic" : [ "/music/St_Ambience_Master_1.ogg" ]
 }

@@ -9,8 +9,14 @@ function init()
     self.warpCounter = self.warpTime
 
     self.type = {drop = "drop", retrieval = "retrieval", arrival = "arrival"}
-
     self.drop = config.getParameter("dropType")
+    if self.drop == self.type.drop then
+        local music = config.getParameter("ambientMusic")
+        local allPlayers = world.players()
+        for i,playerId in ipairs(allPlayers) do
+            world.sendEntityMessage(playerId, "playAltMusic", music)
+        end
+    end
 end
 
 function update(dt)
