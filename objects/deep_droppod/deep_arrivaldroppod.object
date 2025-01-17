@@ -31,5 +31,6 @@
   ],
   "scriptDelta" : 5,
 
+  "warpTime" : 30,
   "dropType" : "arrival"
 }
