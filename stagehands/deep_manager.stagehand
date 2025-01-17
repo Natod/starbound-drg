@@ -8,8 +8,6 @@
   "broadcastArea" : [-5, -5, 5, 5],
 
   "missionArea" : [-120, -70, 300, 70],
-  
-  "baronUuid" : "baron",
 
   "musicFadeInTime" : 1.0,
   "musicFadeOutTime" : 1.0,
@@ -18,11 +16,10 @@
 
   "radioMessages" : {},
 
-  "ballistaSpawnDelay" : 30,
-  "heliSpawnDelay" : 20,
+  "waveSizeMin" : 10,
+  "waveSizeMax" : 30,
+  "waveDuration" : 60,
+  "waveDelay" : 30,
 
-  "spawnPositionRange" : [-12, 15],
-
-
-  "bossAddSpawnInterval" : 20
+  "spawnPositionRange" : [-12, 15]
 }

@@ -13,21 +13,11 @@
   "inventoryIcon" : "deep_missionmanager.png",
   "orientations" : [
     {
-      "image" : "deep_missionmanager.png:<color>",
+      "dualImage " : "deep_missionmanager.png",
       "imagePosition" : [-8, 0],
-      "direction" : "left",
-      "flipImages" : true,
 
       "spaceScan" : 0.1,
       "anchors" : [  ]
-    },
-    {
-      "image" : "deep_missionmanager.png:<color>",
-      "imagePosition" : [-8, 0],
-      "direction" : "right",
-
-      "spaceScan" : 0.1,
-      "anchors" : [ ]
     }
   ]
 }
