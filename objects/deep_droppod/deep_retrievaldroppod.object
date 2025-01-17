@@ -1,5 +1,5 @@
 {
-  "objectName" : "deep_droppod",
+  "objectName" : "deep_retrievaldroppod",
   "colonyTags" : [],
   "rarity" : "Common",
   "category" : "decorative",
@@ -7,7 +7,7 @@
   "description" : "Foreign objects in the launch bay",
   "scannable" : false,
   "printable" : false,
-  "shortdescription" : "Drop Pod",
+  "shortdescription" : "Retrieval Drop Pod",
   "race" : "generic",
 
   "inventoryIcon" : "droppod.png",
@@ -31,6 +31,6 @@
   ],
   "scriptDelta" : 5,
 
-  "warpTime" : 10,
-  "dropType" : "drop"
+  "warpTime" : 5,
+  "dropType" : "retrieval"
 }

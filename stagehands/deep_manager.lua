@@ -4,6 +4,7 @@ require "/scripts/rect.lua"
 function init()
 
   self.players={}
+  self.music = "/music/atlas.ogg"
 
   playerScan()
 
@@ -20,7 +21,7 @@ end
 
 
 function update(dt)
-  
+  playerScan()
 end
 
 function spawnWave(position)
@@ -30,9 +31,10 @@ end
 function playerScan()
   local players = world.players()
   local newPlayers = util.filter(players, function(entityId)
-    return contains(self.players, entityId)
+    return not contains(self.players, entityId)
   end)
   for _,playerId in pairs(newPlayers) do
+    sb.logInfo("music AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     if self.music then
       world.sendEntityMessage(playerId, "playAltMusic", self.music, config.getParameter("musicFadeInTime"))
     end

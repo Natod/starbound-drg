@@ -7,11 +7,15 @@ function init()
     self.warped = false
     self.warpTime = config.getParameter("warpTime")
     self.warpCounter = self.warpTime
+
+    self.type = {drop = "drop", retrieval = "retrieval", arrival = "arrival"}
+
+    self.drop = config.getParameter("dropType")
 end
 
 function update(dt)
-    if not self.warped then
-        local allPlayers = world.entityQuery(object.position(), 100, {includedTypes = {"player"}})
+    if self.drop == self.type.drop and not self.warped then
+        local allPlayers = world.players()
         local inPlayers = world.entityQuery(self.detectArea[1], self.detectArea[2], {
             includedTypes = {"player"},
             boundMode = "CollisionArea"
