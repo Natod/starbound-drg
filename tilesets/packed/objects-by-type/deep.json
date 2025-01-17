@@ -60,6 +60,15 @@
               "imagePositionY" : "0",
               "object" : "deep_missionmanager",
               "tilesetDirection" : "right"
+              },
+              "6" : {
+              "//description" : ".",
+              "//name" : "deep_arrivaldroppod",
+              "//shortdescription" : "deep_arrivaldroppod",
+              "imagePositionX" : "0",
+              "imagePositionY" : "0",
+              "object" : "deep_arrivaldroppod",
+              "tilesetDirection" : "right"
               }
        },
        "tiles" : {
@@ -80,6 +89,9 @@
               },
               "5" : {
               "image" : "../../../objects/deep_missionmanager/deep_missionmanager.png"
+              },
+              "6" : {
+              "image" : "../../../objects/deep_droppod/droppod.png"
               }
               
        },
