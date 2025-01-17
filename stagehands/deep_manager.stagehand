@@ -19,7 +19,7 @@
   "waveSizeMin" : 10,
   "waveSizeMax" : 30,
   "waveDuration" : 60,
-  "waveDelay" : 30,
+  "waveDelay" : 5,
 
   "spawnPositionRange" : [-12, 15]
 }
