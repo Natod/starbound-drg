@@ -44,6 +44,35 @@
          "y":0
         }, 
         {
+         "color":"#ffaaff",
+         "draworder":"topdown",
+         "id":11,
+         "name":"stagehands",
+         "objects":[
+                {
+                 "height":0,
+                 "id":706,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"stagehand",
+                         "type":"string",
+                         "value":"deep_monsterspawnpoint"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":96,
+                 "y":32
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "color":"#ff0000",
          "draworder":"topdown",
          "id":4,
@@ -232,8 +261,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":11,
- "nextobjectid":706,
+ "nextlayerid":12,
+ "nextobjectid":708,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.0",
