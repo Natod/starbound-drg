@@ -13,6 +13,8 @@ function init()
     spawnWave({60*i,670})
   end
   ]]
+  sb.logInfo("playerID and positions:")
+  sb.logInfo(sb.print(self.players))
   sb.logInfo(sb.print(playerPositions()))
 end
 
