@@ -1,5 +1,6 @@
 require "/scripts/util.lua"
 require "/scripts/rect.lua"
+require "/scripts/deep_util.lua"
 
 function init()
 
@@ -50,7 +51,7 @@ function spawnWave(position)
     -- queries in a radius around the player for stagehands of type monsterspawnpoint
     local stagehands = world.entityQuery(playerPos,250,
     {includedTypes={"stagehand"},boundMode="position",order="nearest",callScript="getStagehandType",callScriptResult="monsterspawnpoint"})
-    Print(stagehands)
+    --Print(stagehands)
 
     local stagehandPos = {0,0}
     if #stagehands >2 then
@@ -97,9 +98,6 @@ function playerPositions()
   return positions
 end
 
-function Print(data)
-  sb.logInfo(sb.print(data))
-end
 
 function getStagehandType()
   return "missionmanager"
