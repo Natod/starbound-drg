@@ -65,8 +65,11 @@ function spawnWave(position)
     else
       stagehandPos = playerPos
     end
-    stagehandPos = vec2.add(stagehandPos, {(math.random()-0.5)*2*self.spawnRadiusOffset, (math.random()-0.5)*2*self.spawnRadiusOffset})
-    
+
+    local offsetAngle = math.random()*2*math.pi --offsets the 
+    local offsetMagnitude = math.random()*self.spawnRadiusOffset
+    stagehandPos = vec2.add(stagehandPos, {math.cos(offsetAngle)*offsetMagnitude, math.sin(offsetAngle)*offsetMagnitude})
+
     for i=0,waveSize do --places enemies in a pi arc below
       local rayEnd = {math.cos(math.pi*i/waveSize)*150,-math.sin(math.pi*i/waveSize)*150}
       mSpawnPos = world.lineCollision(stagehandPos, vec2.add(stagehandPos,rayEnd),{"block"}) or rayEnd
