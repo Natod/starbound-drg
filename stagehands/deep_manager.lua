@@ -10,6 +10,7 @@ function init()
   self.waveCounter = self.waveDelay
   self.waveSizeMin = config.getParameter("waveSizeMin")
   self.waveSizeMax = config.getParameter("waveSizeMax")
+  self.spawnRadiusOffset = config.getParameter("spawnRadiusOffset")
 
   playerScan()
 
@@ -63,12 +64,13 @@ function spawnWave(position)
     else
       stagehandPos = playerPos
     end
+    stagehandPos = vec2.add(stagehandPos, {(math.random()-0.5)*2*self.spawnRadiusOffset, (math.random()-0.5)*2*self.spawnRadiusOffset})
     
     for i=0,waveSize do --places enemies in a pi arc below
       local rayEnd = {math.cos(math.pi*i/waveSize)*150,-math.sin(math.pi*i/waveSize)*150}
       mSpawnPos = world.lineCollision(stagehandPos, vec2.add(stagehandPos,rayEnd),{"block"}) or rayEnd
-      world.spawnMonster("iguarmor", mSpawnPos)
-      --world.spawnProjectile("deep_flareblue",stagehandPos)  -- for position testing
+      --world.spawnMonster("iguarmor", mSpawnPos)
+      world.spawnProjectile("deep_flareblue",stagehandPos)  -- for position testing
     end
   end
   self.waveCounter = self.waveDelay
