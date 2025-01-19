@@ -1,0 +1,24 @@
+{
+  "projectileName" : "deep_monsterdig",
+  "physics" : "mechbattery",
+  "image" : "deep_monsterdig.png",
+  //"damagePoly" : [ [-30, -30], [30, -30], [30, 30], [-30, 30] ],
+  "damageKind" : "hidden",
+  "monsterType" : "iguarmor",
+  "power" : 0,
+  "speed" : 0,
+  "timeToLive" : 2,
+  "scripts" : ["deep_monsterdig.lua"],
+  "periodicActions" : [
+    
+  ],
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/deep_monsterdig/deep_monsterdigparticles.config"
+    }
+  ],
+
+  "onlyHitTerrain" : true
+  //"masterOnly" : true  //idk what this is
+}

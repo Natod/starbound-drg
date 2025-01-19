@@ -50,7 +50,7 @@
          "name":"stagehands",
          "objects":[
                 {
-                 "height":0,
+                 "height":12.75,
                  "id":717,
                  "name":"",
                  "properties":[
@@ -67,9 +67,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":0,
-                 "x":40,
-                 "y":40
+                 "width":18,
+                 "x":31.25,
+                 "y":30.5
                 }],
          "opacity":1,
          "type":"objectgroup",

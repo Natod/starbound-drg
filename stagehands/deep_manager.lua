@@ -66,15 +66,29 @@ function spawnWave(position)
       stagehandPos = playerPos
     end
 
-    local offsetAngle = math.random()*2*math.pi --offsets the 
-    local offsetMagnitude = math.random()*self.spawnRadiusOffset
-    stagehandPos = vec2.add(stagehandPos, {math.cos(offsetAngle)*offsetMagnitude, math.sin(offsetAngle)*offsetMagnitude})
+-- offset the position within a circle of radius spawnRadiusOffset
+    for i=0,19 do -- try it 20 times or until it works
+      local offsetAngle = math.random()*2*math.pi
+      local offsetMagnitude = math.random()*self.spawnRadiusOffset
+      stagehandPos = vec2.add(stagehandPos, {math.cos(offsetAngle)*offsetMagnitude, math.sin(offsetAngle)*offsetMagnitude})
+      if not world.pointCollision(stagehandPos, {"block"}) then 
+        break 
+      end
+    end
+    -- if it didn't work, spawn at the player
+    if world.pointCollision(stagehandPos, {"block"}) then
+      stagehandPos = playerPos
+    end
 
-    for i=0,waveSize do --places enemies in a pi arc below
+
+-- places enemies in a pi arc below
+    --world.spawnProjectile("deep_flareblue", stagehandPos, nil, nil, nil, {timeToLive=0.5})  -- for position testing
+    for i=0,waveSize do 
       local rayEnd = {math.cos(math.pi*i/waveSize)*150,-math.sin(math.pi*i/waveSize)*150}
       mSpawnPos = world.lineCollision(stagehandPos, vec2.add(stagehandPos,rayEnd),{"block"}) or rayEnd
       --world.spawnMonster("iguarmor", mSpawnPos)
-      world.spawnProjectile("deep_flareblue",stagehandPos)  -- for position testing
+      world.spawnProjectile("deep_monsterdig", mSpawnPos, nil, nil, nil, {monsterType = "iguarmor"})
+      
     end
   end
   self.waveCounter = self.waveDelay
