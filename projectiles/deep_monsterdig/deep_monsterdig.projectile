@@ -1,23 +1,34 @@
 {
   "projectileName" : "deep_monsterdig",
-  "physics" : "mechbattery",
+  "physics" : "default",
   "image" : "deep_monsterdig.png",
   //"damagePoly" : [ [-30, -30], [30, -30], [30, 30], [-30, 30] ],
   "damageKind" : "hidden",
   "monsterType" : "iguarmor",
   "power" : 0,
   "speed" : 0,
-  "timeToLive" : 2,
+  "timeToLive" : 3.2,
   "scripts" : ["deep_monsterdig.lua"],
   "periodicActions" : [
-    
-  ],
-  "actionOnReap" : [
     {
       "action" : "config",
+      "time" : 0.15,
+      "repeat" : true,
       "file" : "/projectiles/deep_monsterdig/deep_monsterdigparticles.config"
+    },
+    {
+      "action" : "sound",
+      "time" : 0,
+      "repeat" : false,
+      "options" : [ "/sfx/gun/flaregun/FlareGunFireCombinedA_1.ogg" ]
     }
   ],
+  "actionOnReap" : [
+    
+  ],
+  "movementSettings" : {
+    "collisionEnabled" : false
+  },
 
   "onlyHitTerrain" : true
   //"masterOnly" : true  //idk what this is

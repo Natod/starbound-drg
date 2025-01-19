@@ -16,10 +16,11 @@
 
   "radioMessages" : {},
 
-  "waveSizeMin" : 10,
-  "waveSizeMax" : 30,
+  "waveSizeMin" : 4,
+  "waveSizeMax" : 12,
   "waveDuration" : 60,
-  "waveDelay" : 0.5,
+  "waveDelay" : 20,
+  "wavesPerSwarm" : 3,
 
   "spawnRadiusOffset" : 3
 }

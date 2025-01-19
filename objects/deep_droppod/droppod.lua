@@ -7,19 +7,19 @@ function init()
     self.warped = false
     self.warpTime = config.getParameter("warpTime")
     self.warpCounter = self.warpTime
+    self.music = config.getParameter("ambientMusic")
 
     self.type = {drop = "drop", retrieval = "retrieval", arrival = "arrival"}
     self.drop = config.getParameter("dropType")
-    if self.drop == self.type.drop then
-        local music = config.getParameter("ambientMusic")
-        local allPlayers = world.players()
-        for i,playerId in ipairs(allPlayers) do
-            world.sendEntityMessage(playerId, "playAltMusic", music)
-        end
-    end
+    local allPlayers = {}
+    
 end
 
 function update(dt)
+    if self.drop == self.type.drop then
+        playMusic()
+    end
+    
     if not self.warped then
         local allPlayers = world.players()
         local inPlayers = world.entityQuery(self.detectArea[1], self.detectArea[2], {
@@ -58,6 +58,15 @@ function update(dt)
             else
                 self.warpCounter = self.warpTime
             end
+        end
+    end
+end
+
+function playMusic()
+    if allPlayers ~= world.players() then
+        allPlayers = world.players()
+        for i,playerId in ipairs(allPlayers) do
+            world.sendEntityMessage(playerId, "playAltMusic", self.music)
         end
     end
 end
