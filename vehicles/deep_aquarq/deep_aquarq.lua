@@ -51,15 +51,15 @@ function update(dt)
   local driver = vehicle.entityLoungingIn("seat")
   if driver then
     if self.lastDriver == nil then
-      animator.playSound("engineStart")
-      animator.playSound("engineLoop", -1)
+      --animator.playSound("engineStart")
+      --animator.playSound("engineLoop", -1)
     end
 
     vehicle.setDamageTeam(world.entityDamageTeam(driver))
     mcontroller.applyParameters(self.occupiedMovementSettings)
     vehicle.setInteractive(false)
   else
-    animator.stopAllSounds("engineLoop")
+    --animator.stopAllSounds("engineLoop")
     vehicle.setDamageTeam({type = "passive"})
     mcontroller.applyParameters(self.movementSettings)
     vehicle.setInteractive(true)
@@ -93,8 +93,8 @@ function update(dt)
     local aimDir = vec2.withAngle(aimAngle)
     aimDir[1] = aimDir[1] * util.toDirection(mouseDir[1])
     --world.spawnProjectile("penguintankround", firePosition, entity.id(), aimDir, false)
-    animator.playSound("fire")
-    animator.burstParticleEmitter("muzzleFlash")
+    --animator.playSound("fire")
+    --animator.burstParticleEmitter("muzzleFlash")
 
     self.fireCooldown = self.fireInterval
     local aimVector = (vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-1))
