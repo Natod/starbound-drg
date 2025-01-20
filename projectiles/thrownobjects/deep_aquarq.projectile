@@ -1,0 +1,16 @@
+{
+  "projectileName" : "deep_aquarq",
+  "physics" : "arrownosticky",
+  "bounces" : 0,
+  "timeToLive" : 100, //0.1
+  "speed" : 35,
+  "image" : "deep_aquarq.png",
+  "lightColor" : [32, 80, 255],
+  "actionOnReap" : [  ],
+  "power" : 0,
+  "scripts" : ["deep_aquarq.lua"],
+
+  "onlyHitTerrain" : true,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

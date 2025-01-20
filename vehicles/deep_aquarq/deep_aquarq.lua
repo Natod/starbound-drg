@@ -97,7 +97,10 @@ function update(dt)
     animator.burstParticleEmitter("muzzleFlash")
 
     self.fireCooldown = self.fireInterval
+    local aimVector = (vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-1))
     vehicle.setLoungeEnabled("seat", false)
+    world.spawnProjectile("deep_aquarq", vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(aimVector), nil, {speed = 30})
+    vehicle.destroy()
     
     --mcontroller.setVelocity(vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-8))
     
