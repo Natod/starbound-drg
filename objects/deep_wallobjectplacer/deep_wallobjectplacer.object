@@ -8,14 +8,16 @@
   "category" : "wire",
   "price" : 0,
 
-  "objectType" : "deep_aquarq",
+  "itemToPlace" : "jeep",
   "tileMod" : "deep_aquarq",
   "modRadius" : 3,
+  "rayCastLength" : 200,
+  "maxTries" : 100,
   
-  "inventoryIcon" : "gold.png",
+  "inventoryIcon" : "obj.png",
   "orientations" : [
     {
-      "image" : "gold.png:<color>.<frame>",
+      "image" : "obj.png",
       "imagePosition" : [0, 0],
       "direction" : "left",
 
