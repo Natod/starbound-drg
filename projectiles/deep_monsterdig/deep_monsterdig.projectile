@@ -2,7 +2,6 @@
   "projectileName" : "deep_monsterdig",
   "physics" : "default",
   "image" : "deep_monsterdig.png",
-  //"damagePoly" : [ [-30, -30], [30, -30], [30, 30], [-30, 30] ],
   "damageKind" : "hidden",
   "monsterType" : "iguarmor",
   "power" : 0,
@@ -32,13 +31,10 @@
       ]
     }
   ],
-  "actionOnReap" : [
-    
-  ],
+  "actionOnReap" : [  ],
   "movementSettings" : {
     "collisionEnabled" : false
   },
 
   "onlyHitTerrain" : true
-  //"masterOnly" : true  //idk what this is
 }
