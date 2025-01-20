@@ -48,7 +48,6 @@ function init()
     end      
   end
 
-
   object.smash(true)
 
 end
