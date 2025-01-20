@@ -12,12 +12,14 @@ function init()
 
 -- raycast to a random angle and detect if it's a thick wall and if not try again at a shifted angle
   local rayAngle = math.random()*2*math.pi
+  local thickEnough = false
+  local spawnPos = {}
   for i=0,self.maxTries do 
     local rayOffsetUnitVec = {math.cos(rayAngle + i*2*math.pi/self.maxTries), math.sin(rayAngle + i*2*math.pi/self.maxTries)}
     local rayEndPoint = vec2.add(entity.position(), vec2.mul(rayOffsetUnitVec, self.rayCastLength ))
     local rayHitPoint = world.lineCollision(entity.position(),rayEndPoint,{"block"})
 -- if the raycast hits anything it checks the next x tiles in
-    local thickEnough = false
+    thickEnough = false
     if rayHitPoint and self.modRadius >0 then
       thickEnough = true
       for j=1,self.modRadius do
@@ -28,7 +30,7 @@ function init()
         end
       end
       if thickEnough then
-        local spawnPos = vec2.add(rayHitPoint,vec2.mul(rayOffsetUnitVec,self.modRadius))
+        spawnPos = vec2.add(rayHitPoint,vec2.mul(rayOffsetUnitVec,self.modRadius))
         world.spawnVehicle(self.itemToPlace, spawnPos)
         break
       end
