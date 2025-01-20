@@ -31,8 +31,8 @@
     "parts" : {
       "body" : {
         "properties" : {
-          "offset" : [0.0, 2.65],
-          "seatOffset" : [0, 2.65],
+          "offset" : [0.0, 2],
+          "seatOffset" : [0, 0.65],
           "zLevel" : 1
         },
         "partStates" : {
@@ -47,7 +47,7 @@
                 "image" : "body.png:move.<frame>"
               },
               "frameProperties" : {
-                "seatOffset" : [ [0, 2.65], [0, 2.675], [0, 2.65], [0, 2.625] ]
+                "seatOffset" : [ [0, 0.65], [0, 0.675], [0, 0.65], [0, 0.625] ]
               }
             },
             "movebackwards" : {
@@ -55,7 +55,7 @@
                 "image" : "body.png:movebackwards.<frame>"
               },
               "frameProperties" : {
-                "seatOffset" : [ [0, 2.625], [0, 2.65], [0, 2.675], [0, 2.65] ]
+                "seatOffset" : [ [0, 0.625], [0, 0.65], [0, 0.675], [0, 0.65] ]
               }
             },
             "jump" : {
@@ -63,7 +63,7 @@
                 "image" : "body.png:jump.<frame>"
               },
               "frameProperties" : {
-                "seatOffset" : [ [0, 2.65], [0, 2.675]]
+                "seatOffset" : [ [0, 0.65], [0, 0.675]]
               }
             },
             "fall" : {
@@ -71,7 +71,7 @@
                 "image" : "body.png:fall.<frame>"
               },
               "frameProperties" : {
-                "seatOffset" : [ [0, 2.675], [0, 2.65]]
+                "seatOffset" : [ [0, 0.675], [0, 0.65]]
               }
             }
           }
