@@ -22,16 +22,25 @@ function init(dt)
   self.jumping = false
 
   self.fireCooldown = 0.0
+
+  vehicle.setPersistent(true)
+  --animator.setParticleEmitterActive("glow",true)
 end
 
 function update(dt)
   storage.health = 999999
   self.fireCooldown = self.fireCooldown - dt
 
+
   if mcontroller.atWorldLimit() then
     vehicle.destroy()
     return
   end
+
+  if vehicle.entityLoungingIn("seat") == nil then
+    vehicle.setLoungeEnabled("seat", true)
+  end
+
   
   if storage.health <= 0 then
     animator.burstParticleEmitter("damageShards")
@@ -83,11 +92,15 @@ function update(dt)
     local firePosition = vec2.add(mcontroller.position(), animator.partPoint("cannon", "fireOffset"))
     local aimDir = vec2.withAngle(aimAngle)
     aimDir[1] = aimDir[1] * util.toDirection(mouseDir[1])
-    world.spawnProjectile("penguintankround", firePosition, entity.id(), aimDir, false)
+    --world.spawnProjectile("penguintankround", firePosition, entity.id(), aimDir, false)
     animator.playSound("fire")
     animator.burstParticleEmitter("muzzleFlash")
 
     self.fireCooldown = self.fireInterval
+    vehicle.setLoungeEnabled("seat", false)
+    
+    --mcontroller.setVelocity(vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-8))
+    
   end
 
   local localAim = world.distance(aim, mcontroller.position())
