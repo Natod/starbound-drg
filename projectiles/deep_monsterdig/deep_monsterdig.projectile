@@ -20,7 +20,16 @@
       "action" : "sound",
       "time" : 0,
       "repeat" : false,
-      "options" : [ "/sfx/gun/flaregun/FlareGunFireCombinedA_1.ogg" ]
+      "options" : [
+        "/sfx/npc/monsters/SpiderUnborrowA_1.ogg",
+        "/sfx/npc/monsters/SpiderUnborrowA_2.ogg",
+        "/sfx/npc/monsters/SpiderUnborrowA_3.ogg",
+        "/sfx/npc/monsters/SpiderUnborrowA_4.ogg",
+        "/sfx/npc/monsters/SpiderUnborrowB_1.ogg",
+        "/sfx/npc/monsters/SpiderUnborrowB_2.ogg",
+        "/sfx/npc/monsters/SpiderUnborrowB_3.ogg",
+        "/sfx/npc/monsters/SpiderUnborrowB_4.ogg"
+      ]
     }
   ],
   "actionOnReap" : [
