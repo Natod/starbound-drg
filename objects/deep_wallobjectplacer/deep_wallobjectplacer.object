@@ -8,7 +8,7 @@
   "category" : "wire",
   "price" : 0,
 
-  "itemToPlace" : "jeep",
+  "itemToPlace" : "deep_aquarq",
   "tileMod" : "deep_aquarq",
   "modRadius" : 3,
   "rayCastLength" : 200,
