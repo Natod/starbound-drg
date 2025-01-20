@@ -223,17 +223,7 @@
   },
 
   "sounds" : {
-    "explode" : [
-      "/sfx/gun/grenadeblast_small_fire1.ogg",
-      "/sfx/gun/grenadeblast_small_fire2.ogg",
-      "/sfx/gun/grenadeblast_small_fire3.ogg"
-    ],
-
-    "engineStart" : [ "/sfx/objects/airlock_close.ogg" ],
-    "engineLoop" : [ "/sfx/npc/monsters/penguintank_idle.ogg" ],
-    "engineDrive" : [ "/sfx/cinematics/ship_upgrade/captain_gripe.ogg" ],
-
-    "fire" : [ "/sfx/gun/rocket1.ogg" ]
+    "engineDrive" : [ "/sfx/cinematics/ship_upgrade/captain_gripe.ogg" ]
   },
 
   "lights" : {

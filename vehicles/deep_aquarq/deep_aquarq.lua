@@ -40,13 +40,6 @@ function update(dt)
   if vehicle.entityLoungingIn("seat") == nil then
     vehicle.setLoungeEnabled("seat", true)
   end
-
-  
-  if storage.health <= 0 then
-    animator.burstParticleEmitter("damageShards")
-    animator.playSound("explode")
-    vehicle.destroy()
-  end
   
   local driver = vehicle.entityLoungingIn("seat")
   if driver then
