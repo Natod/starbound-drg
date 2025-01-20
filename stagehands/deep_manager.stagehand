@@ -21,6 +21,8 @@
   "waveDuration" : 60,
   "waveDelay" : 20,
   "wavesPerSwarm" : 3,
+  "digInTime" : 3.2,
+  "digInFuzz" : 0.5, 
 
   "spawnRadiusOffset" : 3
 }

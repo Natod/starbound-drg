@@ -7,6 +7,8 @@ function init()
   self.players={}
   self.music = "/music/atlas.ogg"
   self.waveDelay = config.getParameter("waveDelay")
+  self.digInTime = config.getParameter("digInTime")
+  self.digInFuzz = config.getParameter("digInFuzz")
 
   self.waveCounter = self.waveDelay
   self.waveSizeMin = config.getParameter("waveSizeMin")
@@ -87,7 +89,10 @@ function spawnWave(position)
       local rayEnd = {math.cos(math.pi*i/waveSize)*150,-math.sin(math.pi*i/waveSize)*150}
       mSpawnPos = world.lineCollision(stagehandPos, vec2.add(stagehandPos,rayEnd),{"block"}) or rayEnd
       --world.spawnMonster("iguarmor", mSpawnPos)
-      world.spawnProjectile("deep_monsterdig", mSpawnPos, nil, nil, nil, {monsterType = "iguarmor"})
+      world.spawnProjectile("deep_monsterdig", mSpawnPos, nil, nil, nil, {
+        monsterType = "iguarmor", 
+        timeToLive = ( self.digInTime + 2*(math.random()-0.5)*self.digInFuzz )
+      })
       
     end
   end

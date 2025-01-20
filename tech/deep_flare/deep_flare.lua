@@ -1,26 +1,20 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
-require "/scripts/interp.lua"
 
 function init()
-  self.energyCostPerSecond = config.getParameter("energyCostPerSecond")
-  self.flareCount = config.getParameter("flareCount")
-  self.firetimer = 0
-  self.rechargeDirectives = "?fade=CC22CCFF=0.1"
-  self.rechargeEffectTime = 0.1
-  self.rechargeEffectTimer = 0
-  self.flashCooldownTimer = 0
-  self.halted = 0
-  self.cooldownFinish = false
-  self.regenFinish = false
+	self.flareCount = config.getParameter("flareCount")
+	self.fireTime = config.getParameter("fireTime")
+	self.fireTimer = 0
+	self.rechargeDirectives = "?fade=FFFFFFFF=0.1"
+	self.rechargeEffectTime = 0.1
+	self.rechargeEffectTimer = 0
+	self.flashCooldownTimer = 0
+	self.cooldownFinish = false
+	self.regenFinish = false
 end
 
 function uninit()
-
-end
-
-function activeAbility()
-    world.spawnProjectile("deep_flareblue", mcontroller.position(), entity.id(), aimVector(), false)
+	tech.setParentDirectives()
 end
 
 function aimVector()
@@ -28,26 +22,13 @@ function aimVector()
 	return vec2.norm(diff)
 end
 
-
-
-    
 function update(args)
-	self.firetimer = math.max(0, self.firetimer - args.dt)
-
-
-	
+	self.fireTimer = math.max(0, self.fireTimer - args.dt)
 
 	if self.flashCooldownTimer > 0 then
 		self.flashCooldownTimer = math.max(0, self.flashCooldownTimer - args.dt)  
-		if self.flashCooldownTimer <= 2 then
-			if self.halted == 0 then
-				self.halted = 1
-			end	 
-		end
-
 		if self.flashCooldownTimer == 0 then
 			self.cooldownFinish = true	
-				
 		end
 	end
 
@@ -58,21 +39,16 @@ function update(args)
 		end
 	end
 	
-	
-
-	if args.moves["special1"] and self.firetimer == 0 and self.flareCount >= 1 then 
+	if args.moves["special1"] and self.fireTimer == 0 and self.flareCount >= 1 then 
 		animator.playSound("activate")
-		self.firetimer = 0.5
-		activeAbility()
-		self.dashCooldownTimer = 0.5
-		self.flashCooldownTimer = 0.5
+		world.spawnProjectile("deep_flareblue", mcontroller.position(), entity.id(), aimVector(), false)
+		self.fireTimer = self.fireTime
+		self.flashCooldownTimer = self.fireTime
 		self.flareCount = self.flareCount - 1
-		self.halted = 0
 		self.cooldownFinish = false
 		self.regenFinish = false
 	end
 	
-
 	if self.flareCount < 4 then
 		self.flareCount = self.flareCount + (0.3 * args.dt)
 		if self.flareCount >= 1 then
