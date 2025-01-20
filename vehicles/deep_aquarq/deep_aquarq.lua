@@ -13,8 +13,8 @@ function init(dt)
   self.maxAngle = config.getParameter("maxAngle")
   self.fireInterval = config.getParameter("fireInterval")
 
-  self.protection = config.getParameter("protection")
-  storage.health = storage.health or config.getParameter("health")
+  self.protection = 999999
+  storage.health = 999999
 
   self.driving = false
   self.lastDriver = nil
@@ -25,6 +25,7 @@ function init(dt)
 end
 
 function update(dt)
+  storage.health = 999999
   self.fireCooldown = self.fireCooldown - dt
 
   if mcontroller.atWorldLimit() then
