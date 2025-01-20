@@ -1,0 +1,19 @@
+{
+  "projectileName" : "deep_wallobjectplacerprojectile",
+  "image" : "empty.png",
+  "animationCycle" : 0.25,
+  "frameNumber" : 1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : false,
+  "actionOnReap" : [],
+  "scripts" : [ "deep_wallobjectplacerprojectile.lua" ],
+
+  "tileMod" : "deep_aquarq",
+  "modRadius" : 3,
+
+  "power" : 0,
+  "speed" : 75,
+  "onlyHitTerrain" : true,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

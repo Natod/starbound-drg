@@ -1,0 +1,20 @@
+{
+  "modId" : 501,
+  "modName" : "deep_aquarq",
+  "description" : "Aquarq",
+  "breaksWithTile" : true,
+  "health" : 0,
+  "harvestLevel" : 1,
+
+  "miningSounds" : [  ],
+  "miningParticle" : "orespark",
+
+  "renderTemplate" : "/tiles/classicmaterialtemplate.config",
+  "renderParameters" : {
+    "texture" : "deep_aquarq.png",
+    "variants" : 8,
+    "multiColored" : false,
+    "zLevel" : 0,
+    "radiantLight" : [30, 80, 255]
+  }
+}

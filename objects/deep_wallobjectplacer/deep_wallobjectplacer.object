@@ -1,0 +1,30 @@
+{
+  "objectName" : "deep_wallobjectplacer",
+  "colonyTags" : [],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "",
+  "shortdescription" : "Wall Object Placer",
+  "category" : "wire",
+  "price" : 0,
+
+  "objectType" : "deep_aquarq",
+  "tileMod" : "deep_aquarq",
+  "modRadius" : 3,
+  
+  "inventoryIcon" : "gold.png",
+  "orientations" : [
+    {
+      "image" : "gold.png:<color>.<frame>",
+      "imagePosition" : [0, 0],
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : [  ]
+    }
+  ],
+
+  "scripts" : [ "deep_wallobjectplacer.lua" ],
+  "scriptDelta" : 2
+
+}
