@@ -69,6 +69,15 @@
               "imagePositionY" : "0",
               "object" : "deep_arrivaldroppod",
               "tilesetDirection" : "right"
+              },
+              "7" : {
+              "//description" : ".",
+              "//name" : "deep_aquarqplacer",
+              "//shortdescription" : "deep_aquarqplacer",
+              "imagePositionX" : "0",
+              "imagePositionY" : "0",
+              "object" : "deep_aquarqplacer",
+              "tilesetDirection" : "right"
               }
        },
        "tiles" : {
@@ -92,6 +101,9 @@
               },
               "6" : {
               "image" : "../../../objects/deep_droppod/droppod.png"
+              },
+              "7" : {
+              "image" : "../../../objects/deep_wallobjectplacer/aquarq.png"
               }
               
        },

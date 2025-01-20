@@ -1,0 +1,32 @@
+{
+  "objectName" : "deep_aquarqplacer",
+  "colonyTags" : [],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "",
+  "shortdescription" : "Aquarq Placer",
+  "category" : "wire",
+  "price" : 0,
+
+  "itemToPlace" : "deep_aquarq",
+  "tileMod" : "deep_aquarq",
+  "modRadius" : 3,
+  "rayCastLength" : 200,
+  "maxTries" : 100,
+  
+  "inventoryIcon" : "aquarq.png",
+  "orientations" : [
+    {
+      "image" : "aquarq.png",
+      "imagePosition" : [0, 0],
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : [  ]
+    }
+  ],
+
+  "scripts" : [ "deep_wallobjectplacer.lua" ],
+  "scriptDelta" : 2
+
+}
