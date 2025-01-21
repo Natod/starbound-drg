@@ -15,6 +15,7 @@
   "minAngle" : 0,
   "maxAngle" : 30,
   "fireInterval" : 2.0,
+  "detectRadius" : 10,
 
   "loungePositions" : {
     "seat" : {

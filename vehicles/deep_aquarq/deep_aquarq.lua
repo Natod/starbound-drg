@@ -1,7 +1,14 @@
 require "/scripts/vec2.lua"
 require "/scripts/util.lua"
+require "/scripts/deep_util.lua"
 
 function init(dt)
+  
+  self.detectRadius = config.getParameter("detectRadius")
+  self.playerPosList = {}
+  self.nearbyPlayers = {}
+  --self.prevPlayerPosList = {}
+
   self.moveSpeed = config.getParameter("moveSpeed")
   self.groundForce = config.getParameter("groundForce")
   self.jumpSpeed = config.getParameter("jumpSpeed")
@@ -31,6 +38,22 @@ function init(dt)
 end
 
 function update(dt)
+
+  if vehicle.entityLoungingIn("seat") == nil then
+    self.nearbyPlayers = world.entityQuery(mcontroller.position(), self.detectRadius, {
+      includedTypes = {"player"},
+      boundMode = "CollisionArea",
+      order = "nearest"
+    })
+    
+    if #self.nearbyPlayers >0 then
+      for i,p in pairs(self.nearbyPlayers) do 
+        self.playerPosList[i] = world.entityPosition(p)
+      end
+    end
+  end
+  
+
   storage.health = 999999
   self.fireCooldown = self.fireCooldown - dt
 
@@ -40,12 +63,21 @@ function update(dt)
     return
   end
 
-  
+  -- called when you first get in 
   local driver = vehicle.entityLoungingIn("seat")
   if driver then
     if self.lastDriver == nil then
       --animator.playSound("engineStart")
       --animator.playSound("engineLoop", -1)
+
+      --match the index of the driver's entityID to their position
+      for i,p in pairs(self.nearbyPlayers) do
+        if driver == p then
+          mcontroller.setPosition(vec2.add(self.playerPosList[i],{0,-2.65}))
+          Print(self.playerPosList[i])
+          break
+        end
+      end
     end
 
     vehicle.setDamageTeam({type = "ghostly"}) --world.entityDamageTeam(driver)
@@ -58,6 +90,8 @@ function update(dt)
     vehicle.setInteractive(true)
   end
   self.lastDriver = driver
+
+  
 
   local moveDir = 0
   if vehicle.controlHeld("seat", "right") then
@@ -96,7 +130,7 @@ function update(dt)
     vehicle.destroy()
     
     --mcontroller.setVelocity(vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-8))
-    
+    self.prevPlayerPosList = self.playerPosList
   end
 
   local localAim = world.distance(aim, mcontroller.position())
@@ -136,6 +170,8 @@ function update(dt)
     animator.stopAllSounds("engineDrive", 0.5)
   end
   self.driving = driving
+
+  --self.prevPlayerPosList = self.playerPosList
 end
 
 function applyDamage(damageRequest)
