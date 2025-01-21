@@ -49,7 +49,7 @@ function update(dt)
       for i,p in pairs(self.nearbyPlayers) do
         if driver == p then
           Print(self.playerPosList)
-          mcontroller.setPosition(vec2.add(self.playerPosList[i][3],{0,-2.65}))
+          mcontroller.setPosition(vec2.add(self.playerPosList[p][2],{0,-2.65}))
           break
         end
       end
@@ -73,12 +73,12 @@ function update(dt)
       order = "nearest"
     })
     
+    -- Update list of player positions over last 2 ticks
     if #self.nearbyPlayers >0 then
       for i,p in pairs(self.nearbyPlayers) do 
-        self.playerPosList[i] = self.playerPosList[i] or {}
-        self.playerPosList[i][3] = self.playerPosList[i][2] or {0,0}
-        self.playerPosList[i][2] = self.playerPosList[i][1] or {0,0}
-        self.playerPosList[i][1] = world.entityPosition(p)
+        self.playerPosList[p] = self.playerPosList[p] or {}
+        self.playerPosList[p][2] = self.playerPosList[p][1] or {0,0}
+        self.playerPosList[p][1] = world.entityPosition(p)
       end
     end
   end
@@ -102,32 +102,21 @@ function update(dt)
 
   mcontroller.approachXVelocity(moveDir * self.moveSpeed, self.groundForce)
 
+  
   local aim = vehicle.aimPosition("seat")
-  local aimSource = vec2.add(mcontroller.position(), animator.partPoint("cannon", "rotationCenter"))
-  local mouseDir = vec2.norm(world.distance(aim, aimSource))
-  local clampRange = {math.rad(self.minAngle), math.rad(self.maxAngle)}
-  local aimAngle = util.clamp(math.atan(mouseDir[2], math.abs(mouseDir[1])), math.rad(self.minAngle), math.rad(self.maxAngle))
-  animator.resetTransformationGroup("cannon")
-  animator.rotateTransformationGroup("cannon", aimAngle, animator.partPoint("cannon", "rotationCenter"))
+  local localAim = world.distance(aim, mcontroller.position())
   
   if self.fireCooldown <= 0 and vehicle.controlHeld("seat", "primaryFire") then
-    local firePosition = vec2.add(mcontroller.position(), animator.partPoint("cannon", "fireOffset"))
-    local aimDir = vec2.withAngle(aimAngle)
-    aimDir[1] = aimDir[1] * util.toDirection(mouseDir[1])
-    --world.spawnProjectile("penguintankround", firePosition, entity.id(), aimDir, false)
     --animator.playSound("fire")
-    --animator.burstParticleEmitter("muzzleFlash")
 
     self.fireCooldown = self.fireInterval
-    local aimVector = (vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-1))
     vehicle.setLoungeEnabled("seat", false)
-    world.spawnProjectile("deep_aquarq", vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(aimVector), nil, {speed = 30})
+    world.spawnProjectile("deep_aquarq", vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(localAim), nil, {speed = 30})
     vehicle.destroy()
     
     --mcontroller.setVelocity(vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-8))
   end
 
-  local localAim = world.distance(aim, mcontroller.position())
   animator.setFlipped(localAim[1] < 0)
   if vehicle.entityLoungingIn("seat") then
     animator.setParticleEmitterActive("particleGlowFloor",false)
@@ -165,32 +154,6 @@ function update(dt)
   end
   self.driving = driving
 
-end
-
-function applyDamage(damageRequest)
-  local damage = 0
-  if damageRequest.damageType == "Damage" then
-    damage = damage + root.evalFunction2("protection", damageRequest.damage, self.protection)
-  elseif damageRequest.damageType == "IgnoresDef" then
-    damage = damage + damageRequest.damage
-  else
-    return {}
-  end
-
-  local healthLost = math.min(damage, storage.health)
-  storage.health = storage.health - healthLost
-
-  return {{
-    sourceEntityId = damageRequest.sourceEntityId,
-    targetEntityId = entity.id(),
-    position = mcontroller.position(),
-    damageDealt = damage,
-    healthLost = healthLost,
-    hitType = "Hit",
-    damageSourceKind = damageRequest.damageSourceKind,
-    targetMaterialKind = "robotic",
-    killed = storage.health <= 0
-  }}
 end
 
 --[[
