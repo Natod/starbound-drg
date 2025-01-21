@@ -6,7 +6,7 @@
     "names" : [
       [ "move.1", "move.2", "move.3", "move.4" ],
       [ "fall.1", "fall.2", "idle" ],
-      [ "jump.1", "jump.2" ]
+      [ "jump.1", "jump.2", "unoccupied" ]
     ]
   },
 

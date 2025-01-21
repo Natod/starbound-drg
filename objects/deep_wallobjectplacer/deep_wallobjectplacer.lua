@@ -43,7 +43,7 @@ function init()
         local modAngle = j*2*math.pi/(self.modRadius*self.modRadius)
         local modPos = {math.cos(modAngle)*i, math.sin(modAngle)*i}
         world.placeMod(vec2.add(spawnPos,modPos), "foreground", self.tileMod, nil, true)
-        Print("trying to place the mods")
+        --Print("trying to place the mods")
       end
     end      
   end

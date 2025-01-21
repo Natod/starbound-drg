@@ -24,7 +24,10 @@ function init(dt)
   self.fireCooldown = 0.0
 
   vehicle.setPersistent(true)
+  animator.setAnimationState("body", "unoccupied")
   --animator.setParticleEmitterActive("glow",true)
+  animator.setParticleEmitterActive("particleGlowFloor",true)
+  animator.setParticleEmitterActive("particleGlow",false)
 end
 
 function update(dt)
@@ -37,9 +40,6 @@ function update(dt)
     return
   end
 
-  if vehicle.entityLoungingIn("seat") == nil then
-    vehicle.setLoungeEnabled("seat", true)
-  end
   
   local driver = vehicle.entityLoungingIn("seat")
   if driver then
@@ -48,12 +48,12 @@ function update(dt)
       --animator.playSound("engineLoop", -1)
     end
 
-    vehicle.setDamageTeam(world.entityDamageTeam(driver))
+    vehicle.setDamageTeam({type = "ghostly"}) --world.entityDamageTeam(driver)
     mcontroller.applyParameters(self.occupiedMovementSettings)
     vehicle.setInteractive(false)
   else
     --animator.stopAllSounds("engineLoop")
-    vehicle.setDamageTeam({type = "passive"})
+    vehicle.setDamageTeam({type = "ghostly"}) --passive
     mcontroller.applyParameters(self.movementSettings)
     vehicle.setInteractive(true)
   end
@@ -101,23 +101,32 @@ function update(dt)
 
   local localAim = world.distance(aim, mcontroller.position())
   animator.setFlipped(localAim[1] < 0)
-  if mcontroller.onGround() then
-    if math.abs(moveDir) > 0 then
-      if moveDir * localAim[1] > 0 then
-        animator.setAnimationState("body", "move")
+  if vehicle.entityLoungingIn("seat") then
+    animator.setParticleEmitterActive("particleGlowFloor",false)
+    animator.setParticleEmitterActive("particleGlow",true)
+    if mcontroller.onGround() then
+      if math.abs(moveDir) > 0 then
+        if moveDir * localAim[1] > 0 then
+          animator.setAnimationState("body", "move")
+        else
+          animator.setAnimationState("body", "movebackwards")
+        end
       else
-        animator.setAnimationState("body", "movebackwards")
+        animator.setAnimationState("body", "idle")
       end
     else
-      animator.setAnimationState("body", "idle")
+      self.jumping = false
+      if mcontroller.yVelocity() > 0.0 then
+        animator.setAnimationState("body", "jump")
+      else
+        animator.setAnimationState("body", "fall")
+      end
     end
   else
-    self.jumping = false
-    if mcontroller.yVelocity() > 0.0 then
-      animator.setAnimationState("body", "jump")
-    else
-      animator.setAnimationState("body", "fall")
-    end
+    vehicle.setLoungeEnabled("seat", true)
+    animator.setAnimationState("body", "unoccupied")
+    animator.setParticleEmitterActive("particleGlowFloor",true)
+    animator.setParticleEmitterActive("particleGlow",false)
   end
 
   local driving = moveDir ~= 0
@@ -154,3 +163,20 @@ function applyDamage(damageRequest)
     killed = storage.health <= 0
   }}
 end
+
+--[[
+function positionOffset()
+  return minY(self.transformedMovementParameters.collisionPoly) - minY(self.basePoly)
+end
+
+function transformPosition(pos)
+  pos = pos or mcontroller.position()
+  local groundPos = world.resolvePolyCollision(self.transformedMovementParameters.collisionPoly, {pos[1], pos[2] - positionOffset()}, 1, self.collisionSet)
+  if groundPos then
+    return groundPos
+  else
+    return world.resolvePolyCollision(self.transformedMovementParameters.collisionPoly, pos, 1, self.collisionSet)
+  end
+end
+
+]]

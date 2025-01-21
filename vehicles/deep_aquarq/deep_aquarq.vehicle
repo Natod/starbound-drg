@@ -22,7 +22,7 @@
       "partAnchor" : "seatOffset",
       "orientation" : "stand",
       "statusEffects" : [],
-      "cameraFocus" : true,
+      "cameraFocus" : false,
       "armorCosmeticOverrides" : {
         "back" : "invisibleback"
       }
@@ -36,7 +36,8 @@
   },
 
   "movementSettings" : {
-    "collisionPoly" : [ [0.25,0], [0.75, 0.5], [0.75, 3.25], [0.25, 3.75], [-0.25, 3.75], [-0.75, 3.25], [-0.75, 0.5], [-0.25, 0] ],
+    "collisionPoly" : [ [0,0], [0.75,0.75], [0,1.5], [-0.75,0.75] ],
+    //[0.25,0], [0.75, 0.5], [0.75, 1], [0.25, 1.5], [-0.25, 1.5], [-0.75, 1], [-0.75, 0.5], [-0.25, 0]
     "mass" : 1.2,
     "ignorePlatformCollision" : false,
     "gravityEnabled" : true,
@@ -44,5 +45,6 @@
   },
 
   "occupiedMovementSettings" : {
+    "collisionPoly" : [ [0.25,0], [0.75, 0.5], [0.75, 3.25], [0.25, 3.75], [-0.25, 3.75], [-0.75, 3.25], [-0.75, 0.5], [-0.25, 0] ]
   }
 }
