@@ -27,7 +27,7 @@ function init(dt)
 
   self.jumping = false
 
-  self.fireCooldown = 0.0
+  self.throwPower = 0.0
 
   vehicle.setPersistent(true)
   animator.setAnimationState("body", "unoccupied")
@@ -48,7 +48,6 @@ function update(dt)
       --match the index of the driver's entityID to their position
       for i,p in pairs(self.nearbyPlayers) do
         if driver == p then
-          Print(self.playerPosList)
           mcontroller.setPosition(vec2.add(self.playerPosList[p][2],{0,-2.65}))
           break
         end
@@ -84,10 +83,6 @@ function update(dt)
   end
   
 
-  storage.health = 999999
-  self.fireCooldown = self.fireCooldown - dt
-  
-
   local moveDir = 0
   if vehicle.controlHeld("seat", "right") then
     moveDir = moveDir + 1
@@ -105,13 +100,15 @@ function update(dt)
   
   local aim = vehicle.aimPosition("seat")
   local localAim = world.distance(aim, mcontroller.position())
-  
-  if self.fireCooldown <= 0 and vehicle.controlHeld("seat", "primaryFire") then
-    --animator.playSound("fire")
 
-    self.fireCooldown = self.fireInterval
+  if vehicle.controlHeld("seat", "primaryFire") then
+    if self.throwPower < 30 then
+      self.throwPower = self.throwPower + dt * 20
+    end
+  elseif self.throwPower > 0.0 then
+    --animator.playSound("fire")
     vehicle.setLoungeEnabled("seat", false)
-    world.spawnProjectile("deep_aquarq", vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(localAim), nil, {speed = 30})
+    world.spawnProjectile("deep_aquarq", vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(localAim), nil, {speed = self.throwPower})
     vehicle.destroy()
     
     --mcontroller.setVelocity(vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-8))
