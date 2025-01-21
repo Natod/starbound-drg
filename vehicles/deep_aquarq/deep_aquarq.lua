@@ -48,9 +48,8 @@ function update(dt)
       --match the index of the driver's entityID to their position
       for i,p in pairs(self.nearbyPlayers) do
         if driver == p then
-          Print(mcontroller.position())
+          Print(self.playerPosList)
           mcontroller.setPosition(vec2.add(self.playerPosList[i][3],{0,-2.65}))
-          Print(i)
           break
         end
       end
@@ -76,9 +75,9 @@ function update(dt)
     
     if #self.nearbyPlayers >0 then
       for i,p in pairs(self.nearbyPlayers) do 
-        self.playerPosList[i] = {}
-        self.playerPosList[i][3] = self.playerPosList[i][2]
-        self.playerPosList[i][2] = self.playerPosList[i][1]
+        self.playerPosList[i] = self.playerPosList[i] or {}
+        self.playerPosList[i][3] = self.playerPosList[i][2] or {0,0}
+        self.playerPosList[i][2] = self.playerPosList[i][1] or {0,0}
         self.playerPosList[i][1] = world.entityPosition(p)
       end
     end
@@ -87,12 +86,6 @@ function update(dt)
 
   storage.health = 999999
   self.fireCooldown = self.fireCooldown - dt
-
-
-  if mcontroller.atWorldLimit() then
-    vehicle.destroy()
-    return
-  end
   
 
   local moveDir = 0
