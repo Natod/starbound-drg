@@ -82,80 +82,10 @@
             }
           }
         }
-      },
-      "cannon" : {
-        "properties" : {
-          "offset" : [1.1875, 0.75],
-          "transformationGroups" : [ "cannon" ],
-          "rotationCenter" : [-1.5, 0.0],
-          "fireOffset" : [1.5, 0.0],
-          "zLevel" : 2,
-          "image" : "cannon.png"
-        },
-        "partStates" : {
-          "body" : {
-            "move" : {
-              "frameProperties" : {
-                "offset" : [ [1.1875, 0.75], [1.1875, 0.875], [1.1875, 0.75], [1.1875, 0.625] ]
-              }
-            },
-            "movebackwards" : {
-              "frameProperties" : {
-                "offset" : [ [1.1875, 0.625], [1.1875, 0.75], [1.1875, 0.875], [1.1875, 0.75] ]
-              }
-            },
-            "jump" : {
-              "frameProperties" : {
-                "offset" : [ [1.1875, 0.75], [1.1875, 0.875] ]
-              }
-            },
-            "fall" : {
-              "frameProperties" : {
-                "offset" : [ [1.1875, 0.875], [1.1875, 0.75] ]
-              }
-            }
-          }
-        }
-      },
-      "bodyfront" : {
-        "properties" : {
-          "offset" : [-0.3125, 0.8125],
-          "zLevel" : 3,
-          "image" : "bodyfront.png"
-        },
-        "partStates" : {
-          "body" : {
-            "move" : {
-              "frameProperties" : {
-                "offset" : [ [-0.3125, 0.8125], [-0.3125, 0.9375], [-0.3125, 0.8125], [-0.3125, 0.6875] ]
-              }
-            },
-            "movebackwards" : {
-              "frameProperties" : {
-                "offset" : [ [-0.3125, 0.6875], [-0.3125, 0.8125], [-0.3125, 0.9375], [-0.3125, 0.8125] ]
-              }
-            },
-            "jump" : {
-              "frameProperties" : {
-                "offset" : [  [-0.3125, 0.8125], [-0.3125, 0.9375] ]
-              }
-            },
-            "fall" : {
-              "frameProperties" : {
-                "offset" : [ [-0.3125, 0.9375], [-0.3125, 0.8125] ]
-              }
-            }
-          }
-        }
       }
     }
   },
 
-  "transformationGroups" : {
-    "cannon" : {
-      "interpolated" : true
-    }
-  },
 
   "effects" : {
     "blink" : {
@@ -192,14 +122,7 @@
         },
         { "particle" : "fireshard"}
       ]
-    },
-    "muzzleFlash" : {
-      "anchorPart" : "cannon",
-      "burstCount" : 3,
-      "particles" : [
-        { "offset" : [1.5, 0.0], "particle" : "rocketbarrelpuff" }
-      ]
-    },    
+    },  
     "particleGlow" : {
       "emissionRate" : 500.0,
       "emissionRateVariance" : 0.0,
@@ -255,7 +178,8 @@
   },
 
   "sounds" : {
-    "engineDrive" : [ "/sfx/cinematics/ship_upgrade/captain_gripe.ogg" ]
+    "throw" : ["/sfx/projectiles/throw_item.ogg"],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown1.ogg" ]
   },
 
   "lights" : {
@@ -264,9 +188,7 @@
       "transformationGroups" : [],
       "position" : [0, 2],
       "color" : [32, 80, 255],
-      "pointLight" : false //,
-      //"pointAngle" : 140,
-      //"pointBeam" : 5
+      "pointLight" : false
     }
   }
 }

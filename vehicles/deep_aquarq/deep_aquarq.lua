@@ -31,19 +31,17 @@ function init(dt)
 
   vehicle.setPersistent(true)
   animator.setAnimationState("body", "unoccupied")
-  --animator.setParticleEmitterActive("glow",true)
   animator.setParticleEmitterActive("particleGlowFloor",true)
   animator.setParticleEmitterActive("particleGlow",false)
 end
 
 function update(dt)
 
-   -- called when you first get in 
+   
   local driver = vehicle.entityLoungingIn("seat")
   if driver then
+    -- called when you first get in 
     if self.lastDriver == nil then
-      --animator.playSound("engineStart")
-      --animator.playSound("engineLoop", -1)
 
       --match the index of the driver's entityID to their position
       for i,p in pairs(self.nearbyPlayers) do
@@ -58,7 +56,6 @@ function update(dt)
     mcontroller.applyParameters(self.occupiedMovementSettings)
     vehicle.setInteractive(false)
   else
-    --animator.stopAllSounds("engineLoop")
     vehicle.setDamageTeam({type = "ghostly"}) --passive
     mcontroller.applyParameters(self.movementSettings)
     vehicle.setInteractive(true)
@@ -100,14 +97,17 @@ function update(dt)
   
   local aim = vehicle.aimPosition("seat")
   local localAim = world.distance(aim, mcontroller.position())
-
+  local maxThrowPower = 30
   if vehicle.controlHeld("seat", "primaryFire") then
-    if self.throwPower < 30 then
-      self.throwPower = self.throwPower + dt * 20
+    if self.throwPower < maxThrowPower then
+      self.throwPower = self.throwPower + dt * maxThrowPower
+      if self.throwPower >= maxThrowPower then
+        animator.playSound("recharge")
+      end
     end
   elseif self.throwPower > 0.0 then
-    --animator.playSound("fire")
     vehicle.setLoungeEnabled("seat", false)
+    animator.playSound("throw")
     world.spawnProjectile("deep_aquarq", vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(localAim), nil, {speed = self.throwPower})
     vehicle.destroy()
     
@@ -144,28 +144,6 @@ function update(dt)
   end
 
   local driving = moveDir ~= 0
-  if driving and not self.driving then
-    animator.playSound("engineDrive", -1)
-  elseif not driving then
-    animator.stopAllSounds("engineDrive", 0.5)
-  end
   self.driving = driving
 
 end
-
---[[
-function positionOffset()
-  return minY(self.transformedMovementParameters.collisionPoly) - minY(self.basePoly)
-end
-
-function transformPosition(pos)
-  pos = pos or mcontroller.position()
-  local groundPos = world.resolvePolyCollision(self.transformedMovementParameters.collisionPoly, {pos[1], pos[2] - positionOffset()}, 1, self.collisionSet)
-  if groundPos then
-    return groundPos
-  else
-    return world.resolvePolyCollision(self.transformedMovementParameters.collisionPoly, pos, 1, self.collisionSet)
-  end
-end
-
-]]

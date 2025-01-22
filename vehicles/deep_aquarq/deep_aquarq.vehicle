@@ -7,9 +7,9 @@
   "canBeHit" : false,
   "animation" : "deep_aquarq.animation",
 
-  "moveSpeed" : 8,
-  "groundForce" : 400,
-  "jumpSpeed" : 18,
+  "moveSpeed" : 6,
+  "groundForce" : 200,
+  "jumpSpeed" : 22,
 
 
   "minAngle" : 0,
