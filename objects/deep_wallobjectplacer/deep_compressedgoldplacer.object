@@ -1,0 +1,32 @@
+{
+  "objectName" : "deep_compressedgoldplacer",
+  "colonyTags" : [],
+  "printable" : false,
+  "rarity" : "Common",
+  "description" : "",
+  "shortdescription" : "Compressed Gold Placer",
+  "category" : "wire",
+  "price" : 0,
+
+  "itemToPlace" : "deep_compressedgold",
+  "tileMod" : "deep_compressedgold",
+  "modRadius" : 3,
+  "rayCastLength" : 200,
+  "maxTries" : 100,
+  
+  "inventoryIcon" : "gold.png",
+  "orientations" : [
+    {
+      "image" : "gold.png",
+      "imagePosition" : [0, 0],
+      "direction" : "left",
+
+      "spaceScan" : 0.1,
+      "anchors" : [  ]
+    }
+  ],
+
+  "scripts" : [ "deep_wallobjectplacer.lua" ],
+  "scriptDelta" : 2
+
+}

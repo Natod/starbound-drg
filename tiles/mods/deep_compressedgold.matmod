@@ -1,7 +1,7 @@
 {
-  "modId" : 501,
-  "modName" : "deep_aquarq",
-  "description" : "Aquarq",
+  "modId" : 502,
+  "modName" : "deep_compressedgold",
+  "description" : "Compressed Gold",
   "breaksWithTile" : true,
   "health" : 0,
   "harvestLevel" : 1,
@@ -11,10 +11,10 @@
 
   "renderTemplate" : "/tiles/classicmaterialtemplate.config",
   "renderParameters" : {
-    "texture" : "deep_aquarq.png",
+    "texture" : "deep_compressedgold.png",
     "variants" : 8,
     "multiColored" : false,
     "zLevel" : 0,
-    "radiantLight" : [4, 10, 32]
+    "radiantLight" : [12, 12, 6]
   }
 }

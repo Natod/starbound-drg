@@ -1,0 +1,17 @@
+{
+  "projectileName" : "deep_compressedgold",
+  "physics" : "arrownosticky",
+  "bounces" : 0,
+  "timeToLive" : 100, //0.1
+  "speed" : 35,
+  "image" : "deep_compressedgold.png",
+  "lightColor" : [160, 160, 90],
+  "actionOnReap" : [  ],
+  "power" : 0,
+  "scripts" : ["/projectiles/thrownobjects/deep_thrownobject.lua"],
+  "thrownObj" : "deep_compressedgold",
+
+  "onlyHitTerrain" : true,
+  "damageType" : "NoDamage",
+  "damageKind" : "default"
+}

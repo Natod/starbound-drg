@@ -8,7 +8,8 @@
   "lightColor" : [32, 80, 255],
   "actionOnReap" : [  ],
   "power" : 0,
-  "scripts" : ["deep_aquarq.lua"],
+  "scripts" : ["/projectiles/thrownobjects/deep_thrownobject.lua"],
+  "thrownObj" : "deep_aquarq",
 
   "onlyHitTerrain" : true,
   "damageType" : "NoDamage",

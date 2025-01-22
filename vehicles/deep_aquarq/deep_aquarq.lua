@@ -7,6 +7,7 @@ function init(dt)
   self.detectRadius = config.getParameter("detectRadius")
   self.playerPosList = {}
   self.nearbyPlayers = {}
+  self.selfProjectile = config.getParameter("selfProjectile")
 
   self.moveSpeed = config.getParameter("moveSpeed")
   self.groundForce = config.getParameter("groundForce")
@@ -111,7 +112,7 @@ function update(dt)
   elseif self.throwPower > 0.0 then
     vehicle.setLoungeEnabled("seat", false)
     animator.playSound("throw")
-    world.spawnProjectile("deep_aquarq", vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(localAim), nil, {speed = self.throwPower})
+    world.spawnProjectile(self.selfProjectile, vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(localAim), nil, {speed = self.throwPower})
     vehicle.destroy()
     
     --mcontroller.setVelocity(vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-8))
