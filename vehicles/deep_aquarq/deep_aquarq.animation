@@ -6,24 +6,6 @@
         "default" : "idle",
         "states" : {
           "idle" : {},
-          "move" : {
-            "frames" : 4,
-            "cycle" : 0.3,
-            "mode" : "loop"
-          },
-          "movebackwards" : {
-            "frames" : 4,
-            "cycle" : 0.3,
-            "mode" : "loop"
-          },
-          "jump" : {
-            "frames" : 2,
-            "cycle" : 0.1
-          },
-          "fall" : {
-            "frames" : 2,
-            "cycle" : 0.1
-          },
           "unoccupied" : {}
         }
       }
@@ -41,38 +23,6 @@
             "idle" : {
               "properties" : {
                 "image" : "body.png:idle"
-              }
-            },
-            "move" : {
-              "properties" : {
-                "image" : "body.png:move.<frame>"
-              },
-              "frameProperties" : {
-                "seatOffset" : [ [0, 0.65], [0, 0.675], [0, 0.65], [0, 0.625] ]
-              }
-            },
-            "movebackwards" : {
-              "properties" : {
-                "image" : "body.png:movebackwards.<frame>"
-              },
-              "frameProperties" : {
-                "seatOffset" : [ [0, 0.625], [0, 0.65], [0, 0.675], [0, 0.65] ]
-              }
-            },
-            "jump" : {
-              "properties" : {
-                "image" : "body.png:jump.<frame>"
-              },
-              "frameProperties" : {
-                "seatOffset" : [ [0, 0.65], [0, 0.675]]
-              }
-            },
-            "fall" : {
-              "properties" : {
-                "image" : "body.png:fall.<frame>"
-              },
-              "frameProperties" : {
-                "seatOffset" : [ [0, 0.675], [0, 0.65]]
               }
             },
             "unoccupied" : {

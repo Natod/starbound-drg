@@ -118,23 +118,9 @@ function update(dt)
   if vehicle.entityLoungingIn("seat") then
     animator.setParticleEmitterActive("particleGlowFloor",false)
     animator.setParticleEmitterActive("particleGlow",true)
-    if mcontroller.onGround() then
-      if math.abs(moveDir) > 0 then
-        if moveDir * localAim[1] > 0 then
-          animator.setAnimationState("body", "move")
-        else
-          animator.setAnimationState("body", "movebackwards")
-        end
-      else
-        animator.setAnimationState("body", "idle")
-      end
-    else
+    animator.setAnimationState("body", "idle")
+    if not mcontroller.onGround() then
       self.jumping = false
-      if mcontroller.yVelocity() > 0.0 then
-        animator.setAnimationState("body", "jump")
-      else
-        animator.setAnimationState("body", "fall")
-      end
     end
   else
     vehicle.setLoungeEnabled("seat", true)
