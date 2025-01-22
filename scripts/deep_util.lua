@@ -2,12 +2,17 @@ require "/scripts/util.lua"
 require "/scripts/vec2.lua"
 require "/scripts/status.lua"
 
-function init()
-end
+deep_util = {}
 
-function update(dt)
-end
-
-function Print(data)
+function deep_util.print(data)
   sb.logInfo(sb.print(data))
+end
+
+function deep_util.isInTable(query, table)
+  for _,value in pairs(table) do
+    if value == query then
+      return true
+    end
+  end
+  return false
 end

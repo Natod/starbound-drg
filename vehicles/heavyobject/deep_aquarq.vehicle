@@ -1,16 +1,17 @@
 {
-  "name" : "deep_compressedgold",
-  "script" : "deep_aquarq.lua",
+  "name" : "deep_aquarq",
+  "script" : "/vehicles/heavyobject/deep_heavyobject.lua",
   "boundBox" : [-5.0, -16.0, 5.0, 5.0],
   "slaveControlTimeout" : 2.0,
   "slaveControlHeartbeat" : 1.0,
   "canBeHit" : false,
-  "animation" : "deep_compressedgold.animation",
+  "animation" : "deep_aquarq.animation",
 
   "moveSpeed" : 6,
   "groundForce" : 200,
   "jumpSpeed" : 22,
-  "selfProjectile" : "deep_compressedgold",
+  "selfProjectile" : "deep_aquarq",
+  "objectTags" : ["mineheadDeposit"],
 
 
   "minAngle" : 0,
@@ -26,7 +27,6 @@
       "statusEffects" : [],
       "cameraFocus" : false,
       "armorCosmeticOverrides" : {
-        //"back" : "invisibleback"
       }
     }
   },
@@ -39,7 +39,6 @@
 
   "movementSettings" : {
     "collisionPoly" : [ [0,0], [0.75,0.75], [0,1.5], [-0.75,0.75] ],
-    //[0.25,0], [0.75, 0.5], [0.75, 1], [0.25, 1.5], [-0.25, 1.5], [-0.75, 1], [-0.75, 0.5], [-0.25, 0]
     "mass" : 1.2,
     "ignorePlatformCollision" : false,
     "gravityEnabled" : true,

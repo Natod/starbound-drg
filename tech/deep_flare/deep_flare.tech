@@ -9,6 +9,6 @@
   "description" : "Throw Flare ^green;[F]^reset;",
   "shortDescription" : "Flare",
   "rarity" : "Legendary",
-  "icon" : "/interface/statuses/rage.png",
+  "icon" : "deep_flare.png",
   "flareCount" : 4
 }

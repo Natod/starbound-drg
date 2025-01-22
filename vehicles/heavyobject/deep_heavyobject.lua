@@ -8,6 +8,7 @@ function init(dt)
   self.playerPosList = {}
   self.nearbyPlayers = {}
   self.selfProjectile = config.getParameter("selfProjectile")
+  self.objTags = config.getParameter("objectTags", {})
 
   self.moveSpeed = config.getParameter("moveSpeed")
   self.groundForce = config.getParameter("groundForce")
@@ -137,3 +138,17 @@ function update(dt)
   self.driving = driving
 
 end
+
+--checks if the aquarq-like has the given tag and does its thing
+function identifyType(query)
+  local hasTag = false
+  if deep_util.isInTable(query, self.objTags) then hasTag = true end
+  
+  if hasTag then
+    if query == "mineheadDeposit" and vehicle.entityLoungingIn("seat") == nil then
+      vehicle.destroy()
+    end
+  end
+  return hasTag
+end
+

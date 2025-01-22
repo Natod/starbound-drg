@@ -2,10 +2,11 @@
   "projectileName" : "deep_aquarq",
   "physics" : "arrownosticky",
   "bounces" : 0,
-  "timeToLive" : 100, //0.1
+  "timeToLive" : 100, 
   "speed" : 35,
   "image" : "deep_aquarq.png",
   "lightColor" : [32, 80, 255],
+  "objectTags" : ["mineheadDeposit"],
   "actionOnReap" : [  ],
   "power" : 0,
   "scripts" : ["/projectiles/thrownobjects/deep_thrownobject.lua"],
