@@ -5,6 +5,8 @@ require "/scripts/deep_util.lua"
 function init(dt)
   object.setInteractive(true)
   self.detectArea = config.getParameter("detectArea")
+  --self.detectArea[1] = vec2.add(entity.position(),self.detectArea[1])
+  --self.detectArea[2] = vec2.add(entity.position(),self.detectArea[2])
   self.detectArea[1] = object.toAbsolutePosition(self.detectArea[1])
   self.detectArea[2] = object.toAbsolutePosition(self.detectArea[2])
   self.aquarqCount = 0

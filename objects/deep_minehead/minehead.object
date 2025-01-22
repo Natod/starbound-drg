@@ -8,7 +8,7 @@
   "description" : "something something deposit in the mine head",
   "shortdescription" : "Mine Head",
   "race" : "generic",
-  "unbreakable" : true,
+  //"unbreakable" : true,
 
   "inventoryIcon" : "mineheadicon.png",
   "orientations" : [
@@ -16,22 +16,25 @@
       "dualImage" : "minehead.png",
       //"lightPosition" : [0, 1],
 
-      "imagePosition" : [-28, 0],
+      "imagePosition" : [0, 0],
       //"frames" : 3,
       //"animationCycle" : 0.5,
 
       "spaceScan" : 0.1,
       "anchors" : [  ],
       "collision" : "platform",
-      "collisionSpaces" : [ [-10, -5], [-4, 1], [4, 1], [10, -5] ],
-      "detectArea" : [ [0, 0], [10, 10] ]
+      "collisionSpaces" : [ 
+        [0, 0],[1,1],[2,2],[3,3],[4,4],
+        [5,4],[6,4],[7,4],[8,4],[9,4],[10,4],[11,4],[12,4],[13,4],[14,4],[15,4],[16,4],[17,4],[18,4],[19,4],
+        [20, 4], [21,3],[22,2],[23,1],[24,0] 
+      ],
+      "detectArea" : [ [10, 5], [13, 7] ]
     }
   ],
 
   "scripts" : [ "minehead.lua" ],
-  "scriptDelta" : 2,
+  "scriptDelta" : 2
 
-  //"animationPosition" : [-28, -0],
+  //"animationPosition" : [-28, -0]
 
-  "smashOnBreak" : true
 }
