@@ -98,9 +98,11 @@ function update(dt)
   local aim = vehicle.aimPosition("seat")
   local localAim = world.distance(aim, mcontroller.position())
   local maxThrowPower = 30
+  local throwAnimationAngle = math.pi/4
   if vehicle.controlHeld("seat", "primaryFire") then
     if self.throwPower < maxThrowPower then
       self.throwPower = self.throwPower + dt * maxThrowPower
+      animator.rotateTransformationGroup("rotate", -dt*throwAnimationAngle, {0.5,3})
       if self.throwPower >= maxThrowPower then
         animator.playSound("recharge")
       end

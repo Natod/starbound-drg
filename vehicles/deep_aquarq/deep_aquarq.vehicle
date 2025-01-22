@@ -19,13 +19,13 @@
 
   "loungePositions" : {
     "seat" : {
-      "part" : "body",
+      "part" : "empty",
       "partAnchor" : "seatOffset",
       "orientation" : "stand",
       "statusEffects" : [],
       "cameraFocus" : false,
       "armorCosmeticOverrides" : {
-        "back" : "invisibleback"
+        //"back" : "invisibleback"
       }
     }
   },
