@@ -103,6 +103,7 @@ function update(dt)
     if self.throwPower < maxThrowPower then
       self.throwPower = self.throwPower + dt * maxThrowPower
       animator.rotateTransformationGroup("rotate", -dt*throwAnimationAngle, {0.5,3})
+      animator.translateTransformationGroup("rotate", {dt/3,-dt/4})
       if self.throwPower >= maxThrowPower then
         animator.playSound("recharge")
       end
