@@ -4,7 +4,7 @@
   "bounces" : -1,
   "damageKindImage" : "icon.png",
   "pointLight" : true,
-  "lightColor" : [60, 20, 20],
+  "lightColor" : [30, 10, 10],
   "image" : "deep_satchel.png",
   "animationCycle" : 1,
   "timeToLive" : 1000,
@@ -20,5 +20,5 @@
   "damageKind" : "default",
   "onlyHitTerrain" : true,
 
-  "scripts" : [ "/projectiles/activeitems/remotegrenade/remotegrenade.lua" ]
+  "scripts" : [ "deep_satchel.lua" ]
 }
