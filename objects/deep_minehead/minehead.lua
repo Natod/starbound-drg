@@ -21,6 +21,7 @@ function update(dt)
     callScriptArgs = {"mineheadDeposit"},
     callScriptResult = true
   })
+  object.say(string.format("objects : %s", #depositables))
   --[[
   for i,item in pairs(depositables) do 
 
