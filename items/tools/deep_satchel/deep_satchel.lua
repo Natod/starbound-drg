@@ -21,7 +21,7 @@ function init()
 end
 
 function activate(fireMode, shiftHeld)
-  if fireMode == "alt" then
+  if fireMode == "primary" and shiftHeld then
     triggerProjectiles()
   end
 end
@@ -32,7 +32,7 @@ function update(dt, fireMode, shiftHeld)
   storage.fireTimer = math.max(storage.fireTimer - dt, 0)
   --self.recoilTimer = math.max(self.recoilTimer - dt, 0)
 
-  if fireMode == "primary" then
+  if fireMode == "primary" and not shiftHeld then
     --if storage.fireTimer <= 0
     local throwAnimationAngle = math.pi/2.5
     if self.throwPower < self.maxThrowPower then
