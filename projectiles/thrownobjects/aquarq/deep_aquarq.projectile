@@ -11,6 +11,9 @@
   "power" : 0,
   "scripts" : ["/projectiles/thrownobjects/deep_thrownobject.lua"],
   "thrownObj" : "deep_aquarq",
+  "movementSettings": {
+    "ignorePlatformCollision": false
+  },
 
   "onlyHitTerrain" : true,
   "damageType" : "NoDamage",
