@@ -1,7 +1,7 @@
 {
   "itemName" : "deep_satchel",
   "price": 1500,
-  "level" : 1,
+  "level" : 10,
   "maxStack" : 1,
   "rarity" : "Essential",
   "description" : "Be it an obstacle or a particularly thickheaded adversary, a good ol' Satchel Charge usually gets the job done. Stand well back before hitting the trigger.",

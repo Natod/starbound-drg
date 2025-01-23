@@ -12,7 +12,7 @@
   "actionOnReap" : [
     {
       "action" : "config",
-      "file" : "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config"
+      "file" : "/projectiles/tools/satchel/explosion/deep_satchelexplosion.config"
     },
     {
       "action" : "sound",
