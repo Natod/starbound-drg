@@ -1,0 +1,32 @@
+{
+  "itemName" : "deep_drills",
+  "price": 1500,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "One of the classic workhorses of DRG, the twin-linked Power Drill makes short work of more or less anything unfortunate enough to be in front of it. That includes your team mates, mind.",
+  "shortdescription" : "Reinforced Power Drills",
+  "tooltipKind" : "base",
+  "category" : "grenadeLauncher",
+  "twoHanded" : true,
+  "itemTags" : ["weapon"],
+  "heatRate" : 3,
+  "coolRate" : 4,
+
+  "inventoryIcon" : "deep_drills.png",
+  "animation" : "deep_drills.animation",
+  "animationParts" : {
+    "gun" : "deep_drills.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["deep_drills.lua"],
+  "fireOffset" : [0.5, 0],
+  //"fireTime" : 1.25,
+  "inaccuracy" : 0.0,
+
+  "projectileType" : "deep_drillprojectile",
+  "projectileParameters" : {
+    "power" : 1
+  },
+  "energyUsage" : 0
+}

@@ -1,0 +1,23 @@
+{
+  "projectileName" : "deep_drillprojectile",
+  "physics" : "default",
+  "bounces" : -1,
+  "damageKindImage" : "icon.png",
+  "image" : "empty.png",
+  //"animationCycle" : 1,
+  //"frameNumber" : 12,
+  "timeToLive" : 0.01,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/tools/drills/explosion/deep_drillexplosion.config"
+    }
+  ],
+  "power" : 0,
+  //"damageType" : "NoDamage",
+  "damageKind" : "default",
+  //"onlyHitTerrain" : true,
+  "movementSettings" : {
+    "collisionEnabled" : false
+  }
+}

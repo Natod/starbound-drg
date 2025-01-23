@@ -1,0 +1,23 @@
+{
+  "projectileName" : "deep_drillexplosion",
+  "image" : "empty.png",
+  "power" : 0,
+  "speed" : 0,
+  "timeToLive" : 0.01,
+  
+  "damagePoly" : [
+    // n = 16
+    // r = 20
+    [20.0,0.0],[18.4776,7.6537],[14.1421,14.1421],[7.6537,18.4776],[0.0,20.0],[-7.6537,18.4776],[-14.1421,14.1421],[-18.4776,7.6537],[-20.0,0.0],[-18.4776,-7.6537],[-14.1421,-14.1421],[-7.6537,-18.4776],[0.0,-20.0],[7.6537,-18.4776],[14.1421,-14.1421],[18.4776,-7.6537]
+  ],
+
+  "piercing" : true,
+  "flippable" : true,
+  //"damageTeam" : { "type" : "indiscriminate" },
+  "damageKind" : "default",
+  "damageType" : "NoDamage",
+  "onlyHitTerrain" : true,
+  "movementSettings" : {
+    "collisionEnabled" : false
+  }
+}
