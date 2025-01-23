@@ -1,0 +1,24 @@
+{
+  "projectileName" : "deep_satchel",
+  "physics" : "stickygrenade",
+  "bounces" : -1,
+  "damageKindImage" : "icon.png",
+  "pointLight" : true,
+  "lightColor" : [60, 20, 20],
+  "image" : "deep_satchel.png",
+  "animationCycle" : 1,
+  "timeToLive" : 1000,
+  "frameNumber" : 12,
+  "actionOnReap" : [
+    {
+      "action" : "config",
+      "file" : "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config"
+    }
+  ],
+  "power" : 50,
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  "onlyHitTerrain" : true,
+
+  "scripts" : [ "/projectiles/activeitems/remotegrenade/remotegrenade.lua" ]
+}

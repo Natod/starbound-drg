@@ -1,0 +1,31 @@
+{
+  "itemName" : "deep_satchel",
+  "price": 1500,
+  "level" : 1,
+  "maxStack" : 1,
+  "rarity" : "Essential",
+  "description" : "Be it an obstacle or a particularly thickheaded adversary, a good ol' Satchel Charge usually gets the job done. Stand well back before hitting the trigger.",
+  "shortdescription" : "Satchel Charge",
+  "tooltipKind" : "base",
+  "category" : "grenadeLauncher",
+  "twoHanded" : true,
+  "itemTags" : ["weapon"],
+  "maxThrowPower" : 40,
+
+  "inventoryIcon" : "deep_satchel.png",
+  "animation" : "deep_satchel.animation",
+  "animationParts" : {
+    "gun" : "deep_satchel.png"
+  },
+  "animationCustom" : { },
+  "scripts" : ["deep_satchel.lua"],
+  "fireOffset" : [0, 0],
+  //"fireTime" : 1.25,
+  "inaccuracy" : 0.0,
+
+  "projectileType" : "deep_satchel",
+  "projectileParameters" : {
+    "power" : 8
+  },
+  "energyUsage" : 0
+}

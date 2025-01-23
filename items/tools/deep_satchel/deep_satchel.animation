@@ -1,0 +1,46 @@
+{
+  "animatedParts" : {
+    "parts" : {
+      "gun" : {
+        "properties" : {
+          "centered" : true,
+          "image" : "<partImage>",
+          "offset" : [1.0, 0.25],
+          "transformationGroups" : ["rotate"]
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "fireParticles" : {
+      "emissionRate" : 10.0,
+      "particles" : [
+        {
+          "particle" : "rocketbarrelpuff",
+          "offset" : [3, 0.5]
+        },
+        {
+          "particle" : "rocketbarrelpuff",
+          "offset" : [3, 0.5]
+        },
+        {
+          "particle" : "rocketbarrelpuff",
+          "offset" : [3, 0.5]
+        }
+      ]
+    }
+  },
+
+  "transformationGroups" : {
+    "rotate" : {
+      "interpolated" : true
+    }
+  },
+
+  "sounds" : {
+    "fire" : [ "/sfx/projectiles/throw_item.ogg" ],
+    "trigger" : [ "/sfx/interface/rocket_lockon.ogg" ],
+    "recharge" : [ "/sfx/tech/tech_dash_cooldown1.ogg" ]
+  }
+}
