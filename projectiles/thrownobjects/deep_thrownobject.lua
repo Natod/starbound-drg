@@ -5,6 +5,8 @@ require "/scripts/deep_util.lua"
 function init()
   self.thrownObj = config.getParameter("thrownObj", "jeep")
   self.objTags = config.getParameter("objectTags", {})
+  self.deposited = false
+  message.setHandler("depositableType", depositableType)
 end
 
 function update(dt)
@@ -12,19 +14,20 @@ function update(dt)
 end
 
 function uninit()
-  world.spawnVehicle(self.thrownObj, mcontroller.position(), {})
+  if not self.deposited then
+    world.spawnVehicle(self.thrownObj, mcontroller.position(), {})
+  end
 end
 
 function identifyType(query)
   local hasTag = false
   if deep_util.isInTable(query, self.objTags) then hasTag = true end
-  
-  if hasTag then
-    if query == "mineheadDeposit" then
-      projectile.die()
-    end
-  end
-  
   return hasTag
+end
+
+function depositableType()
+  self.deposited = true
+  projectile.die()
+  return self.thrownObj
 end
 

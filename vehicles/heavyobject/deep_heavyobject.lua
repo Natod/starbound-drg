@@ -21,9 +21,6 @@ function init(dt)
   self.maxAngle = config.getParameter("maxAngle")
   self.fireInterval = config.getParameter("fireInterval")
 
-  self.protection = 999999
-  storage.health = 999999
-
   self.driving = false
   self.lastDriver = nil
 
@@ -35,6 +32,8 @@ function init(dt)
   animator.setAnimationState("body", "unoccupied")
   animator.setParticleEmitterActive("particleGlowFloor",true)
   animator.setParticleEmitterActive("particleGlow",false)
+  
+  message.setHandler("depositableType", depositableType)
 end
 
 function update(dt)
@@ -143,12 +142,10 @@ end
 function identifyType(query)
   local hasTag = false
   if deep_util.isInTable(query, self.objTags) then hasTag = true end
-  
-  if hasTag then
-    if query == "mineheadDeposit" and vehicle.entityLoungingIn("seat") == nil then
-      vehicle.destroy()
-    end
-  end
   return hasTag
 end
 
+function depositableType()
+  vehicle.destroy()
+  return self.selfProjectile
+end
