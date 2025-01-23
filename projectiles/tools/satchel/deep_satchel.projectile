@@ -9,11 +9,38 @@
   "animationCycle" : 1,
   "frameNumber" : 12,
   "timeToLive" : 1000,
-  "animation" : "deep_satchel.animation",
   "actionOnReap" : [
     {
       "action" : "config",
       "file" : "/projectiles/explosions/regularexplosion2/regularexplosionknockback.config"
+    },
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/gun/satchel/explosion/DetPackMergedA_1.ogg",
+        "/sfx/gun/satchel/explosion/DetPackMergedA_2.ogg",
+        "/sfx/gun/satchel/explosion/DetPackMergedA_3.ogg",
+        "/sfx/gun/satchel/explosion/DetPackMergedA_4.ogg",
+        "/sfx/gun/satchel/explosion/DetPackMergedA_5.ogg",
+        "/sfx/gun/satchel/explosion/DetPackMergedA_6.ogg",
+        "/sfx/gun/satchel/explosion/DetPackMergedA_7.ogg",
+        "/sfx/gun/satchel/explosion/DetPackMergedA_8.ogg",
+        "/sfx/gun/satchel/explosion/DetPackMergedA_9.ogg",
+        "/sfx/gun/satchel/explosion/DetPackMergedA_10.ogg"
+      ]
+    }
+  ],
+  "periodicActions" : [
+    {
+      "action" : "sound",
+      "time" : 2,
+      "repeat" : true,
+      "options" : [
+        "/sfx/gun/satchel/beep/DetpackBeepA_1.ogg",
+        "/sfx/gun/satchel/beep/DetpackBeepA_2.ogg",
+        "/sfx/gun/satchel/beep/DetpackBeepA_3.ogg",
+        "/sfx/gun/satchel/beep/DetpackBeepA_4.ogg"
+      ]
     }
   ],
   "power" : 50,

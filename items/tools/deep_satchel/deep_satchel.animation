@@ -40,7 +40,7 @@
 
   "sounds" : {
     "fire" : [ "/sfx/projectiles/throw_item.ogg" ],
-    "trigger" : [ "/sfx/interface/rocket_lockon.ogg" ],
+    "trigger" : [ "/sfx/gun/satchel/beep/DetpackBeepEndA_1.ogg" ],
     "recharge" : [ "/sfx/tech/tech_dash_cooldown1.ogg" ]
   }
 }
