@@ -7,8 +7,9 @@
   "lightColor" : [30, 10, 10],
   "image" : "deep_satchel.png",
   "animationCycle" : 1,
-  "timeToLive" : 1000,
   "frameNumber" : 12,
+  "timeToLive" : 1000,
+  "animation" : "deep_satchel.animation",
   "actionOnReap" : [
     {
       "action" : "config",
