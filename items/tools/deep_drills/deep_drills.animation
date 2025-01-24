@@ -1,12 +1,40 @@
 {
   "animatedParts" : {
+    "stateTypes" : {
+      "gun" : {
+        "priority" : 1,
+        "default" : "idle",
+        "states" : {
+          "idle" : {},
+          "drill" : {
+            "frames" : 5,
+            "cycle" : 0.3,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
     "parts" : {
       "gun" : {
         "properties" : {
           "centered" : true,
-          "image" : "<partImage>",
-          "offset" : [0, 0],
-          "transformationGroups" : ["rotate"]
+          "offset" : [0.5, 0],
+          "transformationGroups" : ["rotate"],
+          "zLevel" : 1
+        },
+        "partStates" : {
+          "gun" : {
+            "idle" : {
+              "properties" : {
+                "image" : "deep_drills.png:idle"
+              }
+            },
+            "drill" : {
+              "properties" : {
+                "image" : "deep_drills.png:drill.<frame>"
+              }
+            }
+          }
         }
       }
     }
