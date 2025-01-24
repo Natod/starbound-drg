@@ -32,8 +32,8 @@ function update(dt, fireMode, shiftHeld)
 
   local recoiling = recoiling or false
 
+  updateAim()
   if not storage.overheated then
-    updateAim()
     if storage.heat < self.maxHeat then
       if fireMode == "primary" then
         storage.heat = math.min(storage.heat + dt * self.heatRate, self.maxHeat)
@@ -47,7 +47,6 @@ function update(dt, fireMode, shiftHeld)
       storage.overheated = true
     end
   else
-    activeItem.setArmAngle(-math.pi*0.15)
     storage.heat = math.max(storage.heat - dt * self.coolRate, 0)
     if storage.heat == 0 then
       storage.overheated = false
@@ -94,6 +93,9 @@ function updateAim()
   self.aimAngle, self.aimDirection = activeItem.aimAngleAndDirection(self.fireOffset[2], activeItem.ownerAimPosition())
   activeItem.setArmAngle(self.aimAngle)
   activeItem.setFacingDirection(self.aimDirection)
+  if storage.overheated then
+    activeItem.setArmAngle(-math.pi*0.15)
+  end
 end
 --[[
 function updateProjectiles()
