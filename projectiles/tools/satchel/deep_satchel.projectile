@@ -6,7 +6,7 @@
   "pointLight" : true,
   "lightColor" : [30, 10, 10],
   "image" : "deep_satchel.png",
-  "animationCycle" : 1,
+  "animationCycle" : 2,
   "frameNumber" : 12,
   "timeToLive" : 1000,
   "actionOnReap" : [
