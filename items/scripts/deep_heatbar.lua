@@ -11,6 +11,9 @@ function update(dt)
   localAnimator.clearDrawables()
 
   self.heat = animationConfig.animationParameter("heat")
+  if self.heat <= 0 then
+    return
+  end
   self.overheated = animationConfig.animationParameter("overheated")
   local position = activeItemAnimation.ownerPosition()
   local heatRatio = self.heat/self.maxHeat
