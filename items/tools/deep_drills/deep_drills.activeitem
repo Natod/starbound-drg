@@ -10,8 +10,17 @@
   "category" : "grenadeLauncher",
   "twoHanded" : true,
   "itemTags" : ["weapon"],
-  "heatRate" : 3,
-  "coolRate" : 4,
+  "heatRate" : 3.2,
+  "coolRate" : 4.8,
+  "maxHeat" : 20,
+
+  "heatBar" : {
+    "bgColor" : [20, 20, 30, 200],
+    "width" : 3,
+    "length" : 3,
+    "offset" : [0, 2],
+    "inset" : 1
+  },  
 
   "inventoryIcon" : "deep_drills.png",
   "animation" : "deep_drills.animation",
@@ -20,6 +29,7 @@
   },
   "animationCustom" : { },
   "scripts" : ["deep_drills.lua"],
+  "animationScripts" : ["/items/scripts/deep_heatbar.lua"],
   "fireOffset" : [0.5, 0],
   //"fireTime" : 1.25,
   "inaccuracy" : 0.0,

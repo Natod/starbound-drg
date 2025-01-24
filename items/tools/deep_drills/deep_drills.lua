@@ -6,9 +6,12 @@ function init()
   self.pParams = config.getParameter("projectileParameters", {})
   --self.pParams.power = self.pParams.power * root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1))
   storage.heat = storage.heat or 0
+  storage.overheated = storage.overheated or false
+  activeItem.setScriptedAnimationParameter("heat", storage.heat)
+  activeItem.setScriptedAnimationParameter("overheated", storage.overheated)
   self.heatRate = config.getParameter("heatRate", 2)
   self.coolRate = config.getParameter("coolRate", 5)
-  storage.overheated = storage.overheated or false
+  self.maxHeat = config.getParameter("maxHeat", 20)
   self.inv = 1
 
   self.fireOffset = config.getParameter("fireOffset")
@@ -21,12 +24,6 @@ function init()
   --updateCursor()
 end
 
-function activate(fireMode, shiftHeld)
-  if fireMode == "primary" and shiftHeld then
-    triggerProjectiles()
-  end
-end
-
 function update(dt, fireMode, shiftHeld)
   
 
@@ -37,9 +34,9 @@ function update(dt, fireMode, shiftHeld)
 
   if not storage.overheated then
     updateAim()
-    if storage.heat < 20 then
+    if storage.heat < self.maxHeat then
       if fireMode == "primary" then
-        storage.heat = math.min(storage.heat + dt * self.heatRate, 20)
+        storage.heat = math.min(storage.heat + dt * self.heatRate, self.maxHeat)
         fire(dt)
         activeItem.setRecoil(recoiling)
         recoiling = not recoiling
@@ -50,32 +47,31 @@ function update(dt, fireMode, shiftHeld)
       storage.overheated = true
     end
   else
-    activeItem.setArmAngle(math.pi*0.15)
+    activeItem.setArmAngle(-math.pi*0.15)
     storage.heat = math.max(storage.heat - dt * self.coolRate, 0)
     if storage.heat == 0 then
       storage.overheated = false
     end
   end
+  activeItem.setScriptedAnimationParameter("heat", storage.heat)
+  activeItem.setScriptedAnimationParameter("overheated", storage.overheated)
+
+  --os.clock()
 
   
 
 
-  updateProjectiles()
+  --updateProjectiles()
   --updateCursor()
 end
 
-function updateCursor()
-  if #storage.activeProjectiles > 0 then
-    activeItem.setCursor("/cursors/chargeready.cursor")
-  else
-    activeItem.setCursor("/cursors/reticle0.cursor")
-  end
-end
 
 function uninit()
+  --[[
   for i, projectile in ipairs(storage.activeProjectiles) do
     world.callScriptedEntity(projectile, "setTarget", nil)
   end
+  ]]
 end
 
 function fire(dt)
@@ -99,7 +95,7 @@ function updateAim()
   activeItem.setArmAngle(self.aimAngle)
   activeItem.setFacingDirection(self.aimDirection)
 end
-
+--[[
 function updateProjectiles()
   local newProjectiles = {}
   for i, projectile in ipairs(storage.activeProjectiles) do
@@ -109,22 +105,13 @@ function updateProjectiles()
   end
   storage.activeProjectiles = newProjectiles
 end
-
-function triggerProjectiles()
-  if #storage.activeProjectiles > 0 then
-    animator.playSound("trigger")
-  end
-  for i, projectile in ipairs(storage.activeProjectiles) do
-    world.callScriptedEntity(projectile, "trigger")
-  end
-end
-
+]]
 function firePosition()
   return vec2.add(mcontroller.position(), activeItem.handPosition(self.fireOffset))
 end
 
 function aimVector()
-  local aimVector = vec2.rotate({1, 0}, self.aimAngle + sb.nrand(config.getParameter("inaccuracy", 0), 0))
+  local aimVector = vec2.rotate({1, 0}, self.aimAngle)
   aimVector[1] = aimVector[1] * self.aimDirection
   return aimVector
 end
