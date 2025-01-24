@@ -7,6 +7,7 @@
   //"animationCycle" : 1,
   //"frameNumber" : 12,
   "damagePoly" : [[-8, 4], [-4, 8], [4, 8], [8, 4], [8, -4], [4, -8], [-4, -8], [-8, -4]],
+  "knockback" : 20,
   "timeToLive" : 0.01,
   "actionOnReap" : [
     {
