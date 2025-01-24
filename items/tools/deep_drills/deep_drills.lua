@@ -22,6 +22,7 @@ function init()
 
   storage.activeProjectiles = storage.activeProjectiles or {}
   --updateCursor()
+  animator.setAnimationState("gun", "idle")
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -30,7 +31,7 @@ function update(dt, fireMode, shiftHeld)
   storage.fireTimer = math.max(storage.fireTimer - dt, 0)
   --self.recoilTimer = math.max(self.recoilTimer - dt, 0)
 
-  local recoiling = recoiling or false
+  --local recoiling = recoiling or false
 
   updateAim()
   if not storage.overheated then
@@ -38,15 +39,17 @@ function update(dt, fireMode, shiftHeld)
       if fireMode == "primary" then
         storage.heat = math.min(storage.heat + dt * self.heatRate, self.maxHeat)
         fire(dt)
-        activeItem.setRecoil(recoiling)
-        recoiling = not recoiling
+        --activeItem.setRecoil(recoiling)
+        --recoiling = not recoiling
       else
+        animator.setAnimationState("gun", "idle")
         storage.heat = math.max(storage.heat - dt * self.coolRate, 0)
       end
     else
       storage.overheated = true
     end
   else
+    animator.setAnimationState("gun", "idle")
     storage.heat = math.max(storage.heat - dt * self.coolRate, 0)
     if storage.heat == 0 then
       storage.overheated = false
@@ -66,14 +69,10 @@ end
 
 
 function uninit()
-  --[[
-  for i, projectile in ipairs(storage.activeProjectiles) do
-    world.callScriptedEntity(projectile, "setTarget", nil)
-  end
-  ]]
 end
 
 function fire(dt)
+  animator.setAnimationState("gun", "drill", false)
   world.spawnProjectile(
     self.pType,
     firePosition(),

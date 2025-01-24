@@ -1,0 +1,13 @@
+{
+  "frameGrid" : {
+    "size" : [18, 9],
+    "dimensions" : [5,1],
+
+    "names" : [
+      [ "drill.1", "drill.2", "drill.3", "drill.4", "drill.5" ]
+    ]
+  },
+  "aliases" : {
+    "idle" : "drill.1"
+  }
+}
