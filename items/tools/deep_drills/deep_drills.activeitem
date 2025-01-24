@@ -22,7 +22,7 @@
     "inset" : 1
   },  
 
-  "inventoryIcon" : "deep_drills.png",
+  "inventoryIcon" : "deep_drillsicon.png",
   "animation" : "deep_drills.animation",
   "animationParts" : {
     "gun" : "deep_drills.png"
