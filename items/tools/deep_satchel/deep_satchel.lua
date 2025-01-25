@@ -45,15 +45,17 @@ function update(dt, fireMode, shiftHeld)
       end
     end
 
-  elseif self.throwPower > 0.0 then
-    if not world.lineCollision(mcontroller.position(),firePosition()) then
-      storage.fireTimer = config.getParameter("fireTime", 1.0)
-      fire()
-      animator.playSound("fire")
-    end
-
-    self.throwPower = 0
+  else
     activeItem.setArmAngle(-math.pi/2)
+    if self.throwPower > 0.0 then
+      if not world.lineCollision(mcontroller.position(),firePosition()) then
+        storage.fireTimer = config.getParameter("fireTime", 1.0)
+        fire()
+        animator.playSound("fire")
+      end
+
+      self.throwPower = 0
+    end
   end
 
   --activeItem.setRecoil(self.recoilTimer > 0)
