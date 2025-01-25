@@ -13,11 +13,16 @@ function init()
     self.drop = config.getParameter("dropType")
     local allPlayers = {}
     
+    self.mission = nil
 end
 
 function update(dt)
     if self.drop == self.type.drop then
         playMusic()
+        mission = world.getProperty("deep.mission")
+        if not mission then
+            return
+        end
     end
     
     if not self.warped then
@@ -46,7 +51,7 @@ function update(dt)
                     -- warp players when counter is 0
                     for i,inPlayer in ipairs(inPlayers) do
                         if self.drop == self.type.drop then
-                            world.sendEntityMessage(inPlayer, "warp", "InstanceWorld:testmission1")
+                            world.sendEntityMessage(inPlayer, "warp", mission)
                         else
                             world.sendEntityMessage(inPlayer, "warp", "Return")
                         end
