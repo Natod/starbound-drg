@@ -29,7 +29,7 @@
   },
   "animationCustom" : { },
   "scripts" : ["deep_drills.lua"],
-  "animationScripts" : ["/items/scripts/deep_heatbar.lua"],
+  "animationScripts" : ["/items/scripts/deep_heatbar.lua", "/items/scripts/deep_renderammo.lua" ],
   "fireOffset" : [0.5, 0],
   //"fireTime" : 1.25,
   "inaccuracy" : 0.0,

@@ -13,7 +13,7 @@ function init()
   self.heatRate = config.getParameter("heatRate", 2)
   self.coolRate = config.getParameter("coolRate", 5)
   self.maxHeat = config.getParameter("maxHeat", 20)
-  
+
   storage.recoverTimestamp = storage.recoverTimestamp or (os.clock() + storage.heat/self.coolRate)
   self.coolTime = config.getParameter("coolTime", 4)
 
@@ -31,9 +31,9 @@ function update(dt, fireMode, shiftHeld)
     if storage.recoverTimestamp-os.clock() < (storage.heat/self.coolRate) and fireMode ~= "primary" then
       local oldHeat = storage.heat
       storage.heat = math.max((storage.recoverTimestamp - os.clock())*self.coolRate, 0)
-      deep_util.print(string.format("よかった oldheat: %s, newheat: %s", oldHeat/self.coolRate, storage.heat/self.coolRate))
+      --deep_util.print(string.format("よかった oldheat: %s, newheat: %s", oldHeat/self.coolRate, storage.heat/self.coolRate))
     end
-    deep_util.print(storage.recoverTimestamp-os.clock())
+    --deep_util.print(storage.recoverTimestamp-os.clock())
     storage.recoverTimestamp = os.clock() + storage.heat/self.coolRate
   end
 
@@ -77,8 +77,6 @@ function fire(dt)
     false,
     self.pParams
   )
-  self.inv = -self.inv 
-  animator.translateTransformationGroup("rotate",{self.inv*dt,0})
   --animator.burstParticleEmitter("fireParticles")
   --animator.playSound("fire")
   --self.recoilTimer = config.getParameter("recoilTime", 0.12)
