@@ -1,4 +1,5 @@
 require "/scripts/vec2.lua"
+require "/scripts/deep_util.lua"
 
 function init()
   -- scale damage and calculate energy cost
@@ -12,35 +13,37 @@ function init()
   self.heatRate = config.getParameter("heatRate", 2)
   self.coolRate = config.getParameter("coolRate", 5)
   self.maxHeat = config.getParameter("maxHeat", 20)
-  self.inv = 1
+  
+  storage.recoverTimestamp = storage.recoverTimestamp or (os.clock() + storage.heat/self.coolRate)
+  self.coolTime = config.getParameter("coolTime", 4)
 
   self.fireOffset = config.getParameter("fireOffset")
   updateAim()
 
-  storage.fireTimer = storage.fireTimer or 0
-  --self.recoilTimer = 0
-
-  storage.activeProjectiles = storage.activeProjectiles or {}
-  --updateCursor()
   animator.setAnimationState("gun", "idle")
 end
 
 function update(dt, fireMode, shiftHeld)
+
   
-
-  storage.fireTimer = math.max(storage.fireTimer - dt, 0)
-  --self.recoilTimer = math.max(self.recoilTimer - dt, 0)
-
-  --local recoiling = recoiling or false
+  
+  if storage.heat > 0 then
+    if storage.recoverTimestamp-os.clock() < (storage.heat/self.coolRate) and fireMode ~= "primary" then
+      local oldHeat = storage.heat
+      storage.heat = math.max((storage.recoverTimestamp - os.clock())*self.coolRate, 0)
+      deep_util.print(string.format("よかった oldheat: %s, newheat: %s", oldHeat/self.coolRate, storage.heat/self.coolRate))
+    end
+    deep_util.print(storage.recoverTimestamp-os.clock())
+    storage.recoverTimestamp = os.clock() + storage.heat/self.coolRate
+  end
 
   updateAim()
   if not storage.overheated then
     if storage.heat < self.maxHeat then
       if fireMode == "primary" then
+        
         storage.heat = math.min(storage.heat + dt * self.heatRate, self.maxHeat)
         fire(dt)
-        --activeItem.setRecoil(recoiling)
-        --recoiling = not recoiling
       else
         animator.setAnimationState("gun", "idle")
         storage.heat = math.max(storage.heat - dt * self.coolRate, 0)
@@ -58,13 +61,6 @@ function update(dt, fireMode, shiftHeld)
   activeItem.setScriptedAnimationParameter("heat", storage.heat)
   activeItem.setScriptedAnimationParameter("overheated", storage.overheated)
 
-  --os.clock()
-
-  
-
-
-  --updateProjectiles()
-  --updateCursor()
 end
 
 
@@ -96,17 +92,7 @@ function updateAim()
     activeItem.setArmAngle(-math.pi*0.15)
   end
 end
---[[
-function updateProjectiles()
-  local newProjectiles = {}
-  for i, projectile in ipairs(storage.activeProjectiles) do
-    if world.entityExists(projectile) then
-      newProjectiles[#newProjectiles + 1] = projectile
-    end
-  end
-  storage.activeProjectiles = newProjectiles
-end
-]]
+
 function firePosition()
   return vec2.add(mcontroller.position(), activeItem.handPosition(self.fireOffset))
 end
