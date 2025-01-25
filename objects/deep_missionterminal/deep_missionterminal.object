@@ -50,10 +50,10 @@
     }
   ],
 
-  "scripts" : [
-    "/objects/deep_missionterminal/missionterminal.lua"
-  ],
-  "scriptDelta" : 5,
+  //"scripts" : [
+  //  "/objects/deep_missionterminal/missionterminal.lua"
+  //],
+  //"scriptDelta" : 5,
 
   "animation" : "missionterminal.animation",
   "animationParts" : {
@@ -62,7 +62,10 @@
   },
   "animationPosition" : [-16, 0],
   
-  "interactive" : true //,
+  "interactive" : true,
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/scripted/missionselect/missionselect.config" //,
 
   //"detectDuration" : 0.2,
   //"detectEntityTypes" : [ "creature", "vehicle" ],
