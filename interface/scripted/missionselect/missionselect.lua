@@ -6,6 +6,7 @@ function init()
 
   --self.upgradeLevel = config.getParameter("upgradeLevel")
 
+  world.setProperty("deep.mission", "")
   self.missionList = {}
   self.selectedItem = nil
   populateItemList()
