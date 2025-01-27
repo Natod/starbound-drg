@@ -29,13 +29,13 @@ function update(dt, fireMode, shiftHeld)
   --send the itemStatus table to the player localAnimator script to be rendered
   self.itemStatus.reserveAmmo = storage.reserveAmmo
   self.itemStatus.rAmmoDigits = config.getParameter("reserveAmmoDigits", 3)
-  self.itemStatus.rAmmoPos = vec2.add(vec2.sub(activeItem.ownerAimPosition(), mcontroller.position()), {0.5,-0.5})
-  self.itemStatus.rAmmoColor = {200, 200, 200, 200}
+  self.itemStatus.rAmmoPos = vec2.add(vec2.sub(activeItem.ownerAimPosition(), mcontroller.position()), {0.5, self.reloadable and -1 or -0.5})
+  self.itemStatus.rAmmoColor = {200, 200, 200, 200} 
 
   if self.reloadable then
     self.itemStatus.loadedAmmo = storage.loadedAmmo
     self.itemStatus.lAmmoDigits = config.getParameter("reserveAmmoDigits", 3)
-    self.itemStatus.lAmmoPos = vec2.add(vec2.sub(activeItem.ownerAimPosition(), mcontroller.position()), {0.5,0.5})
+    self.itemStatus.lAmmoPos = vec2.add(vec2.sub(activeItem.ownerAimPosition(), mcontroller.position()), {0.5,0})
     self.itemStatus.lAmmoColor = {200, 200, 200, 200}
   end
 
