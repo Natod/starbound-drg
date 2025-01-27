@@ -1,13 +1,22 @@
 require "/scripts/vec2.lua"
 require "/scripts/deep_util.lua"
 
+local deep_update = update or function() end
+local deep_init = init or function() end
+
+
 function init()
+  deep_init()
+
   -- scale damage and calculate energy cost
   self.pType = config.getParameter("projectileType")
   self.pParams = config.getParameter("projectileParameters", {})
   --self.pParams.power = self.pParams.power * root.evalFunction("weaponDamageLevelMultiplier", config.getParameter("level", 1))
   storage.heat = storage.heat or 0
   storage.overheated = storage.overheated or false
+
+
+
   activeItem.setScriptedAnimationParameter("heat", storage.heat)
   activeItem.setScriptedAnimationParameter("overheated", storage.overheated)
   self.heatRate = config.getParameter("heatRate", 2)
@@ -24,7 +33,7 @@ function init()
 end
 
 function update(dt, fireMode, shiftHeld)
-
+  deep_update()
   
   
   if storage.heat > 0 then

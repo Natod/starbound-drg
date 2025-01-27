@@ -13,6 +13,7 @@
   "heatRate" : 3.2,
   "coolRate" : 4.8,
   "maxHeat" : 20,
+  "maxAmmo" : 100,
 
   "heatBar" : {
     "bgColor" : [20, 20, 30, 200],
@@ -28,8 +29,8 @@
     "gun" : "deep_drills.png"
   },
   "animationCustom" : { },
-  "scripts" : ["deep_drills.lua"],
-  "animationScripts" : ["/items/scripts/deep_heatbar.lua" ],
+  "scripts" : [ "deep_drills.lua", "/items/scripts/deep_itemstatus.lua" ],
+  "animationScripts" : [ "/items/scripts/deep_heatbar.lua" ],
   "fireOffset" : [0.5, 0],
   //"fireTime" : 1.25,
   "inaccuracy" : 0.0,

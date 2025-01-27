@@ -10,8 +10,9 @@ function init()
   self.alignment = {left = 0, center = 1, right = 2}
   self.itemStatus = {}
 
-  message.setHandler("deep_changeItemField", function(messageName, isLocalEntity, key, value)
-    self.itemStatus[key] = value
+  message.setHandler("deep_changeItemField", function(messageName, isLocalEntity, newStatus) --key, value
+    self.itemStatus = newStatus
+    --self.itemStatus[key] = value
   end)
 
 end
