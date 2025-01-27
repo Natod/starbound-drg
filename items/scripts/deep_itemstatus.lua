@@ -17,6 +17,7 @@ function init()
     storage.loadedAmmo = storage.loadedAmmo or self.maxAmmo
   end
 
+  self.ammoConsumptionRate = config.getParameter("ammoConsumptionRate", 1)
 
 end
 

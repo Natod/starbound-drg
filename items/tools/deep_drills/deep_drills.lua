@@ -50,11 +50,9 @@ function update(dt, fireMode, shiftHeld)
   updateAim()
   if not storage.overheated then
     if storage.heat < self.maxHeat then
-      if fireMode == "primary" then
+      if storage.reserveAmmo > 0 and fireMode == "primary" then
         storage.heat = math.min(storage.heat + dt * self.heatRate, self.maxHeat)
         fire(dt)
-        
-        sb.logInfo("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
       else
         animator.setAnimationState("gun", "idle")
         storage.heat = math.max(storage.heat - dt * self.coolRate, 0)
@@ -71,6 +69,10 @@ function update(dt, fireMode, shiftHeld)
   end
   activeItem.setScriptedAnimationParameter("heat", storage.heat)
   activeItem.setScriptedAnimationParameter("overheated", storage.overheated)
+  
+  if not storage.reserveAmmo > 0 then
+    activeItem.setScriptedAnimationParameter("overheated", true)
+  end
 
 end
 
@@ -90,6 +92,7 @@ function fire(dt)
     false,
     self.pParams
   )
+  storage.reserveAmmo = math.max(storage.reserveAmmo - dt*self.ammoConsumptionRate, 0)
   --animator.burstParticleEmitter("fireParticles")
   --animator.playSound("fire")
   --self.recoilTimer = config.getParameter("recoilTime", 0.12)
