@@ -66,9 +66,9 @@ end
 
 function updateCursor()
   if #storage.activeProjectiles > 0 then
-    activeItem.setCursor("/cursors/chargeready.cursor")
+    activeItem.setCursor("/cursors/deep/deep_chargeready.cursor")
   else
-    activeItem.setCursor("/cursors/reticle0.cursor")
+    activeItem.setCursor("/cursors/deep/deep_crosshair1.cursor")
   end
 end
 

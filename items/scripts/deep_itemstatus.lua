@@ -29,13 +29,13 @@ function update(dt, fireMode, shiftHeld)
   self.itemStatus.reserveAmmo = storage.reserveAmmo
   self.itemStatus.rAmmoDigits = config.getParameter("reserveAmmoDigits", 3)
   self.itemStatus.rAmmoPos = vec2.add(vec2.sub(activeItem.ownerAimPosition(), mcontroller.position()), {-0.5, (self.maxAmmo == 0) and -1 or -1})
-  self.itemStatus.rAmmoColor = {200, 200, 200, 200} 
+  self.itemStatus.rAmmoColor = {255, 255, 255, 200} 
 
-  if self.reloadable then
+  if self.maxAmmo ~= 0 then
     self.itemStatus.loadedAmmo = storage.loadedAmmo
     self.itemStatus.lAmmoDigits = config.getParameter("reserveAmmoDigits", 3)
     self.itemStatus.lAmmoPos = vec2.add(vec2.sub(activeItem.ownerAimPosition(), mcontroller.position()), {-0.5, 1})
-    self.itemStatus.lAmmoColor = {200, 200, 200, 200}
+    self.itemStatus.lAmmoColor = {255, 255, 255, 200}
   end
 
   world.sendEntityMessage(activeItem.ownerEntityId(), "deep_changeItemField", self.itemStatus)

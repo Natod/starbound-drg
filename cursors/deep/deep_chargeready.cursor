@@ -1,0 +1,10 @@
+{
+  "offset" : [15, 15],
+  "animation" : {
+    "frames" : "/cursors/deep/deep.png:ready.<index>",
+    "frameNumber" : 4,
+    "animationCycle" : 0.25,
+    "centered" : false,
+    "mode" : "loopforever"
+  }
+}
