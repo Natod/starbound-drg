@@ -3,6 +3,7 @@ require "/scripts/deep_util.lua"
 
 local deep_update = update or function() end
 local deep_init = init or function() end
+local deep_uninit = uninit or function() end
 
 
 function init()
@@ -75,6 +76,8 @@ end
 
 
 function uninit()
+  deep_uninit()
+
 end
 
 function fire(dt)

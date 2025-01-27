@@ -13,7 +13,8 @@
   "heatRate" : 3.2,
   "coolRate" : 4.8,
   "maxHeat" : 20,
-  "maxAmmo" : 100,
+  "maxReserveAmmo" : 500,
+  "reloadable" : false,
 
   "heatBar" : {
     "bgColor" : [20, 20, 30, 200],
