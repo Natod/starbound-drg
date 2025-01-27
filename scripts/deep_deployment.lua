@@ -33,7 +33,7 @@ function update(dt)
       self.itemStatus.rAmmoDigits, 
       self.itemStatus.rAmmoPos, 
       self.itemStatus.rAmmoColor, 
-      self.alignment.left
+      self.alignment.right
     )
   end
 
@@ -46,7 +46,7 @@ function update(dt)
       self.itemStatus.lAmmoDigits, 
       self.itemStatus.lAmmoPos, 
       self.itemStatus.lAmmoColor, 
-      self.alignment.left
+      self.alignment.right
     )
   end
 

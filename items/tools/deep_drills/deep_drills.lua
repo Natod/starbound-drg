@@ -53,7 +53,9 @@ function update(dt, fireMode, shiftHeld)
   if not storage.overheated then
     if storage.heat < self.maxHeat then
       if storage.reserveAmmo > 0 and fireMode == "primary" then
-        storage.heat = math.min(storage.heat + dt * self.heatRate, self.maxHeat)
+        if not player.isAdmin() then
+          storage.heat = math.min(storage.heat + dt * self.heatRate, self.maxHeat)
+        end
         fire(dt)
       else
         animator.setAnimationState("gun", "idle")
@@ -97,7 +99,9 @@ function fire(dt)
     false,
     self.pParams
   )
-  storage.reserveAmmo = math.max(storage.reserveAmmo - dt*self.ammoConsumptionRate, 0)
+  if not player.isAdmin() then
+    storage.reserveAmmo = math.max(storage.reserveAmmo - dt*self.ammoConsumptionRate, 0)
+  end
   --animator.burstParticleEmitter("fireParticles")
   --animator.playSound("fire")
   --self.recoilTimer = config.getParameter("recoilTime", 0.12)
