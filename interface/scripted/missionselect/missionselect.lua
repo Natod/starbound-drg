@@ -4,8 +4,6 @@ require "/scripts/interp.lua"
 function init()
   self.itemList = "itemScrollArea.itemList"
 
-  --self.upgradeLevel = config.getParameter("upgradeLevel")
-
   world.setProperty("deep.mission", "")
   self.missionList = {}
   self.selectedItem = nil
@@ -17,13 +15,26 @@ function update(dt)
 end
 
 function populateItemList(forceRepop)
+  local newSeed = math.floor(os.time() / 1800)
+  if newSeed ~= self.seed then
+    self.seed = newSeed
+  else
+    return
+  end
+
+  local config = root.assetJson("/interface/scripted/missionselect/namegen.config:names")
+  
   local upgradeableWeaponItems = player.itemsWithTag("weapon")
   local missionList = {
-    {name="Useless Let-down", biome="Sandblasted Corridors", warp="InstanceWorld:testmission1"},
-    {name="Awful Rock", biome="Salt Pits", warp="InstanceWorld:testmission1"},
-    {name="Outpost", biome="Yes", warp="InstanceWorld:outpost"},
-    {name="The Ruin", biome="Gaming", warp="InstanceWorld:tentaclemission"}
+    --{name="Useless Let-down", biome="Sandblasted Corridors", warp="InstanceWorld:testmission1"},
+    --{name="Awful Rock", biome="Salt Pits", warp="InstanceWorld:testmission1"},
+    --{name="Outpost", biome="Yes", warp="InstanceWorld:outpost"},
+    --{name="The Ruin", biome="Gaming", warp="InstanceWorld:tentaclemission"}
   }
+  for i=1,10 do
+    local missionname = root.generateName("/interface/scripted/missionselect/namegen.config:names", self.seed + i * self.seed)
+    table.insert(missionList, {name=missionname, biome="Salt Pits", warp="InstanceWorld:testmission1"})
+  end
 
   if forceRepop or not compare(missionList, self.missionList) then
     self.missionList = missionList
