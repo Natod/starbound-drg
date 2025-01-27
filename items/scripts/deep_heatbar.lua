@@ -42,7 +42,7 @@ function update(dt)
       },
       width = self.barParams.width,
       color = self.barParams.bgColor
-    }, "player-2")
+    }, "Overlay")
 
   localAnimator.addDrawable({
       position = vec2.add(position, self.barParams.offset),
@@ -56,5 +56,5 @@ function update(dt)
       },
       width = self.barParams.width - 2*self.barParams.inset,
       color = self.barParams.color
-    }, "player-1")
+    }, "Overlay")
 end
