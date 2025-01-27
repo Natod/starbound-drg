@@ -37,6 +37,8 @@ function update(dt, fireMode, shiftHeld)
   deep_update()
   
   
+  activeItem.setCursor("/cursors/deep/deep_crosshair1.cursor")
+
   if storage.heat > 0 then
     if storage.recoverTimestamp-os.clock() < (storage.heat/self.coolRate) and fireMode ~= "primary" then
       local oldHeat = storage.heat
@@ -61,6 +63,7 @@ function update(dt, fireMode, shiftHeld)
       storage.overheated = true
     end
   else
+    activeItem.setCursor("/cursors/deep/deep_warning0.cursor")
     animator.setAnimationState("gun", "idle")
     storage.heat = math.max(storage.heat - dt * self.coolRate, 0)
     if storage.heat == 0 then
@@ -69,9 +72,11 @@ function update(dt, fireMode, shiftHeld)
   end
   activeItem.setScriptedAnimationParameter("heat", storage.heat)
   activeItem.setScriptedAnimationParameter("overheated", storage.overheated)
-  
-  if not storage.reserveAmmo > 0 then
+
+  if not (storage.reserveAmmo > 0) then
     activeItem.setScriptedAnimationParameter("overheated", true)
+    activeItem.setArmAngle(-math.pi*0.15)
+    activeItem.setCursor("/cursors/deep/deep_noAmmo0.cursor")
   end
 
 end
