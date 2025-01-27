@@ -1,0 +1,59 @@
+{
+  "objectName" : "deep_equipmentterminal",
+  "colonyTags" : ["electronic","wired"],
+  "rarity" : "Common",
+  "description" : "An antiquated computer terminal, with a deep red display.",
+  "shortdescription" : "Equipment Terminal",
+  "race" : "generic",
+  "category" : "wire",
+  "price" : 140,
+
+  "lightColor" : [147, 38, 37],
+  "flickerPeriod" : 0.3,
+  "flickerMinIntensity" : 0.95,
+  "flickerMaxIntensity" : 1,
+  "flickerPeriodVariance" : 0.1,
+  "flickerIntensityVariance" : 0.0,
+
+  "apexDescription" : "The screen on this computer terminal is a menacing red.",
+  "avianDescription" : "This looks like an old computer terminal. It seems to be running well, despite its age.",
+  "floranDescription" : "Floran wantsss to know why box is ssso red.",
+  "glitchDescription" : "Impressed. This old computer seems to be running smoothly despite minimal maintenance.",
+  "humanDescription" : "Ouch, computer display that is only red. That must be a strain on the eyes.",
+  "hylotlDescription" : "This computer has a very off-putting colour scheme, that much is certain.",
+  "novakidDescription" : "This ol' thing was probably more impressive a century ago.",
+
+  "inventoryIcon" : "equipmentterminalicon.png",
+  "orientations" : [
+    {
+      "image" : "equipmentterminal.png:<color>.<frame>",
+      "imagePosition" : [-16, 0],
+      "direction" : "left",
+      "flipImages" : true,
+      "frames" : 3,
+      "animationCycle" : 0.4,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [ [-1,3], [0,3] ]
+    },
+    {
+      "image" : "equipmentterminal.png:<color>.<frame>",
+      "imagePosition" : [-16, 0],
+      "direction" : "right",
+      "frames" : 3,
+      "animationCycle" : 0.4,
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform",
+      "collisionSpaces" : [ [-1,3], [0,3] ]
+    }
+  ],
+
+  "interactAction" : "ScriptPane",
+  "interactData" : "/interface/scripted/equipmentselect/questlog.config",
+
+  "outputNodes" : [ [0, 0] ]
+}
