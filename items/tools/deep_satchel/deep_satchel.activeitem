@@ -11,6 +11,8 @@
   "twoHanded" : true,
   "itemTags" : ["weapon"],
   "maxThrowPower" : 40,
+  "maxReserveAmmo" : 4,
+  "maxAmmo" : 0,
 
   "inventoryIcon" : "deep_satchel.png",
   "animation" : "deep_satchel.animation",
@@ -18,9 +20,8 @@
     "gun" : "deep_satchel.png"
   },
   "animationCustom" : { },
-  "scripts" : ["deep_satchel.lua"],
+  "scripts" : ["deep_satchel.lua", "/items/scripts/deep_itemstatus.lua"],
   "fireOffset" : [0, 0],
-  //"fireTime" : 1.25,
   "inaccuracy" : 0.0,
 
   "projectileType" : "deep_satchel",

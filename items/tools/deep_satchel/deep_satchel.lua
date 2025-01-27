@@ -1,6 +1,13 @@
 require "/scripts/vec2.lua"
 
+local deep_update = update or function() end
+local deep_init = init or function() end
+local deep_uninit = uninit or function() end
+
 function init()
+  deep_init()
+
+  
   -- scale damage and calculate energy cost
   self.pType = config.getParameter("projectileType")
   self.pParams = config.getParameter("projectileParameters", {})
@@ -17,7 +24,7 @@ function init()
   --self.recoilTimer = 0
 
   storage.activeProjectiles = storage.activeProjectiles or {}
-  updateCursor()
+  --updateCursor()
 end
 
 function activate(fireMode, shiftHeld)
@@ -27,38 +34,37 @@ function activate(fireMode, shiftHeld)
 end
 
 function update(dt, fireMode, shiftHeld)
+  deep_update()
+
+
   updateAim()
 
   storage.fireTimer = math.max(storage.fireTimer - dt, 0)
   --self.recoilTimer = math.max(self.recoilTimer - dt, 0)
-
-  if fireMode == "primary" and not shiftHeld then
-    --if storage.fireTimer <= 0
-    local throwAnimationAngle = math.pi/2.5
-    if self.throwPower < self.maxThrowPower then
-      self.throwPower = self.throwPower + dt * self.maxThrowPower
-      --animator.rotateTransformationGroup("rotate", -dt*throwAnimationAngle, {0.5,3})
-      activeItem.setArmAngle(self.throwPower/self.maxThrowPower * throwAnimationAngle)
-      --animator.translateTransformationGroup("rotate", {dt/3,-dt/4})
-      if self.throwPower >= self.maxThrowPower then
-        animator.playSound("recharge")
-      end
-    end
-
-  else
-    activeItem.setArmAngle(-math.pi/2)
-    if self.throwPower > 0.0 then
-      if not world.lineCollision(mcontroller.position(),firePosition()) then
-        storage.fireTimer = config.getParameter("fireTime", 1.0)
-        fire()
-        animator.playSound("fire")
+  if storage.reserveAmmo > 0 then
+    if fireMode == "primary" and not shiftHeld then
+      local throwAnimationAngle = math.pi/2.5
+      if self.throwPower < self.maxThrowPower then
+        self.throwPower = self.throwPower + dt * self.maxThrowPower
+        activeItem.setArmAngle(self.throwPower/self.maxThrowPower * throwAnimationAngle)
+        if self.throwPower >= self.maxThrowPower then
+          animator.playSound("recharge")
+        end
       end
 
-      self.throwPower = 0
+    else
+      activeItem.setArmAngle(-math.pi/2)
+      if self.throwPower > 0.0 then
+        if not world.lineCollision(mcontroller.position(),firePosition()) then
+          storage.fireTimer = config.getParameter("fireTime", 1.0)
+          fire()
+          animator.playSound("fire")
+        end
+
+        self.throwPower = 0
+      end
     end
   end
-
-  --activeItem.setRecoil(self.recoilTimer > 0)
 
   updateProjectiles()
   updateCursor()
@@ -68,17 +74,27 @@ function updateCursor()
   if #storage.activeProjectiles > 0 then
     activeItem.setCursor("/cursors/deep/deep_chargeready.cursor")
   else
-    activeItem.setCursor("/cursors/deep/deep_crosshair1.cursor")
+    if storage.reserveAmmo > 0 then
+      activeItem.setCursor("/cursors/deep/deep_crosshair1.cursor")
+    else 
+      activeItem.setCursor("/cursors/deep/deep_noAmmo0.cursor")
+    end
   end
 end
 
 function uninit()
+  deep_uninit()
+
   for i, projectile in ipairs(storage.activeProjectiles) do
     world.callScriptedEntity(projectile, "setTarget", nil)
   end
 end
 
 function fire()
+  if not player.isAdmin() then
+    storage.reserveAmmo = math.max(storage.reserveAmmo - 1, 0)
+  end
+
   self.pParams.speed = self.throwPower
   self.pParams.powerMultiplier = activeItem.ownerPowerMultiplier()
   local projectileId = world.spawnProjectile(
