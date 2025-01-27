@@ -9,13 +9,11 @@ function init()
 
   self.itemStatus = {}
 
-  self.reloadable = config.getParameter("reloadable", false)
-
   self.maxReserveAmmo = config.getParameter("maxReserveAmmo", 500)
   storage.reserveAmmo = storage.reserveAmmo or self.maxReserveAmmo
-
-  if self.reloadable then
-    self.maxAmmo = config.getParameter("maxAmmo", 100)
+  --if the maxAmmo is 0 it can't be reloaded (eg drills)
+  self.maxAmmo = config.getParameter("maxAmmo", 100)
+  if self.maxAmmo ~= 0 then
     storage.loadedAmmo = storage.loadedAmmo or self.maxAmmo
   end
 
@@ -29,7 +27,7 @@ function update(dt, fireMode, shiftHeld)
   --send the itemStatus table to the player localAnimator script to be rendered
   self.itemStatus.reserveAmmo = storage.reserveAmmo
   self.itemStatus.rAmmoDigits = config.getParameter("reserveAmmoDigits", 3)
-  self.itemStatus.rAmmoPos = vec2.add(vec2.sub(activeItem.ownerAimPosition(), mcontroller.position()), {0.5, self.reloadable and -1 or -0.5})
+  self.itemStatus.rAmmoPos = vec2.add(vec2.sub(activeItem.ownerAimPosition(), mcontroller.position()), {0.5, (self.maxAmmo == 0) and -1 or -0.5})
   self.itemStatus.rAmmoColor = {200, 200, 200, 200} 
 
   if self.reloadable then
