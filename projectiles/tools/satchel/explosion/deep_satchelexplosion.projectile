@@ -22,10 +22,18 @@
   "physicsForces" : {
     "push" : {
       "type" : "RadialForceRegion",
-      "categoryWhitelist" : ["monster", "player", "npc", "vehicle", "itemdrop"],
+      "categoryWhitelist" : ["monster", "player", "npc", "vehicle"],
       "outerRadius" : 80,
       "innerRadius" : 5,
-      "targetRadialVelocity" : 4000,
+      "targetRadialVelocity" : 50,
+      "controlForce" : 99999
+    },
+    "itemPush" : {
+      "type" : "RadialForceRegion",
+      "categoryWhitelist" : ["itemdrop"],
+      "outerRadius" : 80,
+      "innerRadius" : 5,
+      "targetRadialVelocity" : 40,
       "controlForce" : 99999
     }
   },
