@@ -50,9 +50,10 @@ function update(dt, fireMode, shiftHeld)
   if not storage.overheated then
     if storage.heat < self.maxHeat then
       if fireMode == "primary" then
-        
         storage.heat = math.min(storage.heat + dt * self.heatRate, self.maxHeat)
         fire(dt)
+        
+        sb.logInfo("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
       else
         animator.setAnimationState("gun", "idle")
         storage.heat = math.max(storage.heat - dt * self.coolRate, 0)

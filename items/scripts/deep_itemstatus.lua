@@ -13,8 +13,8 @@ function init()
 
 end
 
-function update(dt)
-  deep_update(dt)
+function update(dt, fireMode, shiftHeld)
+  deep_update(dt, fireMode, shiftHeld)
 
   self.itemStatus.reserveAmmo = storage.reserveAmmo
   self.itemStatus.rAmmoDigits = config.getParameter("reserveAmmoDigits", 3)

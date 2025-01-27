@@ -32,7 +32,6 @@
   "scripts" : [ "deep_drills.lua", "/items/scripts/deep_itemstatus.lua" ],
   "animationScripts" : [ "/items/scripts/deep_heatbar.lua" ],
   "fireOffset" : [0.5, 0],
-  //"fireTime" : 1.25,
   "inaccuracy" : 0.0,
 
   "projectileType" : "deep_drillprojectile",
