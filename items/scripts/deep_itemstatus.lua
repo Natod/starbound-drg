@@ -22,9 +22,10 @@ function init()
   self.ammoConsumptionRate = config.getParameter("ammoConsumptionRate", 1)
   self.promises = {}
   
-  storage.reserveAmmo = world.sendEntityMessage(activeItem.ownerEntityId(), "deep_getAmmoTable", "reserve", self.itemID):result()
+  --storage.reserveAmmo = world.sendEntityMessage(activeItem.ownerEntityId(), "deep_getAmmoTable", "reserve", self.itemID):result()
+  table.insert(self.promises, world.sendEntityMessage(activeItem.ownerEntityId(), "deep_getAmmoTable", "reserve", self.itemID)) 
 
-  world.sendEntityMessage(activeItem.ownerEntityId(), "deep_updateAmmoTable", "reserve", self.itemID, storage.reserveAmmo)
+  --world.sendEntityMessage(activeItem.ownerEntityId(), "deep_updateAmmoTable", "reserve", self.itemID, storage.reserveAmmo)
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -35,7 +36,12 @@ function update(dt, fireMode, shiftHeld)
   for i,promise in pairs(self.promises) do
     if promise:finished() then
       if promise:succeeded() then
-        storage.reserveAmmo = promise:result()
+        local result = promise:result()
+        if result then
+          storage.reserveAmmo = promise:result()
+        else
+          world.sendEntityMessage(activeItem.ownerEntityId(), "deep_updateAmmoTable", "reserve", self.itemID, storage.reserveAmmo)
+        end
         --deep_util.print(storage.reserveAmmo)
       else
         sb.logInfo(string.format("Item %s did not recieve a response. Error: %s", self.itemID, promise:error()))

@@ -43,7 +43,7 @@ function init()
       return storage.ammoTable[LR][key]
     else
       sb.logError(string.format("Message %s failed to retrieve ammo for item %s", messageName, key))
-      return 0
+      return nil
     end
   end)
 
