@@ -42,7 +42,7 @@ function init()
     if storage.ammoTable[LR][key] then
       return storage.ammoTable[LR][key]
     else
-      sb.logError(string.format("Message %s failed to retrieve ammo for item %s"), messageName, key)
+      sb.logError(string.format("Message %s failed to retrieve ammo for item %s", messageName, key))
       return 0
     end
   end)
