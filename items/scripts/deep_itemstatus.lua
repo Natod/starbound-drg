@@ -22,14 +22,14 @@ function init()
   self.ammoConsumptionRate = config.getParameter("ammoConsumptionRate", 1)
   self.promises = {}
   
+  storage.reserveAmmo = world.sendEntityMessage(activeItem.ownerEntityId(), "deep_getAmmoTable", "reserve", self.itemID):result()
 
+  world.sendEntityMessage(activeItem.ownerEntityId(), "deep_updateAmmoTable", "reserve", self.itemID, storage.reserveAmmo)
 end
 
 function update(dt, fireMode, shiftHeld)
-  deep_update(dt, fireMode, shiftHeld)
 
 
-  --send the itemStatus table to the player localAnimator script to be rendered
   --
   table.insert(self.promises, world.sendEntityMessage(activeItem.ownerEntityId(), "deep_getAmmoTable", "reserve", self.itemID))  
   for i,promise in pairs(self.promises) do
@@ -58,7 +58,10 @@ function update(dt, fireMode, shiftHeld)
     --world.sendEntityMessage(activeItem.ownerEntityId(), "deep_updateAmmoTable", "loaded", self.itemID, storage.loadedAmmo)
   end
 
+  --send the itemStatus table to the player localAnimator script to be rendered
   world.sendEntityMessage(activeItem.ownerEntityId(), "deep_changeItemField", self.itemStatus)
+  
+  deep_update(dt, fireMode, shiftHeld)
 end
 
 function uninit()

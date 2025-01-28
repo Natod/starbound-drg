@@ -18,14 +18,15 @@ function init()
 
 
   --The pizza...
-  if storage.ammoTable.reserve and storage.ammoTable.loaded then
-    storage.ammoTable = storage.ammoTable
-  else
-    storage.ammoTable = storage.ammoTable or {
+  --
+  if not storage.ammoTable or not (storage.ammoTable.reserve and storage.ammoTable.loaded) then
+    storage.ammoTable = {
       reserve = {},
       loaded = {}
     }
   end
+  --]]
+  --storage.ammoTable = {}
 
   self.deep_tags = {
     deepmod = "deep_deep",
@@ -41,7 +42,8 @@ function init()
     if storage.ammoTable[LR][key] then
       return storage.ammoTable[LR][key]
     else
-      return nil
+      sb.logError(string.format("Message %s failed to retrieve ammo for item %s"), messageName, key)
+      return 0
     end
   end)
 
