@@ -41,7 +41,7 @@ function update(dt, fireMode, shiftHeld)
 
   storage.fireTimer = math.max(storage.fireTimer - dt, 0)
   --self.recoilTimer = math.max(self.recoilTimer - dt, 0)
-  if storage.reserveAmmo > 0 then
+  if storage.reserveAmmo > 0 or player.isAdmin() then
     if fireMode == "primary" and not shiftHeld then
       local throwAnimationAngle = math.pi/2.5
       if self.throwPower < self.maxThrowPower then

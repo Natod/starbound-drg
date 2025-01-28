@@ -52,7 +52,7 @@ function update(dt, fireMode, shiftHeld)
   updateAim()
   if not storage.overheated then
     if storage.heat < self.maxHeat then
-      if storage.reserveAmmo > 0 and fireMode == "primary" then
+      if (storage.reserveAmmo > 0 or player.isAdmin()) and fireMode == "primary" then
         if not player.isAdmin() then
           storage.heat = math.min(storage.heat + dt * self.heatRate, self.maxHeat)
         end
