@@ -9,7 +9,7 @@
   "tooltipKind" : "base",
   "category" : "grenadeLauncher",
   "twoHanded" : true,
-  "itemTags" : ["weapon"],
+  "itemTags" : ["weapon", "deep_ammo", "deep_deep" ],
   "heatRate" : 3.2,
   "coolRate" : 4.8,
   "maxHeat" : 20,

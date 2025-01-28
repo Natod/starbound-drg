@@ -93,6 +93,7 @@ end
 function fire()
   if not player.isAdmin() then
     storage.reserveAmmo = math.max(storage.reserveAmmo - 1, 0)
+    world.sendEntityMessage(activeItem.ownerEntityId(), "deep_updateAmmoTable", "reserve", self.itemID, storage.reserveAmmo)
   end
 
   self.pParams.speed = self.throwPower

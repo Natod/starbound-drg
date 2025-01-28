@@ -38,7 +38,8 @@ function update(dt)
   })
   for i,id in pairs(depositables) do
     local pos = world.entityPosition(id)
-    if (self.detectArea[1][1] <= pos[1]) and (pos[1] <= self.detectArea[2][1]) and (self.detectArea[1][2] <= pos[2]) and (pos[2] <= self.detectArea[2][2]) then
+    if (self.detectArea[1][1] <= pos[1]) and (pos[1] <= self.detectArea[2][1])
+    and (self.detectArea[1][2] <= pos[2]) and (pos[2] <= self.detectArea[2][2]) then
       table.insert(self.promises, world.sendEntityMessage(id, "depositableType"))
       object.say(string.format("Sent message to entity : %s", id))
     end

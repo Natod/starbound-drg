@@ -101,6 +101,7 @@ function fire(dt)
   )
   if not player.isAdmin() then
     storage.reserveAmmo = math.max(storage.reserveAmmo - dt*self.ammoConsumptionRate, 0)
+    world.sendEntityMessage(activeItem.ownerEntityId(), "deep_updateAmmoTable", "reserve", self.itemID, storage.reserveAmmo)
   end
   --animator.burstParticleEmitter("fireParticles")
   --animator.playSound("fire")
