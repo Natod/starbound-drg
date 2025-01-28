@@ -65,7 +65,7 @@ function update(dt, fireMode, shiftHeld)
       storage.overheated = true
     end
   else
-    activeItem.setCursor("/cursors/deep/deep_warning1.cursor")
+    activeItem.setCursor("/cursors/deep/deep_warning2.cursor")
     animator.setAnimationState("gun", "idle")
     storage.heat = math.max(storage.heat - dt * self.coolRate, 0)
     if storage.heat == 0 then
@@ -78,7 +78,7 @@ function update(dt, fireMode, shiftHeld)
   if not (storage.reserveAmmo > 0) then
     activeItem.setScriptedAnimationParameter("overheated", true)
     activeItem.setArmAngle(-math.pi*0.15)
-    activeItem.setCursor("/cursors/deep/deep_noAmmo1.cursor")
+    activeItem.setCursor("/cursors/deep/deep_noAmmo2.cursor")
   end
 
 end
