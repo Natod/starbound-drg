@@ -29,7 +29,6 @@ function init()
   sb.logInfo(sb.print(self.players))
   sb.logInfo(sb.print(playerPositions()))
   ]]
-  spawnWave(position)
 end
 
 
@@ -38,7 +37,7 @@ function update(dt)
     self.waveCounter = self.waveCounter - (1*dt)
   end
   if self.waveCounter <= 0 then
-    spawnWave({0,0})
+    spawnWave()
   end
 
   playerScan()
@@ -47,7 +46,7 @@ function update(dt)
 
 end
 
-function spawnWave(position)
+function spawnWave()
   music("swarmStart")
   radioMessage("swarmStart")
   local waveSize = math.floor((math.random(self.waveSizeMin,self.waveSizeMax)/#self.players)+0.5)
