@@ -5,7 +5,8 @@ require "/scripts/deep_util.lua"
 function init()
 
   self.players={}
-  self.music = "/music/atlas.ogg"
+  self.swarmMusic = config.getParameter("swarmMusic")
+  self.music = nil
   self.waveDelay = config.getParameter("waveDelay")
   self.digInTime = config.getParameter("digInTime")
   self.digInFuzz = config.getParameter("digInFuzz")
@@ -28,6 +29,7 @@ function init()
   sb.logInfo(sb.print(self.players))
   sb.logInfo(sb.print(playerPositions()))
   ]]
+  spawnWave(position)
 end
 
 
@@ -46,6 +48,8 @@ function update(dt)
 end
 
 function spawnWave(position)
+  music("swarmStart")
+  radioMessage("swarmStart")
   local waveSize = math.floor((math.random(self.waveSizeMin,self.waveSizeMax)/#self.players)+0.5)
   local mSpawnPos = {0,0}
 
@@ -106,7 +110,7 @@ function playerScan()
   end)
   for _,playerId in pairs(newPlayers) do
     if self.music then
-      world.sendEntityMessage(playerId, "playAltMusic", self.music) -- config.getParameter("musicFadeInTime"))
+      world.sendEntityMessage(playerId, "playAltMusic", {self.music}) -- config.getParameter("musicFadeInTime"))
     end
   end
   self.players = players
@@ -123,4 +127,24 @@ end
 
 function getStagehandType()
   return "missionmanager"
+end
+
+function music(key)
+  self.music = util.randomFromList(config.getParameter("music." .. key))
+  deep_util.print(self.music)
+  for _,playerId in pairs(self.players) do
+    world.sendEntityMessage(playerId, "playAltMusic", {self.music})
+  end
+end
+
+function radioMessage(key)
+  local messageConfig = config.getParameter("radioMessages." .. key)
+  local message = {
+    unique = false,
+    messageId = "glitchmissionmanager",
+    text = util.randomFromList(messageConfig)
+  }
+  for _,playerId in pairs(self.players) do
+    world.sendEntityMessage(playerId, "queueRadioMessage", message)
+  end
 end

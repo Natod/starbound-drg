@@ -20,7 +20,7 @@ function update(dt)
     if self.drop == self.type.drop then
         playMusic()
         mission = world.getProperty("deep.mission")
-        if mission == "" then
+        if not mission or mission == "" then
             return
         end
     end

@@ -11,10 +11,26 @@
 
   "musicFadeInTime" : 1.0,
   "musicFadeOutTime" : 1.0,
-  "battleMusic" : [ "/music/event-horizon.ogg" ],
-  "bossMusic" : [ "/music/gravitational-collapse-loop.ogg" ],
+  "music" : {
+    "swarmStart" : [
+      "/music/SpaceFire_Looping_1.ogg"
+    ]
+  },
 
-  "radioMessages" : {},
+  "radioMessages" : {
+    "swarmStart" : [
+      "Swarm detected. Get ready, they'll be with you shortly.",
+      "Swarm incoming! Get through it fast, we're on tight schedule here.",
+      "Big swarm detected. Buckle up and get ready!",
+      "The scanner just lit up like a Christmas tree! We've got a swarm incoming!",
+      "Contact! We've got 4, wait 6, no, 12... A lot of aliens headed your way!",
+      "Time to earn your paycheck team. Got a doozy of a swarm on the way.",
+      "Prepare to fight for your life, A big swarm is approaching.",
+      "Swarm on a direct intercept course. Get ready!",
+      "A Swarm is heading your way! Load up!",
+      "We've got a hell of a blip heading your way team! Get ready!"
+    ]
+  },
 
   "waveSizeMin" : 4,
   "waveSizeMax" : 12,
