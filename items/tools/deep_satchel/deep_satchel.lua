@@ -77,7 +77,7 @@ function updateCursor()
     if storage.reserveAmmo > 0 then
       activeItem.setCursor("/cursors/deep/deep_crosshair1.cursor")
     else 
-      activeItem.setCursor("/cursors/deep/deep_noAmmo0.cursor")
+      activeItem.setCursor("/cursors/deep/deep_noAmmo1.cursor")
     end
   end
 end
