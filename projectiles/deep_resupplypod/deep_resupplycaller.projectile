@@ -1,0 +1,16 @@
+{
+  "projectileName" : "deep_resupplycaller",
+  "image" : "deep_resupplycaller.png",
+  "physics" : "default",
+  "onlyHitTerrain" : true,
+  "piercing" : true,
+  "bounces" : -1,
+  "speed" : 0,
+  "power" : 0.0,
+
+  "damageType" : "NoDamage",
+  "damageKind" : "default",
+  
+  "scripts" : [ "deep_resupplycaller.lua" ]
+
+}
