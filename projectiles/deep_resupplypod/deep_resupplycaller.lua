@@ -9,6 +9,7 @@ function init()
 
   self.checkDist = config.getParameter("floorCheckDistance", 100)
   mcontroller.setPosition(checkFloor())
+  mcontroller.setRotation(0)
   self.spawnHeight = config.getParameter("podSpawnHeight", 200)
   --sb.logInfo(entity.id())
   for i=0,100 do
@@ -33,6 +34,7 @@ function update()
   deep_update()
 
   mcontroller.setPosition(checkFloor())
+  mcontroller.setRotation(0)
   world.sendEntityMessage(self.pod, "deep_callerHeight", mcontroller.yPosition())
 end
 

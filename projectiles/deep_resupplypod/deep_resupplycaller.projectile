@@ -7,6 +7,8 @@
   "bounces" : -1,
   "speed" : 0,
   "power" : 0.0,
+  "animationCycle" : 0.65,
+  "frameNumber" : 2,
   "timeToLive" : 9999,
   "damagePoly" : [[-16, 24], [8, 16], [16, -24], [-8, -16]],
 
