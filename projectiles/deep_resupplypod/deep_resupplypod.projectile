@@ -1,0 +1,25 @@
+{
+  "projectileName" : "deep_resupplypod",
+  "image" : "deep_resupplypodsideways.png",
+  "physics" : "default",
+  "onlyHitTerrain" : false,
+  "piercing" : true,
+  "bounces" : -1,
+  "speed" : 0,
+  "power" : 100,
+  "animationCycle" : 0.2,
+  "frameNumber" : 2,
+  "timeToLive" : 9999,
+  "damagePoly" : [[-16, 24], [8, 16], [16, -24], [-8, -16]],
+
+  "movementSettings" : {
+    "collisionPoly" : [ [4, 1], [4, -1], [-4, -1], [-4, 1] ],
+    "collisionEnabled" : false
+  },
+
+  "damageKind" : "default",
+  "damageTeam" : { "type" : "indiscriminate" },
+  
+  "scripts" : [ "deep_resupplypod.lua" ]
+
+}

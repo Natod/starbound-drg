@@ -7,9 +7,15 @@
   "bounces" : -1,
   "speed" : 0,
   "power" : 0.0,
+  "timeToLive" : 9999,
+  "damagePoly" : [[-16, 24], [8, 16], [16, -24], [-8, -16]],
 
+  "movementSettings" : {
+    "collisionEnabled" : false
+  },
   "damageType" : "NoDamage",
   "damageKind" : "default",
+  "damageTeam" : { "type" : "ghostly" },
   
   "scripts" : [ "deep_resupplycaller.lua" ]
 
