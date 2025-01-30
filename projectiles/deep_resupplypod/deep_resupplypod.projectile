@@ -6,14 +6,17 @@
   "piercing" : true,
   "bounces" : -1,
   "speed" : 0,
-  "power" : 100,
+  "power" : 50,
   "animationCycle" : 0.2,
   "frameNumber" : 2,
   "timeToLive" : 9999,
-  "damagePoly" : [[-16, 24], [8, 16], [16, -24], [-8, -16]],
+  "damagePoly" : [
+    //[0, -0.85], [0.5, -0.85], [1.25, -0.25], [1.25, 0.25], [0.5, 0.85], [0,0.85]
+    [0, -7], [4, -7], [10, -2], [10, 2], [4, 7], [0,7]
+  ],
 
   "movementSettings" : {
-    "collisionPoly" : [ [4, 1], [4, -1], [-4, -1], [-4, 1] ],
+    "collisionPoly" : [ [-4, -1], [0, -1], [0, 1], [-4, 1] ],
     "collisionEnabled" : false
   },
 

@@ -21,7 +21,6 @@ function update()
 
   if mcontroller.yPosition() <= self.callerHeight then
     world.sendEntityMessage(self.callerID, "deep_podLanded")
-    sb.logInfo(sb.print(self.callerID))
     projectile.die()
   end
 
