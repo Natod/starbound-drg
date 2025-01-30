@@ -33,7 +33,7 @@ end
 function update()
   deep_update()
 
-  mcontroller.setPosition(checkFloor())
+  --mcontroller.setPosition(checkFloor())
   mcontroller.setRotation(0)
   world.sendEntityMessage(self.pod, "deep_callerHeight", mcontroller.yPosition())
 end
