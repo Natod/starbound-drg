@@ -2,6 +2,10 @@ require("/quests/scripts/portraits.lua")
 require("/quests/scripts/questutil.lua")
 
 function init()
+  self.techs = {
+    "deep_flare", 
+    "deep_resupply"
+  }
 end
 
 function questStart()
@@ -13,9 +17,11 @@ function questStart()
   player.giveEssentialItem("beamaxe","deep_pickaxeold")
   player.giveEssentialItem("wiretool","deep_flaregun")
   player.giveEssentialItem("painttool","deep_platformgun")
-  player.makeTechAvailable("deep_flare")
-  player.enableTech("deep_flare")
-  player.equipTech("deep_flare")
+  for i,tecc in pairs(self.techs) do
+    player.makeTechAvailable(tecc)
+    player.enableTech(tecc)
+    player.equipTech(tecc)
+  end
   setPortraits()
 
   if not player.introComplete() then

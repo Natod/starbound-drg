@@ -1,0 +1,7 @@
+[
+  {
+    "op" : "add",
+    "path" : "/keyActions/player/-",
+    "value" : { "label" : "Special 3", "action" : "PlayerTechAction3" }
+  }
+]

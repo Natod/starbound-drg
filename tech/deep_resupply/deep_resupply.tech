@@ -1,0 +1,14 @@
+{
+  "name" : "deep_resupply",
+  "type" : "legs",
+
+  "scripts" : ["deep_resupply.lua"],
+  "animator" : "deep_resupply.animation",
+  "fireTime" : 0.5,
+
+  "description" : "Call Resupply Pod ^green;[H]^reset;",
+  "shortDescription" : "Resupply Pod",
+  "rarity" : "Legendary",
+  "icon" : "deep_resupply.png",
+  "nitraCost" : 80
+}
