@@ -1,0 +1,14 @@
+{
+  "name" : "deep_incendiary",
+  "type" : "head",
+
+  "scripts" : ["deep_incendiary.lua"],
+  "animator" : "deep_incendiary.animation",
+  "fireTime" : 0.5,
+
+  "description" : "Throw grenade ^green;[G]^reset;",
+  "shortDescription" : "Incendiary grenade",
+  "rarity" : "Legendary",
+  "icon" : "/projectiles/throwable/molotov/molotov.png",
+  "flareCount" : 4
+}

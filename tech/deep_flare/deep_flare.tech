@@ -9,6 +9,6 @@
   "description" : "Throw Flare ^green;[F]^reset;",
   "shortDescription" : "Flare",
   "rarity" : "Legendary",
-  "icon" : "deep_flare.png",
+  "icon" : "/tech/deep_flare/deep_flare.png",
   "flareCount" : 4
 }
