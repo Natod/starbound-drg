@@ -7,38 +7,36 @@ function init(dt)
   self.detectRadius = config.getParameter("detectRadius")
   self.playerPosList = {}
   self.nearbyPlayers = {}
-  self.selfProjectile = config.getParameter("selfProjectile")
-  self.objTags = config.getParameter("objectTags", {})
-
-  self.moveSpeed = config.getParameter("moveSpeed")
-  self.groundForce = config.getParameter("groundForce")
-  self.jumpSpeed = config.getParameter("jumpSpeed")
   
   self.movementSettings = config.getParameter("movementSettings")
-  self.occupiedMovementSettings = config.getParameter("occupiedMovementSettings")
 
-  self.minAngle = config.getParameter("minAngle")
-  self.maxAngle = config.getParameter("maxAngle")
-  self.fireInterval = config.getParameter("fireInterval")
-
-  self.driving = false
-  self.lastDriver = nil
+  self.supplyTime = config.getParameter("supplyTime")
 
   self.jumping = false
 
-  self.throwPower = 0.0
+  self.racks = {}
+  storage.racksAvailable = {}
+  for i=1,4 do 
+    self.racks[i] = {
+      supplyProgress = 0,
+      lastDriver = nil
+    }
+    if storage.racksAvailable[i] == nil then
+      storage.racksAvailable[i] = true
+    end
+  end
 
   vehicle.setPersistent(true)
-  animator.setAnimationState("body", "unoccupied")
-  animator.setParticleEmitterActive("particleGlowFloor",true)
-  animator.setParticleEmitterActive("particleGlow",false)
+  --animator.setAnimationState("body", "unoccupied")
+  --animator.setParticleEmitterActive("particleGlowFloor",true)
+  --animator.setParticleEmitterActive("particleGlow",false)
   
-  message.setHandler("depositableType", depositableType)
 end
 
 function update(dt)
 
-  
+  mcontroller.applyParameters(self.movementSettings)
+
    
   local driver = vehicle.entityLoungingIn("seat")
   if driver then
@@ -55,11 +53,9 @@ function update(dt)
     end
 
     vehicle.setDamageTeam({type = "ghostly"}) --world.entityDamageTeam(driver)
-    mcontroller.applyParameters(self.occupiedMovementSettings)
     vehicle.setInteractive(false)
   else
     vehicle.setDamageTeam({type = "ghostly"}) --passive
-    mcontroller.applyParameters(self.movementSettings)
     vehicle.setInteractive(true)
   end
   self.lastDriver = driver
@@ -82,22 +78,29 @@ function update(dt)
   end
   
 
-  local moveDir = 0
-  if vehicle.controlHeld("seat", "right") then
-    moveDir = moveDir + 1
-  end
-  if vehicle.controlHeld("seat", "left") then
-    moveDir = moveDir - 1
-  end
-  if not self.jumping and mcontroller.onGround() and vehicle.controlHeld("seat", "jump") then
-    self.jumping = true
-    mcontroller.setYVelocity(self.jumpSpeed)
-  end
-
-  mcontroller.approachXVelocity(moveDir * self.moveSpeed, self.groundForce)
-
+  mcontroller.setXVelocity(0)
+  
   local aim = vehicle.aimPosition("seat")
   local localAim = world.distance(aim, mcontroller.position())
+  local maxThrowPower = 30
+  local throwAnimationAngle = math.pi/4
+  if vehicle.controlHeld("seat", "primaryFire") then
+    if self.supplyProgress < maxThrowPower then
+      self.supplyProgress = self.supplyProgress + dt * maxThrowPower
+      animator.rotateTransformationGroup("rotate", -dt*throwAnimationAngle, {0.5,3})
+      animator.translateTransformationGroup("rotate", {dt/3,-dt/4})
+      if self.supplyProgress >= maxThrowPower then
+        animator.playSound("recharge")
+      end
+    end
+  elseif self.supplyProgress > 0.0 then
+    vehicle.setLoungeEnabled("seat", false)
+    animator.playSound("throw")
+    world.spawnProjectile(self.selfProjectile, vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(localAim), nil, {speed = self.supplyProgress})
+    vehicle.destroy()
+    
+    --mcontroller.setVelocity(vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-8))
+  end
 
   animator.setFlipped(localAim[1] < 0)
   if vehicle.entityLoungingIn("seat") then
@@ -113,30 +116,7 @@ function update(dt)
     animator.setParticleEmitterActive("particleGlowFloor",true)
     animator.setParticleEmitterActive("particleGlow",false)
   end
-  
-  local maxThrowPower = 30
-  local throwAnimationAngle = math.pi/4
-  if vehicle.controlHeld("seat", "primaryFire") then
-    if self.throwPower < maxThrowPower then
-      self.throwPower = self.throwPower + dt * maxThrowPower
-      animator.rotateTransformationGroup("rotate", -dt*throwAnimationAngle, {0.5,3})
-      animator.translateTransformationGroup("rotate", {dt/3,-dt/4})
-      if self.throwPower >= maxThrowPower then
-        animator.playSound("recharge")
-      end
-    end
-  elseif self.throwPower > 0.0 then
-    vehicle.setLoungeEnabled("seat", false)
-    animator.playSound("throw")
-    world.spawnProjectile(self.selfProjectile, vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(localAim), nil, {speed = self.throwPower})
-    vehicle.destroy()
-    
-    --mcontroller.setVelocity(vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-8))
-  end
 
-
-  local driving = moveDir ~= 0
-  self.driving = driving
 
 end
 

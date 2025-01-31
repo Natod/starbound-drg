@@ -46,7 +46,7 @@ function init()
       return nil
     end
   end)
-
+  --player.interact("SitDown", 8, player.id())
 end
 
 function update(dt)
@@ -59,6 +59,8 @@ function update(dt)
   --]]
   --world.sendEntityMessage(player.primaryHandItem(), )
   --deep_util.print(storage.ammoTable.reserve)
+
+  --player.lounge(8)
 end
 
 function uninit()
