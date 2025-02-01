@@ -29,6 +29,7 @@ function init(dt)
   self.throwPower = 0.0
 
   vehicle.setPersistent(true)
+  vehicle.setLoungeEnabled("seat", true)
   animator.setAnimationState("body", "unoccupied")
   animator.setParticleEmitterActive("particleGlowFloor",true)
   animator.setParticleEmitterActive("particleGlow",false)
@@ -126,12 +127,14 @@ function update(dt)
       end
     end
   elseif self.throwPower > 0.0 then
+    local dir = vec2.sub(vehicle.aimPosition("seat"), mcontroller.position())
     vehicle.setLoungeEnabled("seat", false)
     animator.playSound("throw")
-    world.spawnProjectile(self.selfProjectile, vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(localAim), nil, {speed = self.throwPower})
-    vehicle.destroy()
+    heavyObjProjectile(localAim)
+    --heavyObjThrow(dir, 8)
+    self.throwPower = 0
+    animator.resetTransformationGroup("rotate")    
     
-    --mcontroller.setVelocity(vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-8))
   end
 
 
@@ -150,4 +153,14 @@ end
 function depositableType()
   vehicle.destroy()
   return self.selfProjectile
+end
+
+function heavyObjProjectile(aim)
+  --unused?
+  world.spawnProjectile(self.selfProjectile, vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(aim), nil, {speed = self.throwPower})
+  vehicle.destroy()
+end
+
+function heavyObjThrow(dir,power)
+  mcontroller.setVelocity(vec2.mul(dir, power))
 end
