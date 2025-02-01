@@ -19,10 +19,11 @@ function init()
 
   --The pizza...
   --
-  if not storage.ammoTable or not (storage.ammoTable.reserve and storage.ammoTable.loaded) then
+  if not storage.ammoTable or not (storage.ammoTable.reserve and storage.ammoTable.loaded and storage.ammoTable.maxR) then
     storage.ammoTable = {
       reserve = {},
-      loaded = {}
+      loaded = {},
+      maxR = {}
     }
   end
   --]]
@@ -42,7 +43,7 @@ function init()
     if storage.ammoTable[LR][key] then
       return storage.ammoTable[LR][key]
     else
-      sb.logError(string.format("Message %s failed to retrieve ammo for item %s", messageName, key))
+      sb.logError(string.format("Message %s failed to retrieve value %s for item %s", messageName, LR, key))
       return nil
     end
   end)

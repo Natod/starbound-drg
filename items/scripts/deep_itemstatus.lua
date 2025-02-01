@@ -6,7 +6,6 @@ local deep_init = init or function() end
 local deep_uninit = uninit or function() end
 
 function init()
-  deep_init()
 
   self.itemStatus = {}
   self.itemID = config.getParameter("itemName")
@@ -26,6 +25,7 @@ function init()
   table.insert(self.promises, world.sendEntityMessage(activeItem.ownerEntityId(), "deep_getAmmoTable", "reserve", self.itemID)) 
 
   --world.sendEntityMessage(activeItem.ownerEntityId(), "deep_updateAmmoTable", "reserve", self.itemID, storage.reserveAmmo)
+  deep_init()
 end
 
 function update(dt, fireMode, shiftHeld)

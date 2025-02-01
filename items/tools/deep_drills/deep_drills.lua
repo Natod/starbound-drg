@@ -31,6 +31,7 @@ function init()
   updateAim()
 
   animator.setAnimationState("gun", "idle")
+  world.sendEntityMessage(activeItem.ownerEntityId(), "deep_updateAmmoTable", "maxR", self.itemID, self.maxReserveAmmo)
 end
 
 function update(dt, fireMode, shiftHeld)

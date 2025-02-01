@@ -25,6 +25,7 @@ function init()
 
   storage.activeProjectiles = storage.activeProjectiles or {}
   --updateCursor()
+  world.sendEntityMessage(activeItem.ownerEntityId(), "deep_updateAmmoTable", "maxR", self.itemID, self.maxReserveAmmo)
 end
 
 function activate(fireMode, shiftHeld)
