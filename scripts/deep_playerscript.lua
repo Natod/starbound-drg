@@ -25,7 +25,13 @@ function init()
       loaded = {},
       maxR = {}
     }
+    --sb.logInfo("it was detected................................")
+  else
+    --sb.logError("it was NOT detected!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
+    deep_util.print(storage.ammoTable)
   end
+
+
   --]]
   --storage.ammoTable = {}
 
@@ -39,7 +45,7 @@ function init()
   message.setHandler("deep_updateAmmoTable", function(messageName, isLocalEntity, LR, key, value) --itemID, ammo count
     storage.ammoTable[LR][key] = value
   end)
-  message.setHandler("deep_getAmmoTable", function(messageName, isLocalEntity, LR, key) --loaded/reserve, itemIDd
+  message.setHandler("deep_getAmmoTable", function(messageName, isLocalEntity, LR, key) --loaded/reserve, itemID
     if storage.ammoTable[LR][key] then
       return storage.ammoTable[LR][key]
     else
@@ -47,7 +53,6 @@ function init()
       return nil
     end
   end)
-  --player.interact("SitDown", 8, player.id())
 end
 
 function update(dt)
