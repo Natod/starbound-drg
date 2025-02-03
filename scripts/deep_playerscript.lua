@@ -53,6 +53,31 @@ function init()
       return nil
     end
   end)
+  message.setHandler("deep_setClass", function(messageName, isLocalEntity, class)
+    if class == "driller" then
+      player.giveEssentialItem("beamaxe","flamethrower")
+      player.giveEssentialItem("wiretool","raygun")
+      player.giveEssentialItem("painttool","deep_drills")
+      player.giveEssentialItem("inspectiontool", "deep_satchel")
+    elseif class == "gunner" then
+      player.giveEssentialItem("beamaxe","neotommygun")
+      player.giveEssentialItem("wiretool","neopistol")
+      player.giveEssentialItem("painttool", "deep_ziplinegun")
+      player.giveEssentialItem("inspectiontool", "frostshield")
+    elseif class == "engineer" then
+      player.giveEssentialItem("beamaxe","doomcannon")
+      player.giveEssentialItem("wiretool","neolaserlauncher")
+      player.giveEssentialItem("painttool","deep_platformgun")
+      player.giveEssentialItem("inspectiontool", "standingturret")
+    elseif class == "scout" then
+      player.giveEssentialItem("beamaxe","electricrailgun")
+      player.giveEssentialItem("wiretool","adaptablecrossbow")
+      player.giveEssentialItem("painttool","deep_grapple")
+      player.giveEssentialItem("inspectiontool", "deep_flaregun")
+    else
+      sb.logError(string.format("Attempted to set class to nonexistent class %s", class))
+    end
+  end)
 end
 
 function update(dt)

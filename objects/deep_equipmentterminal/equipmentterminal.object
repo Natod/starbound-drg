@@ -53,7 +53,7 @@
   ],
 
   "interactAction" : "ScriptPane",
-  "interactData" : "/interface/scripted/equipmentselect/questlog.config",
+  "interactData" : "/interface/scripted/equipmentselect/equipmentselect.config",
 
   "outputNodes" : [ [0, 0] ]
 }

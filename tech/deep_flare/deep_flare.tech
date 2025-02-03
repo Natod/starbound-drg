@@ -1,6 +1,6 @@
 {
   "name" : "deep_flare",
-  "type" : "head",
+  "type" : "head", // "body",
 
   "scripts" : ["deep_flare.lua"],
   "animator" : "deep_flare.animation",
