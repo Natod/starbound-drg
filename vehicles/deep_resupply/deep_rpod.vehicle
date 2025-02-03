@@ -1,0 +1,33 @@
+{
+  "name" : "deep_rpod",
+  "script" : "/vehicles/deep_resupply/deep_rpod.lua",
+  "boundBox" : [-5.0, -16.0, 5.0, 5.0],
+  "slaveControlTimeout" : 2.0,
+  "slaveControlHeartbeat" : 1.0,
+  "canBeHit" : false,
+  "animation" : "deep_rpod.animation",
+
+  "objectTags" : [],
+
+
+  "physicsForces" : {
+  },
+
+  "damageSources" : {
+  },
+  "physicsCollisions" : {
+    "top" : {
+      "collision" : [ [-4.5, 0.0], [4.5, 0.0], [4.5, 1.0], [-4.5, 1.0] ],
+      "collisionKind" : "platform",
+      "attachToPart" : "body"
+    }
+  },
+
+  "movementSettings" : {
+    "collisionPoly" : [ [0,0], [0.75,0.75], [0,1.5], [-0.75,0.75] ],
+    "mass" : 1.2,
+    "ignorePlatformCollision" : false,
+    "gravityEnabled" : true,
+    "collisionEnabled" : true
+  }
+}

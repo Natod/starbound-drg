@@ -9,28 +9,18 @@ function init(dt)
   self.nearbyPlayers = {}
   
   self.movementSettings = config.getParameter("movementSettings")
+  self.parentID = config.getParameter("parentID")
 
-  self.supplyTime = config.getParameter("supplyTime")
+  self.supplyTime = config.getParameter("supplyTime", 2)
+  self.supplyProgress = 0
 
-  self.jumping = false
+  vehicle.setPersistent(false)
+  vehicle.setDamageTeam({type = "ghostly"})
+  animator.setParticleEmitterActive("particleGlow", false)
 
-  self.racks = {}
-  storage.racksAvailable = {}
-  for i=1,4 do 
-    self.racks[i] = {
-      supplyProgress = 0,
-      lastDriver = nil
-    }
-    if storage.racksAvailable[i] == nil then
-      storage.racksAvailable[i] = true
-    end
-  end
-
-  vehicle.setPersistent(true)
-  --animator.setAnimationState("body", "unoccupied")
-  --animator.setParticleEmitterActive("particleGlowFloor",true)
-  --animator.setParticleEmitterActive("particleGlow",false)
-  
+  self.rackID = config.getParameter("rackID", 0)
+  animator.setAnimationState("body", string.format("%s",self.rackID))
+  --vehicle.destroy()
 end
 
 function update(dt)
@@ -46,19 +36,20 @@ function update(dt)
       --match the index of the driver's entityID to their position
       for i,p in pairs(self.nearbyPlayers) do
         if driver == p then
-          mcontroller.setPosition(vec2.add(self.playerPosList[p][2],{0,-2.65}))
+          --mcontroller.setPosition(vec2.add(self.playerPosList[p][2],{0,-2.65}))
           break
         end
       end
     end
 
-    vehicle.setDamageTeam({type = "ghostly"}) --world.entityDamageTeam(driver)
     vehicle.setInteractive(false)
   else
-    vehicle.setDamageTeam({type = "ghostly"}) --passive
+     --passive
     vehicle.setInteractive(true)
   end
   self.lastDriver = driver
+  
+  mcontroller.setXVelocity(0)
   
   if vehicle.entityLoungingIn("seat") == nil then
     self.nearbyPlayers = world.entityQuery(mcontroller.position(), self.detectRadius, {
@@ -77,45 +68,29 @@ function update(dt)
     end
   end
   
-
-  mcontroller.setXVelocity(0)
   
-  local aim = vehicle.aimPosition("seat")
-  local localAim = world.distance(aim, mcontroller.position())
-  local maxThrowPower = 30
   local throwAnimationAngle = math.pi/4
-  if vehicle.controlHeld("seat", "primaryFire") then
-    if self.supplyProgress < maxThrowPower then
-      self.supplyProgress = self.supplyProgress + dt * maxThrowPower
-      animator.rotateTransformationGroup("rotate", -dt*throwAnimationAngle, {0.5,3})
-      animator.translateTransformationGroup("rotate", {dt/3,-dt/4})
-      if self.supplyProgress >= maxThrowPower then
-        animator.playSound("recharge")
+  if vehicle.entityLoungingIn("seat") then
+    if self.supplyProgress < self.supplyTime then
+      animator.playSound("inProgress")
+      self.supplyProgress = self.supplyProgress + dt / self.supplyTime
+      if self.supplyProgress >= self.supplyTime then
+        --resupply half the player ammo
+        animator.playSound("finished")
+        world.sendEntityMessage(self.parentID, "deep_resupplyEmpty")
+        vehicle.destroy()
       end
     end
-  elseif self.supplyProgress > 0.0 then
-    vehicle.setLoungeEnabled("seat", false)
-    animator.playSound("throw")
-    world.spawnProjectile(self.selfProjectile, vec2.add(mcontroller.position(), {0,2}), nil, vec2.norm(localAim), nil, {speed = self.supplyProgress})
-    vehicle.destroy()
-    
-    --mcontroller.setVelocity(vec2.mul(vec2.sub(mcontroller.position(),vehicle.aimPosition("seat")),-8))
-  end
-
-  animator.setFlipped(localAim[1] < 0)
-  if vehicle.entityLoungingIn("seat") then
-    animator.setParticleEmitterActive("particleGlowFloor",false)
-    animator.setParticleEmitterActive("particleGlow",true)
-    animator.setAnimationState("body", "idle")
-    if not mcontroller.onGround() then
-      self.jumping = false
+    --leave the supply pod if you try to move (small dead window)
+    if self.supplyProgress > 0.4 and (vehicle.controlHeld("seat", "jump") or vehicle.controlHeld("seat", "right") or vehicle.controlHeld("seat", "left")) then
+      vehicle.destroy()
+      world.spawnVehicle("deep_resupply", mcontroller.position(), {rackID = self.rackID})
+      self.supplyProgress = 0
     end
   else
-    vehicle.setLoungeEnabled("seat", true)
-    animator.setAnimationState("body", "unoccupied")
-    animator.setParticleEmitterActive("particleGlowFloor",true)
-    animator.setParticleEmitterActive("particleGlow",false)
+    self.supplyProgress = 0
   end
+    
 
 
 end
@@ -125,9 +100,4 @@ function identifyType(query)
   local hasTag = false
   if deep_util.isInTable(query, self.objTags) then hasTag = true end
   return hasTag
-end
-
-function depositableType()
-  vehicle.destroy()
-  return self.selfProjectile
 end

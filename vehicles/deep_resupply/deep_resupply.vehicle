@@ -5,12 +5,12 @@
   "slaveControlTimeout" : 2.0,
   "slaveControlHeartbeat" : 1.0,
   "canBeHit" : false,
-  "animation" : "deep_aquarq.animation",
+  "animation" : "deep_resupply.animation",
 
   "objectTags" : [],
 
 
-  "supplyTime" : 3,
+  "supplyTime" : 2,
   "detectRadius" : 10,
 
   "loungePositions" : {
@@ -30,13 +30,13 @@
 
   "damageSources" : {
   },
-  "physicsCollisions" : {
-    "top" : {
-      "collision" : [ [-4.5, 0.0], [4.5, 0.0], [4.5, 1.0], [-4.5, 1.0] ],
-      "collisionKind" : "platform",
-      "attachToPart" : "body"
-    }
-  },
+  //"physicsCollisions" : {
+  //  "top" : {
+  //    "collision" : [ [-4.5, 0.0], [4.5, 0.0], [4.5, 1.0], [-4.5, 1.0] ],
+  //    "collisionKind" : "platform",
+  //    "attachToPart" : "body"
+  //  }
+  //},
 
   "movementSettings" : {
     "collisionPoly" : [ [0,0], [0.75,0.75], [0,1.5], [-0.75,0.75] ],

@@ -1,0 +1,74 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 1,
+        "default" : "default",
+        "states" : {
+          "default" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "offset" : [0, 2],
+          "zLevel" : 1
+        },
+        "partStates" : {
+          "body" : {
+            "default" : {
+              "properties" : {
+                "image" : "deep_rpod.png"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "particleEmitters" : {
+    "particleGlow" : {
+      "emissionRate" : 1.0,
+      "emissionRateVariance" : 0.0,
+      "active" : false,
+
+      "particles" : [
+        {
+          "particle" : {
+            "type" : "ember",
+            "position" : [1, 2.5],
+            "size" : 1.5,
+            "color" : [48, 100, 255, 110],
+            "fade" : 0.9,
+            "initialVelocity" : [0.0, 0],
+            "finalVelocity" : [0.0, 0],
+            "approach" : [2, 2],
+            "timeToLive" : 0.7,
+            "layer" : "middle",
+            "variance" : {
+              "initialVelocity" : [3, 3.0],
+              "position" : [0.75, 0.75]
+            }
+          }
+        }
+      ]
+    }
+  },
+
+  "sounds" : {
+    "arrive" : ["/sfx/projectiles/throw_item.ogg"]
+  },
+
+  "lights" : {
+   "ambientGlow" : {
+      "active" : true,
+      "transformationGroups" : [],
+      "position" : [0, 2],
+      "color" : [100, 80, 30],
+      "pointLight" : false
+    }
+  }
+}
