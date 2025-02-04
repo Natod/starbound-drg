@@ -13,7 +13,7 @@ function init()
     alignment = {left = 0, center = 1, right = 2}
   }
   self.deep_barRender = {
-    --[[
+    --[[ args:
     test = {
       position = {0,0},
       width = 3,

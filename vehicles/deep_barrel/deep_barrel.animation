@@ -1,0 +1,66 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "body" : {
+        "priority" : 1,
+        "default" : "idle",
+        "states" : {
+          "idle" : {}
+        }
+      },
+      "empty" : {
+        "priority" : 1,
+        "default" : "default",
+        "states" : {
+          "default" : {}
+        }
+      }
+    },
+
+    "parts" : {
+      "body" : {
+        "properties" : {
+          "offset" : [0.0, 2],
+          "zLevel" : 1,
+          "transformationGroups" : ["rotate"]
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "deep_barrel.png"
+              }
+            }
+          }
+        }
+      },
+      "empty" : {
+        "properties" : {
+          "offset" : [0.0, 2],
+          "seatOffset" : [0, 0.65],
+          "zLevel" : 1,
+          "transformationGroups" : []
+        },
+        "partStates" : {
+          "body" : {
+            "idle" : {
+              "properties" : {
+                "image" : "/utility/empty.png"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  
+  "transformationGroups" : {
+    "rotate" : {
+      "interpolated" : true
+    }
+  },
+
+  "sounds" : {
+    "smash" : ["/sfx/projectiles/throw_item.ogg"]
+  }
+}

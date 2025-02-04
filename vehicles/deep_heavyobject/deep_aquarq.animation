@@ -52,7 +52,7 @@
           "body" : {
             "idle" : {
               "properties" : {
-                "image" : "empty.png:default"
+                "image" : "/utility/empty.png"
               }
             }
           }
