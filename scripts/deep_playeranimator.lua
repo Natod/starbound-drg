@@ -13,7 +13,13 @@ function init()
   }
   self.deep_barRender = {
     test = {
-
+      position = {0,0},
+      width = 3,
+      inset = 1,
+      length = 3,
+      bgColor = {20, 20, 30, 200},
+      fgColor = {200, 200, 255, 200},
+      progress = 0.5
     }
   }
 
@@ -29,7 +35,6 @@ end
 function update(dt)
   deep_update(dt)
   
-
   -- the sludge...
   localAnimator.clearDrawables()
 
@@ -59,6 +64,7 @@ function update(dt)
     )
   end
 
+  deep_barRender(self.deep_barRender.test)
 
 end
 
@@ -89,4 +95,28 @@ function deep_drawDigit(num, offset, color)
   }, "Overlay")
 end
 
-function deep_barRender
+function deep_barRender(barTable)
+  --position, width, inset, length, bgColor, fgColor, progress
+  localAnimator.addDrawable({
+    position = barTable.position,
+    line = {
+      {-barTable.length/2, 0},
+      {barTable.length/2, 0}
+    },
+    width = barTable.width,
+    color = barTable.bgColor
+  }, "Overlay")
+  localAnimator.addDrawable({
+    position = barTable.position,
+    line = {
+      {-barTable.length/2 + (barTable.inset/10), 0},
+      {
+        -barTable.length/2 + (barTable.inset/10) + 
+        (barTable.length/2 - (barTable.inset/10))*2*barTable.progress,
+        0
+      }
+    },
+    width = barTable.width - 2*barTable.inset,
+    color = barTable.fgColor
+  }, "Overlay")
+end

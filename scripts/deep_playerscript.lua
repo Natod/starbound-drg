@@ -30,8 +30,7 @@ function init()
     --sb.logError("it was NOT detected!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
     deep_util.print(storage.ammoTable)
   end
-
-
+  
   --]]
   --storage.ammoTable = {}
 
