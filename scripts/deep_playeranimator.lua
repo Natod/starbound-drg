@@ -12,6 +12,7 @@ function init()
     alignment = {left = 0, center = 1, right = 2}
   }
   self.deep_barRender = {
+    --[[
     test = {
       position = {0,0},
       width = 3,
@@ -19,15 +20,21 @@ function init()
       length = 3,
       bgColor = {20, 20, 30, 200},
       fgColor = {200, 200, 255, 200},
-      progress = 0.5
+      progress = 0.5,
+      empty = false
     }
+    --]]
   }
 
   self.deep_itemStatus = {}
 
-  message.setHandler("deep_changeItemField", function(messageName, isLocalEntity, newStatus) --key, value
+  message.setHandler("deep_changeItemField", function(messageName, isLocalEntity, newStatus)
     self.deep_itemStatus = newStatus
     --self.deep_itemStatus[key] = value
+  end)
+  message.setHandler("deep_playerAnimatorBarUpdate", function(messageName, isLocalEntity, key, barTable)
+    --table.insert(self.deep_barRender, barTable)
+    self.deep_barRender[key] = barTable
   end)
 
 end
@@ -64,8 +71,11 @@ function update(dt)
     )
   end
 
-  deep_barRender(self.deep_barRender.test)
-
+  --render everything in the table and then clear it
+  for i,barTable in pairs(self.deep_barRender) do 
+    deep_barRender(barTable)
+  end
+  --self.deep_barRender = {}
 end
 
 --draw a number filling empty spaces up to "places" with 0
@@ -96,27 +106,29 @@ function deep_drawDigit(num, offset, color)
 end
 
 function deep_barRender(barTable)
-  --position, width, inset, length, bgColor, fgColor, progress
-  localAnimator.addDrawable({
-    position = barTable.position,
-    line = {
-      {-barTable.length/2, 0},
-      {barTable.length/2, 0}
-    },
-    width = barTable.width,
-    color = barTable.bgColor
-  }, "Overlay")
-  localAnimator.addDrawable({
-    position = barTable.position,
-    line = {
-      {-barTable.length/2 + (barTable.inset/10), 0},
-      {
-        -barTable.length/2 + (barTable.inset/10) + 
-        (barTable.length/2 - (barTable.inset/10))*2*barTable.progress,
-        0
-      }
-    },
-    width = barTable.width - 2*barTable.inset,
-    color = barTable.fgColor
-  }, "Overlay")
+  --position, width, inset, length, bgColor, fgColor, progress, empty
+  if not barTable.empty then
+    localAnimator.addDrawable({
+      position = barTable.position,
+      line = {
+        {-barTable.length/2, 0},
+        {barTable.length/2, 0}
+      },
+      width = barTable.width,
+      color = barTable.bgColor
+    }, "Overlay")
+    localAnimator.addDrawable({
+      position = barTable.position,
+      line = {
+        {-barTable.length/2 + (barTable.inset/10), 0},
+        {
+          -barTable.length/2 + (barTable.inset/10) + 
+          (barTable.length/2 - (barTable.inset/10))*2*barTable.progress,
+          0
+        }
+      },
+      width = barTable.width - 2*barTable.inset,
+      color = barTable.fgColor
+    }, "Overlay")
+  end
 end

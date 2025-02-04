@@ -32,6 +32,10 @@
         "/sfx/objects/resupply/SupplyPodSpawnImpactCombinedA_3.ogg",
         "/sfx/objects/resupply/SupplyPodSpawnImpactCombinedA_4.ogg"
       ]
+    },
+    {
+      "action" : "config",
+      "file" : "/projectiles/deep_resupplypod/explosion/deep_resupplyexplosion.config"
     }
   ],
   
