@@ -9,6 +9,7 @@ function init(dt)
   vehicle.setInteractive(false)
   mcontroller.applyParameters(self.movementSettings)
   animator.setLightActive("ambientGlow", true)
+  self.xpos = mcontroller.xPosition()
   
   storage.rackCount = storage.rackCount or 4
   storage.racks = storage.racks or {}
@@ -42,4 +43,5 @@ end
 
 function update(dt)
   mcontroller.setXVelocity(0)
+  mcontroller.setXPosition(self.xpos)
 end
