@@ -67,7 +67,7 @@
   },
 
   "sounds" : {
-    "fire" : [ "/sfx/projectiles/throw_item.ogg" ],
+    "fire" : [ "/sfx/gun/drills/DrillLoopCombinedB.ogg" ],
     "trigger" : [ "/sfx/gun/satchel/beep/DetpackBeepEndA_1.ogg" ],
     "recharge" : [ "/sfx/tech/tech_dash_cooldown1.ogg" ]
   }

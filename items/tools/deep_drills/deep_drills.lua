@@ -32,6 +32,8 @@ function init()
 
   animator.setAnimationState("gun", "idle")
   world.sendEntityMessage(activeItem.ownerEntityId(), "deep_updateAmmoTable", "maxR", self.itemID, self.maxReserveAmmo)
+
+  self.firing = false
 end
 
 function update(dt, fireMode, shiftHeld)
@@ -57,13 +59,21 @@ function update(dt, fireMode, shiftHeld)
         if not player.isAdmin() then
           storage.heat = math.min(storage.heat + dt * self.heatRate, self.maxHeat)
         end
+        if self.firing == false then
+          self.firing = true
+          animator.playSound("fire", -1)
+        end
         fire(dt)
       else
+        self.firing = false
+        animator.stopAllSounds("fire")
         animator.setAnimationState("gun", "idle")
         storage.heat = math.max(storage.heat - dt * self.coolRate, 0)
       end
     else
       storage.overheated = true
+      self.firing = false
+      animator.stopAllSounds("fire")
     end
   else
     activeItem.setCursor("/cursors/deep/deep_warning2.cursor")
