@@ -87,10 +87,29 @@ function init()
       end
     end
   end)
+
+  self.lastHealth = status.resource("health")
+  self.lastAbsorb = status.resource("damageAbsorption")
+  self.shieldTimer = 0
 end
 
 function update(dt)
   deep_update()
+  --deep_util.print(status.resource("damageAbsorption"))
+  if self.lastHealth ~= status.resource("health") or self.lastAbsorb ~= status.resource("damageAbsorption") then
+    if self.lastHealth > status.resource("health") or self.lastAbsorb > status.resource("damageAbsorption") then
+      self.shieldTimer = 5
+    end
+    sb.logInfo(string.format("Health changed from %s to %s", self.lastHealth, status.resource("health")))
+    self.lastHealth = status.resource("health")
+    self.lastAbsorb = status.resource("damageAbsorption")
+  end
+  if self.shieldTimer > 0 then
+    self.shieldTimer = self.shieldTimer - dt
+  elseif status.resource("damageAbsorption") < 100 then
+    status.setResource("damageAbsorption", status.resource("damageAbsorption") + dt * 20)
+  end
+  status.setResource("energy", status.resource("damageAbsorption"))
 
   --[[
   if contains(player.primaryHandItemTags(), self.deep_tags.ammo) then
