@@ -102,7 +102,7 @@
   },
 
   "sounds" : {
-    "inProgress" : ["/sfx/projectiles/throw_item.ogg"],
+    "inProgress" : ["/sfx/objects/resupply/SupplyDrop_Using_02.ogg"],
     "finished" : [ "/sfx/tech/tech_dash_cooldown1.ogg" ]
   },
 

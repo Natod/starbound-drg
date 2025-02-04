@@ -58,10 +58,6 @@
     }
   },
 
-  "sounds" : {
-    "arrive" : ["/sfx/projectiles/throw_item.ogg"]
-  },
-
   "lights" : {
    "ambientGlow" : {
       "active" : true,

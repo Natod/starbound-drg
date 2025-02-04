@@ -22,6 +22,19 @@
   "damageKind" : "default",
   "damageTeam" : { "type" : "indiscriminate" },
   
+  "persistentAudio" : "/sfx/objects/resupply/SupplyPod_Engine_01.ogg",
+  "actionOnReap" : [
+    {
+      "action" : "sound",
+      "options" : [
+        "/sfx/objects/resupply/SupplyPodSpawnImpactCombinedA_1.ogg",
+        "/sfx/objects/resupply/SupplyPodSpawnImpactCombinedA_2.ogg",
+        "/sfx/objects/resupply/SupplyPodSpawnImpactCombinedA_3.ogg",
+        "/sfx/objects/resupply/SupplyPodSpawnImpactCombinedA_4.ogg"
+      ]
+    }
+  ],
+  
   "scripts" : [ "deep_resupplypod.lua" ]
 
 }

@@ -37,7 +37,7 @@ function update(dt)
   if driver then
     -- called when you first get in 
     if self.lastDriver == nil then
-
+      animator.playSound("inProgress")
       --match the index of the driver's entityID to their position
       for i,p in pairs(self.nearbyPlayers) do
         if driver == p then
@@ -50,6 +50,7 @@ function update(dt)
     vehicle.setInteractive(false)
   else
      --passive
+    animator.stopAllSounds("inProgress")
     vehicle.setInteractive(true)
   end
   self.lastDriver = driver
@@ -76,19 +77,21 @@ function update(dt)
   local throwAnimationAngle = math.pi/4
   if vehicle.entityLoungingIn("seat") then
     if self.supplyProgress < self.supplyTime then
-      animator.playSound("inProgress")
+      --animator.playSound("inProgress")
       self.supplyProgress = self.supplyProgress + dt / self.supplyTime
       if self.supplyProgress >= self.supplyTime then
         --resupply half the player ammo
-        animator.playSound("finished")
+        --animator.playSound("finished")
+        animator.stopAllSounds("inProgress")
         world.sendEntityMessage(self.parentID, "deep_resupplyEmpty")
         vehicle.destroy()
       end
     end
     --leave the supply pod if you try to move (small dead window)
     if self.supplyProgress > 0.4 and (vehicle.controlHeld("seat", "jump") or vehicle.controlHeld("seat", "right") or vehicle.controlHeld("seat", "left")) then
+      animator.stopAllSounds("inProgress")
       vehicle.destroy()
-      world.spawnVehicle("deep_resupply", mcontroller.position(), {rackID = self.rackID})
+      world.spawnVehicle("deep_resupply", mcontroller.position(), {rackID = self.rackID, parentID = self.parentID})
       self.supplyProgress = 0
     end
   else

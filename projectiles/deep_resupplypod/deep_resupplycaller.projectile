@@ -18,6 +18,8 @@
   "damageType" : "NoDamage",
   "damageKind" : "default",
   "damageTeam" : { "type" : "ghostly" },
+
+  "persistentAudio" : "/sfx/objects/resupply/SupplyDropBeaconCombinedA_1.ogg",
   
   "scripts" : [ "deep_resupplycaller.lua" ]
 

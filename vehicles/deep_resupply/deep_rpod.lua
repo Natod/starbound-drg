@@ -3,7 +3,6 @@ require "/scripts/util.lua"
 require "/scripts/deep_util.lua"
 
 function init(dt)
-  
   vehicle.setDamageTeam({type = "ghostly"})
   animator.setParticleEmitterActive("particleGlow", false)
   vehicle.setInteractive(false)
