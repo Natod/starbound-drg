@@ -74,8 +74,7 @@ function update(dt)
   end
   
   
-  local throwAnimationAngle = math.pi/4
-  if vehicle.entityLoungingIn("seat") then
+  if driver then
     if self.supplyProgress < self.supplyTime then
       --animator.playSound("inProgress")
       self.supplyProgress = self.supplyProgress + dt / self.supplyTime
@@ -84,6 +83,7 @@ function update(dt)
         --animator.playSound("finished")
         animator.stopAllSounds("inProgress")
         world.sendEntityMessage(self.parentID, "deep_resupplyEmpty")
+        world.sendEntityMessage(driver, "deep_resupplyFactor", 0.5)
         vehicle.destroy()
       end
     end
