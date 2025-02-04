@@ -11,13 +11,19 @@ function init(dt)
   animator.setLightActive("ambientGlow", true)
   
   storage.rackCount = storage.rackCount or 4
+  storage.racks = storage.racks or {}
 
   if storage.rackCount > 0 then
+    for i,rack in pairs(storage.racks) do 
+      world.sendEntityMessage(rack, "deep_destroyRack")
+    end
+    storage.racks = {}
     for i=0,(storage.rackCount-1) do
-      world.spawnVehicle("deep_resupply", mcontroller.position(), {
+      local ve = world.spawnVehicle("deep_resupply", mcontroller.position(), {
         rackID = string.format("%s",i),
         parentID = entity.id()
       })
+      table.insert(storage.racks, ve)
     end
   end
   sb.logInfo(sb.print(storage.rackCount))
