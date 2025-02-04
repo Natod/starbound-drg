@@ -82,7 +82,7 @@ function init()
   message.setHandler("deep_resupplyFactor", function(messageName, isLocalEntity, factor) -- float 0-1
     for ID,val in pairs(storage.ammoTable.reserve) do 
       if storage.ammoTable.reserve[ID] and storage.ammoTable.maxR[ID] then
-        storage.ammoTable.reserve[ID] = math.min(storage.ammoTable.reserve[ID] + (factor * storage.ammoTable.maxR[ID]), storage.ammoTable.maxR[ID])
+        storage.ammoTable.reserve[ID] = math.min(storage.ammoTable.reserve[ID] + math.ceil(factor * storage.ammoTable.maxR[ID]), storage.ammoTable.maxR[ID])
       else
         sb.logError(string.format("Unable to get table info for item %s. messageName:%s", ID, messageName))
       end
