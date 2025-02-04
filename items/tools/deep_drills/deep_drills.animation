@@ -68,7 +68,13 @@
 
   "sounds" : {
     "fire" : [ "/sfx/gun/drills/DrillLoopCombinedB.ogg" ],
-    "trigger" : [ "/sfx/gun/satchel/beep/DetpackBeepEndA_1.ogg" ],
+    "trigger" : [
+      "/sfx/gun/drills/DrillCombinedC_1.ogg",
+      "/sfx/gun/drills/DrillCombinedC_2.ogg",
+      "/sfx/gun/drills/DrillCombinedC_3.ogg",
+      "/sfx/gun/drills/DrillCombinedC_4.ogg",
+      "/sfx/gun/drills/DrillCombinedC_5.ogg"
+    ],
     "recharge" : [ "/sfx/tech/tech_dash_cooldown1.ogg" ]
   }
 }
