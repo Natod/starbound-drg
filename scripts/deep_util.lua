@@ -16,3 +16,9 @@ function deep_util.isInTable(query, table)
   end
   return false
 end
+
+function deep_util.removeKey(table, key)
+  local val = table[key]
+  table[key] = nil
+  return val
+end

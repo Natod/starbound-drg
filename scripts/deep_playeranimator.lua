@@ -1,4 +1,5 @@
 require "/scripts/vec2.lua"
+require "/scripts/deep_util.lua"
 
 local deep_update = update or function() end
 local deep_init = init or function() end
@@ -71,11 +72,14 @@ function update(dt)
     )
   end
 
-  --render everything in the table and then clear it
-  for i,barTable in pairs(self.deep_barRender) do 
-    deep_barRender(barTable)
+  --render everything in the table and clear empty items
+  for key,barTable in pairs(self.deep_barRender) do 
+    if barTable.empty then
+      deep_util.removeKey(self.deep_barRender, key)
+    else
+      deep_barRender(barTable)
+    end
   end
-  --self.deep_barRender = {}
 end
 
 --draw a number filling empty spaces up to "places" with 0
@@ -107,28 +111,26 @@ end
 
 function deep_barRender(barTable)
   --position, width, inset, length, bgColor, fgColor, progress, empty
-  if not barTable.empty then
-    localAnimator.addDrawable({
-      position = barTable.position,
-      line = {
-        {-barTable.length/2, 0},
-        {barTable.length/2, 0}
-      },
-      width = barTable.width,
-      color = barTable.bgColor
-    }, "Overlay")
-    localAnimator.addDrawable({
-      position = barTable.position,
-      line = {
-        {-barTable.length/2 + (barTable.inset/10), 0},
-        {
-          -barTable.length/2 + (barTable.inset/10) + 
-          (barTable.length/2 - (barTable.inset/10))*2*barTable.progress,
-          0
-        }
-      },
-      width = barTable.width - 2*barTable.inset,
-      color = barTable.fgColor
-    }, "Overlay")
-  end
+  localAnimator.addDrawable({
+    position = barTable.position,
+    line = {
+      {-barTable.length/2, 0},
+      {barTable.length/2, 0}
+    },
+    width = barTable.width,
+    color = barTable.bgColor
+  }, "Overlay")
+  localAnimator.addDrawable({
+    position = barTable.position,
+    line = {
+      {-barTable.length/2 + (barTable.inset/10), 0},
+      {
+        -barTable.length/2 + (barTable.inset/10) + 
+        (barTable.length/2 - (barTable.inset/10))*2*barTable.progress,
+        0
+      }
+    },
+    width = barTable.width - 2*barTable.inset,
+    color = barTable.fgColor
+  }, "Overlay")
 end
