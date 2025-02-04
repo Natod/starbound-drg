@@ -72,28 +72,46 @@ function update(dt)
       end
     end
   end
-  
+
+  local supplyPercent = self.supplyProgress / self.supplyTime
+  local resupplyBar = {
+    position = {0,2},
+    width = 3,
+    inset = 1,
+    length = 3,
+    bgColor = {20, 20, 30, 200},
+    fgColor = {
+      125 + 100 * supplyPercent^2, 
+      125 + 100 * supplyPercent^2, 
+      125 + 100 * supplyPercent^2, 
+      200},
+    progress = supplyPercent,
+    empty = false
+  }
   
   if driver then
     if self.supplyProgress < self.supplyTime then
-      --animator.playSound("inProgress")
+
       self.supplyProgress = self.supplyProgress + dt / self.supplyTime
       if self.supplyProgress >= self.supplyTime then
         --resupply half the player ammo
-        --animator.playSound("finished")
         animator.stopAllSounds("inProgress")
         world.sendEntityMessage(self.parentID, "deep_resupplyEmpty")
         world.sendEntityMessage(driver, "deep_resupplyFactor", 0.5)
+        resupplyBar.empty = true
         vehicle.destroy()
       end
     end
     --leave the supply pod if you try to move (small dead window)
     if self.supplyProgress > 0.4 and (vehicle.controlHeld("seat", "jump") or vehicle.controlHeld("seat", "right") or vehicle.controlHeld("seat", "left")) then
       animator.stopAllSounds("inProgress")
+      resupplyBar.empty = true
       vehicle.destroy()
       world.spawnVehicle("deep_resupply", mcontroller.position(), {rackID = self.rackID, parentID = self.parentID})
       self.supplyProgress = 0
     end
+    --update the progress bar display
+    world.sendEntityMessage(driver, "deep_playerAnimatorBarUpdate", "resupplyBar", resupplyBar)
   else
     self.supplyProgress = 0
   end

@@ -28,9 +28,9 @@ function init()
     --sb.logInfo("it was detected................................")
   else
     --sb.logError("it was NOT detected!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
-    deep_util.print(storage.ammoTable)
+    --deep_util.print(storage.ammoTable)
   end
-  
+
   --]]
   --storage.ammoTable = {}
 
