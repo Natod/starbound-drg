@@ -6,7 +6,7 @@
   "piercing" : true,
   "bounces" : -1,
   "speed" : 0,
-  "power" : 70,
+  "power" : 200,
   "animationCycle" : 0.2,
   "frameNumber" : 2,
   "timeToLive" : 9999,
