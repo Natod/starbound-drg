@@ -44,5 +44,5 @@ end
 function uninit()
   deep_uninit()
 
-  --world.spawnVehicle("deep_aquarq",mcontroller.position())
+  world.spawnVehicle("deep_rpod",mcontroller.position())
 end

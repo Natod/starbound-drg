@@ -9,7 +9,7 @@ function init(dt)
   self.nearbyPlayers = {}
   
   self.movementSettings = config.getParameter("movementSettings")
-  self.parentID = config.getParameter("parentID")
+  self.parentID = config.getParameter("parentID", 0)
 
   self.supplyTime = config.getParameter("supplyTime", 2)
   self.supplyProgress = 0
@@ -24,7 +24,7 @@ function init(dt)
 end
 
 function update(dt)
-
+  mcontroller.setXVelocity(0)
   mcontroller.applyParameters(self.movementSettings)
 
    
@@ -49,7 +49,6 @@ function update(dt)
   end
   self.lastDriver = driver
   
-  mcontroller.setXVelocity(0)
   
   if vehicle.entityLoungingIn("seat") == nil then
     self.nearbyPlayers = world.entityQuery(mcontroller.position(), self.detectRadius, {
