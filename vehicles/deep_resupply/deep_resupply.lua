@@ -13,6 +13,7 @@ function init(dt)
 
   self.supplyTime = config.getParameter("supplyTime", 2)
   self.supplyProgress = 0
+  self.xpos = mcontroller.xPosition()
 
   vehicle.setPersistent(false)
   vehicle.setDamageTeam({type = "ghostly"})
@@ -30,7 +31,7 @@ end
 function update(dt)
   mcontroller.setXVelocity(0)
   mcontroller.applyParameters(self.movementSettings)
-
+  mcontroller.setXPosition(self.xpos)
    
   local driver = vehicle.entityLoungingIn("seat")
   if driver then

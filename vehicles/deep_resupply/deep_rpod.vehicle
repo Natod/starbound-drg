@@ -24,7 +24,7 @@
   },
 
   "movementSettings" : {
-    "collisionPoly" : [ [0,0], [0.75,0.75], [0,1.5], [-0.75,0.75] ],
+    "collisionPoly" : [ [0.8,0], [0.8,4], [-0.8,4], [-0.8,0] ],
     "mass" : 1.2,
     "ignorePlatformCollision" : false,
     "gravityEnabled" : true,
