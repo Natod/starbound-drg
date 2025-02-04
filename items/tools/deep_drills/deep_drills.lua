@@ -62,6 +62,8 @@ function update(dt, fireMode, shiftHeld)
         if self.firing == false then
           self.firing = true
           animator.playSound("fire", -1)
+          --animator.stopAllSounds("trigger")
+          --animator.playSound("trigger")
         end
         fire(dt)
       else
