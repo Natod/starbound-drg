@@ -67,7 +67,14 @@
       "active" : true,
       "transformationGroups" : [],
       "position" : [0, 2],
-      "color" : [100, 80, 30],
+      "color" : [180, 150, 50],
+      "pointLight" : false
+    },
+    "ambientGlowLow" : {
+      "active" : true,
+      "transformationGroups" : [],
+      "position" : [0, 2],
+      "color" : [50, 40, 15],
       "pointLight" : false
     }
   }

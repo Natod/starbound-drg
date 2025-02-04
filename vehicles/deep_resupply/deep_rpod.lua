@@ -9,12 +9,14 @@ function init(dt)
   vehicle.setInteractive(false)
   mcontroller.applyParameters(self.movementSettings)
   animator.setLightActive("ambientGlow", true)
+  animator.setLightActive("ambientGlowLow", false)
   self.xpos = mcontroller.xPosition()
   
   storage.rackCount = storage.rackCount or 4
   storage.racks = storage.racks or {}
 
   if storage.rackCount > 0 then
+    vehicle.setPersistent(true)
     for i,rack in pairs(storage.racks) do 
       world.sendEntityMessage(rack, "deep_destroyRack")
     end
@@ -27,14 +29,9 @@ function init(dt)
       table.insert(storage.racks, ve)
     end
   end
-  sb.logInfo(sb.print(storage.rackCount))
-  
-  if storage.rackCount > 0 then
-    vehicle.setPersistent(true)
-  else
-    vehicle.setPersistent(false)
-  end
 
+  --sb.logInfo(sb.print(storage.rackCount))
+  
   message.setHandler("deep_resupplyEmpty", function(messageName, isLocalEntity)
     storage.rackCount = storage.rackCount - 1
   end)
@@ -44,4 +41,10 @@ end
 function update(dt)
   mcontroller.setXVelocity(0)
   mcontroller.setXPosition(self.xpos)
+
+  if storage.rackCount <= 0 then
+    vehicle.setPersistent(false)
+    animator.setLightActive("ambientGlow", false)
+    animator.setLightActive("ambientGlowLow", true)
+  end
 end
