@@ -17,14 +17,14 @@
   },
   "physicsCollisions" : {
     "top" : {
-      "collision" : [ [-4.5, 0.0], [4.5, 0.0], [4.5, 1.0], [-4.5, 1.0] ],
+      "collision" : [ [-1, 2.5], [1, 2.5]],
       "collisionKind" : "platform",
       "attachToPart" : "body"
     }
   },
 
   "movementSettings" : {
-    "collisionPoly" : [ [0.8,0], [0.8,4], [-0.8,4], [-0.8,0] ],
+    "collisionPoly" : [ [1,0], [1,4], [-1,4], [-1,0] ],
     "mass" : 1.2,
     "ignorePlatformCollision" : false,
     "gravityEnabled" : true,

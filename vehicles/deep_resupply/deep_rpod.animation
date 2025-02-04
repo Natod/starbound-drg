@@ -13,7 +13,7 @@
     "parts" : {
       "body" : {
         "properties" : {
-          "offset" : [0, 2],
+          "offset" : [0, 1.5],
           "zLevel" : 1
         },
         "partStates" : {
