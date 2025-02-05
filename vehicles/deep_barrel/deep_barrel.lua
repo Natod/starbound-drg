@@ -17,7 +17,7 @@ function init(dt)
   else
     vehicle.setDamageTeam({type = "passive"})
   end
-  self.kickable = config.getParameter("kickable", false)
+  self.kickable = config.getParameter("kickable", true)
 
   animator.setAnimationState("body", "idle")
   --
@@ -74,9 +74,12 @@ function update(dt)
     end
 
     vehicle.setInteractive(false)
-  else
+  elseif self.kickable then
     vehicle.setInteractive(true)
+  else
+    vehicle.setInteractive(false)
   end
+
   self.lastDriver = driver
 
   local spinny = false
