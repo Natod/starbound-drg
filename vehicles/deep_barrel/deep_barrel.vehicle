@@ -42,5 +42,7 @@
     "ignorePlatformCollision" : false,
     "gravityEnabled" : true,
     "collisionEnabled" : true
-  }
+  },
+
+  "kickForce": 50
 }

@@ -23,6 +23,7 @@ function init(dt)
     mcontroller.setVelocity(startVel)
     storage.kicked = true
   end
+  self.kickForce = config.getParameter("kickForce")
 end
 
 function update(dt)
@@ -35,7 +36,7 @@ function update(dt)
       for i,p in pairs(self.nearbyPlayers) do
         if driver == p then
           local dir = vec2.norm(world.distance(mcontroller.position(), vec2.add(self.playerPosList[p][2],{0,-5})))
-          world.spawnVehicle("deep_barrel", mcontroller.position(), {velocity=vec2.add(vec2.mul(dir, 50), mcontroller.velocity())})
+          world.spawnVehicle("deep_barrel", mcontroller.position(), {velocity=vec2.add(vec2.mul(dir, self.kickForce), mcontroller.velocity())})
           mcontroller.setPosition(vec2.add(self.playerPosList[p][2],{0,-2.65}))
           vehicle.destroy()
           break
