@@ -66,6 +66,7 @@ function update(args)
 		local unitVec = vec2.norm(distVec)
 		local endVec = vec2.add(mcontroller.position(), vec2.mul(unitVec, math.min(rayDist, distMag)))
 		local pos = world.lineCollision(mcontroller.position(), endVec) or endVec
+		pos = vec2.sub(pos, vec2.mul(unitVec, 0.1))
 		world.spawnProjectile("deep_resupplycaller", pos, entity.id())
 		self.holdTimer = -1
 	end
