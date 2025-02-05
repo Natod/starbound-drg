@@ -118,7 +118,6 @@ function shield(dt)
     if self.lastHealth > status.resource("health") or self.lastAbsorb > status.resource("damageAbsorption") then
       self.shieldTimer = 5
     end
-    sb.logInfo(string.format("Health changed from %s to %s", self.lastHealth, status.resource("health")))
     self.lastHealth = status.resource("health")
     self.lastAbsorb = status.resource("damageAbsorption")
   end
