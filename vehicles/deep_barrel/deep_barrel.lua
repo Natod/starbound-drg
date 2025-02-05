@@ -20,7 +20,7 @@ function init(dt)
   self.kickable = config.getParameter("kickable", true)
 
   animator.setAnimationState("body", "idle")
-  --
+  
   mcontroller.applyParameters(self.movementSettings)
   storage.kicked = storage.kicked or false
   local startVel = config.getParameter("velocity")
@@ -44,7 +44,8 @@ function init(dt)
 end
 
 function update(dt)
-  
+  animator.resetTransformationGroup("rotate")
+  animator.rotateTransformationGroup("rotate", vec2.angle(mcontroller.velocity()) + math.pi/2, {0,1.5})
   if not storage.kickedSoundFlag then
     animator.playSound("smash")
     storage.kickedSoundFlag = true
@@ -125,8 +126,7 @@ function update(dt)
       animator.rotateTransformationGroup("rotate", ((rand-0.5)*2)*rand * math.pi/3, {0,1.5})
       animator.playSound("smash")
     else
-      animator.resetTransformationGroup("rotate")
-      --animator.stopAllSounds("smash")
+      --animator.resetTransformationGroup("rotate")
     end
   end
 end
