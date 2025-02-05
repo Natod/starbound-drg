@@ -11,6 +11,7 @@ function init()
 	self.flashCooldownTimer = 0
 	self.cooldownFinish = false
 	self.regenFinish = false
+	self.holdTimer = 0
 end
 
 function uninit()
@@ -39,14 +40,24 @@ function update(args)
 		end
 	end
 	
-	if args.moves["special1"] and self.fireTimer == 0 and self.flareCount >= 1 then 
-		animator.playSound("activate")
-		world.spawnProjectile("deep_flareblue", mcontroller.position(), entity.id(), aimVector(), false)
-		self.fireTimer = self.fireTime
-		self.flashCooldownTimer = self.fireTime
-		self.flareCount = self.flareCount - 1
-		self.cooldownFinish = false
-		self.regenFinish = false
+	if args.moves["special1"] then
+		self.holdTimer = self.holdTimer + args.dt
+	end
+
+	if not args.moves["special1"] and self.holdTimer > 0 then
+		if self.holdTimer < 0.5 and self.fireTimer == 0 and self.flareCount >= 1 then 
+			animator.playSound("activate")
+			world.spawnProjectile("deep_flareblue", mcontroller.position(), entity.id(), aimVector(), false)
+			self.fireTimer = self.fireTime
+			self.flashCooldownTimer = self.fireTime
+			self.flareCount = self.flareCount - 1
+			self.cooldownFinish = false
+			self.regenFinish = false
+		end
+		if self.holdTimer > 0.5 then
+			world.spawnProjectile("deep_resupplycaller", tech.aimPosition(), entity.id())
+		end
+		self.holdTimer = 0
 	end
 	
 	if self.flareCount < 4 then
