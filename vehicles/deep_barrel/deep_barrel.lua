@@ -17,6 +17,12 @@ function init(dt)
   animator.setAnimationState("body", "idle")
   --vehicle.destroy()
   mcontroller.applyParameters(self.movementSettings)
+  storage.kicked = storage.kicked or false
+  local startVel = config.getParameter("velocity")
+  if startVel and not storage.kicked then
+    mcontroller.setVelocity(startVel)
+    storage.kicked = true
+  end
 end
 
 function update(dt)
@@ -28,7 +34,10 @@ function update(dt)
       --match the index of the driver's entityID to their position
       for i,p in pairs(self.nearbyPlayers) do
         if driver == p then
-          --mcontroller.setPosition(vec2.add(self.playerPosList[p][2],{0,-2.65}))
+          local dir = vec2.norm(world.distance(mcontroller.position(), vec2.add(self.playerPosList[p][2],{0,-5})))
+          world.spawnVehicle("deep_barrel", mcontroller.position(), {velocity=vec2.add(vec2.mul(dir, 50), mcontroller.velocity())})
+          mcontroller.setPosition(vec2.add(self.playerPosList[p][2],{0,-2.65}))
+          vehicle.destroy()
           break
         end
       end
@@ -36,7 +45,7 @@ function update(dt)
 
     vehicle.setInteractive(false)
   else
-    vehicle.setInteractive(false)
+    vehicle.setInteractive(true)
   end
   self.lastDriver = driver
 

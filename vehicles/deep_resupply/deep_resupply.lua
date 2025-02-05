@@ -32,6 +32,22 @@ function update(dt)
   mcontroller.setXVelocity(0)
   mcontroller.applyParameters(self.movementSettings)
   mcontroller.setXPosition(self.xpos)
+
+  local supplyPercent = self.supplyProgress / self.supplyTime
+  local resupplyBar = {
+    position = {0,2},
+    width = 3,
+    inset = 1,
+    length = 3,
+    bgColor = {20, 20, 30, 200},
+    fgColor = {
+      125 + 100 * supplyPercent^2, 
+      125 + 100 * supplyPercent^2, 
+      125 + 100 * supplyPercent^2, 
+      200},
+    progress = supplyPercent,
+    empty = false
+  }
    
   local driver = vehicle.entityLoungingIn("seat")
   if driver then
@@ -48,9 +64,12 @@ function update(dt)
     end
 
     vehicle.setInteractive(false)
-  else
-     --passive
+  elseif self.lastDriver then
     animator.stopAllSounds("inProgress")
+    resupplyBar.empty = true
+    world.sendEntityMessage(self.lastDriver, "deep_playerAnimatorBarUpdate", "resupplyBar", resupplyBar)
+  else
+    --passive
     vehicle.setInteractive(true)
   end
   self.lastDriver = driver
@@ -73,21 +92,6 @@ function update(dt)
     end
   end
 
-  local supplyPercent = self.supplyProgress / self.supplyTime
-  local resupplyBar = {
-    position = {0,2},
-    width = 3,
-    inset = 1,
-    length = 3,
-    bgColor = {20, 20, 30, 200},
-    fgColor = {
-      125 + 100 * supplyPercent^2, 
-      125 + 100 * supplyPercent^2, 
-      125 + 100 * supplyPercent^2, 
-      200},
-    progress = supplyPercent,
-    empty = false
-  }
   
   if driver then
     if self.supplyProgress < self.supplyTime then
@@ -113,6 +117,7 @@ function update(dt)
     --update the progress bar display
     world.sendEntityMessage(driver, "deep_playerAnimatorBarUpdate", "resupplyBar", resupplyBar)
   else
+    resupplyBar.empty = true
     self.supplyProgress = 0
   end
     
