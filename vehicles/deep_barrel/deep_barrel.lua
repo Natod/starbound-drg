@@ -78,7 +78,8 @@ function update(dt)
       end
     end
     if spinny then
-      animator.rotateTransformationGroup("rotate", (math.random()-0.5)*2 * math.pi/4, {0,1.5})
+      local rand = math.random()
+      animator.rotateTransformationGroup("rotate", ((rand-0.5)*2)*rand * math.pi/3, {0,1.5})
     else
       animator.resetTransformationGroup("rotate")
     end

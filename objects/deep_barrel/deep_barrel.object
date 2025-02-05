@@ -1,0 +1,25 @@
+{
+  "objectName" : "deep_barrel",
+  "colonyTags" : [],
+  "rarity" : "Common",
+  "description" : "chaos incarnate",
+  "shortdescription" : "Barrel",
+  "race" : "generic",
+  "category" : "decorative",
+  "price" : 140,
+
+  "inventoryIcon" : "deep_barrel.png",
+  "orientations" : [
+    {
+      "dualImage" : "deep_barrel.png",
+      "imagePosition" : [-8, 0],
+
+      "spaceScan" : 0.1,
+      "anchors" : [ "bottom" ],
+      "collision" : "platform"
+
+    }
+  ],
+  "scripts" : ["/objects/deep_barrel/deep_barrel.lua"],
+  "scriptDelta" : 10
+}
