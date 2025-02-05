@@ -42,18 +42,20 @@ function update(args)
 	end
 
 	local timerPercent = self.holdTimer / self.resupplyTime
-	local fadeVal = math.min(timerPercent + 0.65, 1)
+	--local fadeVal = math.min(timerPercent + 0.65, 1)
+	local fadeThreshhold = 80
+	local alpha = math.min(math.max(timerPercent*(350+fadeThreshhold) - fadeThreshhold, 0), 200)
 	local timerBar = {
 		position = vec2.add(vec2.sub(tech.aimPosition(), mcontroller.position()), {0,-2}),
 		width = 4,
 		inset = 1,
 		length = 5,
-		bgColor = {20, 20, 30, 200},
+		bgColor = {20, 20, 30, alpha},
 		fgColor = {
 			150 + 100 * timerPercent^2, 
 			150 + 100 * timerPercent^2, 
 			150 + 100 * timerPercent^2, 
-			200
+			alpha
 		},
 		progress = timerPercent,
 		empty = false
@@ -65,7 +67,7 @@ function update(args)
 			255,
 			255,
 			255,
-			0 + fadeVal^2*200
+			alpha
 		},
 		empty = false
 	}
@@ -83,7 +85,12 @@ function update(args)
 	world.sendEntityMessage(entity.id(), "deep_playerAnimatorImgUpdate", "resupplyAbility", callText)
 
 	if not args.moves["special1"] then
-		if self.holdTimer > 0 and self.holdTimer < self.resupplyTime and self.fireTimer == 0 and self.flareCount >= 1 then
+		if self.holdTimer > 0 
+		and self.holdTimer < self.resupplyTime 
+		and self.fireTimer == 0 
+		and self.flareCount >= 1 
+		and self.holdTimer < 0.35
+		then
 			--throw flare
 			animator.playSound("activate")
 			world.spawnProjectile("deep_flareblue", mcontroller.position(), entity.id(), aimVector(), false)

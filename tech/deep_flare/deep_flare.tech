@@ -6,9 +6,9 @@
   "animator" : "deep_flare.animation",
   "fireTime" : 0.5,
   "flareCount" : 4,
-  "resupplyTime" : 1,
+  "resupplyTime" : 1.5,
 
-  "description" : "Throw Flare ^green;[F]^reset;",
+  "description" : "Throw Flare ^green;[F]^reset;; Call Resupply ^green;Hold [F]^reset;",
   "shortDescription" : "Flare",
   "rarity" : "Legendary",
   "icon" : "/tech/deep_flare/deep_flare.png"
