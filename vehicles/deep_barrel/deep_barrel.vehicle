@@ -8,7 +8,7 @@
   "animation" : "deep_barrel.animation",
   "objectTags" : [],
 
-
+  "health" : 35,
   "detectRadius" : 10,
 
   "loungePositions" : {

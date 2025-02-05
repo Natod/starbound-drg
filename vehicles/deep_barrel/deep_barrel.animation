@@ -93,6 +93,10 @@
   },
 
   "sounds" : {
-    "smash" : ["/sfx/projectiles/throw_item.ogg"]
+    "smash" : [
+      "/sfx/vehicles/barrel/BarrelImpactA_1.ogg",
+      "/sfx/vehicles/barrel/BarrelImpactA_2.ogg",
+      "/sfx/vehicles/barrel/BarrelImpactE_2.ogg"
+    ]
   }
 }

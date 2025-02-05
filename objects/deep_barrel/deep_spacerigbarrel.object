@@ -1,9 +1,9 @@
 {
-  "objectName" : "deep_barrel",
+  "objectName" : "deep_spacerigbarrel",
   "colonyTags" : [],
   "rarity" : "Common",
   "description" : "chaos incarnate",
-  "shortdescription" : "Barrel",
+  "shortdescription" : "Space Rig Barrel",
   "race" : "generic",
   "category" : "decorative",
   "price" : 140,
@@ -13,18 +13,17 @@
     "health" : 35,
     "kickable" : true,
     "killOnReload" : true,
-    "smashOnSpawn" : true
+    "smashOnSpawn" : false
   },
 
   "inventoryIcon" : "deep_barrel.png",
   "orientations" : [
     {
-      "dualImage" : "deep_barrel.png",
-      "imagePosition" : [-8, 0],
+      "dualImage" : "utility/empty.png",
+      "imagePosition" : [0, 0],
 
       "spaceScan" : 0.1,
-      "anchors" : [ "bottom" ],
-      "collision" : "platform"
+      "anchors" : [  ]
 
     }
   ],
