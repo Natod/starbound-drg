@@ -28,10 +28,17 @@
 
   "damageSources" : {
   },
+  "physicsCollisions" : {
+    "top" : {
+      "collision" : [ [-1, -1.5], [1, -1.5], [1, 1.5], [-1, 1.5] ],
+      "collisionKind" : "dynamic",
+      "attachToPart" : "body"
+    }
+  },
 
   "movementSettings" : {
-    "collisionPoly" : [ [0,0], [0.75,0.75], [0,1.5], [-0.75,0.75] ],
-    "mass" : 0.1,
+    "collisionPoly" : [ [-1, -1.5], [1, -1.5], [1, 1.5], [-1, 1.5] ],
+    "mass" : 1,
     "ignorePlatformCollision" : false,
     "gravityEnabled" : true,
     "collisionEnabled" : true

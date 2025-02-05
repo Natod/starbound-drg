@@ -11,27 +11,19 @@ function init(dt)
   self.movementSettings = config.getParameter("movementSettings")
   vehicle.setPersistent(true)
   vehicle.setDamageTeam({type = "ghostly"})
-  animator.setParticleEmitterActive("particleGlow", false)
+  vehicle.setInteractive(false)
 
-  self.rackID = config.getParameter("rackID", 0)
-  animator.setAnimationState("body", string.format("%s",self.rackID))
+  animator.setAnimationState("body", "idle")
   --vehicle.destroy()
-  
-  message.setHandler("deep_destroyRack", function(messageName, isLocalEntity)
-    vehicle.destroy()
-  end)
+  mcontroller.applyParameters(self.movementSettings)
 end
 
 function update(dt)
-  mcontroller.setXVelocity(0)
-  mcontroller.applyParameters(self.movementSettings)
-  mcontroller.setXPosition(self.xpos)
    
   local driver = vehicle.entityLoungingIn("seat")
   if driver then
     -- called when you first get in 
     if self.lastDriver == nil then
-      animator.playSound("inProgress")
       --match the index of the driver's entityID to their position
       for i,p in pairs(self.nearbyPlayers) do
         if driver == p then
@@ -43,14 +35,12 @@ function update(dt)
 
     vehicle.setInteractive(false)
   else
-     --passive
-    animator.stopAllSounds("inProgress")
-    vehicle.setInteractive(true)
+    vehicle.setInteractive(false)
   end
   self.lastDriver = driver
-  
-  
-  if vehicle.entityLoungingIn("seat") == nil then
+
+  local spinny = false
+  if driver == nil then
     self.nearbyPlayers = world.entityQuery(mcontroller.position(), self.detectRadius, {
       includedTypes = {"player"},
       boundMode = "CollisionArea",
@@ -63,60 +53,37 @@ function update(dt)
         self.playerPosList[p] = self.playerPosList[p] or {}
         self.playerPosList[p][2] = self.playerPosList[p][1] or {0,0}
         self.playerPosList[p][1] = world.entityPosition(p)
+        --
+        local playerX = world.entityPosition(p)[1] - 0
+        local playerY = world.entityPosition(p)[2] - 2.5
+        if  playerX > mcontroller.xPosition() - 1.7
+        and playerX < mcontroller.xPosition() + 1.7
+        and playerY > mcontroller.yPosition() + 2
+        and playerY < mcontroller.yPosition() + 3.01 then
+          --freak
+          --sb.logInfo("freakin!!")
+          local maxDisplacement = 1.25
+          local poly = mcontroller.collisionPoly()
+          --{{0,0},{0,1},{1,1},{1,0}}
+          local resolvePos = world.resolvePolyCollision(poly, 
+          vec2.add(mcontroller.position(),{
+            (math.random()-0.5)*2 * maxDisplacement,
+            (math.random()-0.5)*2 * maxDisplacement
+          }), maxDisplacement)
+          if resolvePos then
+            mcontroller.setPosition(resolvePos)
+            spinny = true
+          end
+        end
       end
+    end
+    if spinny then
+      animator.rotateTransformationGroup("rotate", (math.random()-0.5)*2 * math.pi/4, {0,1.5})
+    else
+      animator.resetTransformationGroup("rotate")
     end
   end
 
-  local supplyPercent = self.supplyProgress / self.supplyTime
-  local resupplyBar = {
-    position = {0,2},
-    width = 3,
-    inset = 1,
-    length = 3,
-    bgColor = {20, 20, 30, 200},
-    fgColor = {
-      125 + 100 * supplyPercent^2, 
-      125 + 100 * supplyPercent^2, 
-      125 + 100 * supplyPercent^2, 
-      200},
-    progress = supplyPercent,
-    empty = false
-  }
   
-  if driver then
-    if self.supplyProgress < self.supplyTime then
 
-      self.supplyProgress = self.supplyProgress + dt / self.supplyTime
-      if self.supplyProgress >= self.supplyTime then
-        --resupply half the player ammo
-        animator.stopAllSounds("inProgress")
-        world.sendEntityMessage(self.parentID, "deep_resupplyEmpty")
-        world.sendEntityMessage(driver, "deep_resupplyFactor", 0.5)
-        resupplyBar.empty = true
-        vehicle.destroy()
-      end
-    end
-    --leave the supply pod if you try to move (small dead window)
-    if self.supplyProgress > 0.4 and (vehicle.controlHeld("seat", "jump") or vehicle.controlHeld("seat", "right") or vehicle.controlHeld("seat", "left")) then
-      animator.stopAllSounds("inProgress")
-      resupplyBar.empty = true
-      vehicle.destroy()
-      world.spawnVehicle("deep_resupply", mcontroller.position(), {rackID = self.rackID, parentID = self.parentID})
-      self.supplyProgress = 0
-    end
-    --update the progress bar display
-    world.sendEntityMessage(driver, "deep_playerAnimatorBarUpdate", "resupplyBar", resupplyBar)
-  else
-    self.supplyProgress = 0
-  end
-    
-
-
-end
-
---checks if the aquarq-like has the given tag and does its thing
-function identifyType(query)
-  local hasTag = false
-  if deep_util.isInTable(query, self.objTags) then hasTag = true end
-  return hasTag
 end
