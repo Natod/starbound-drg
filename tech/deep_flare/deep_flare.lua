@@ -55,9 +55,16 @@ function update(args)
 			self.regenFinish = false
 		end
 		if self.holdTimer > 0.5 then
-			world.spawnProjectile("deep_resupplycaller", tech.aimPosition(), entity.id())
+			local rayDist = 20
+			local distVec = vec2.sub(tech.aimPosition(), mcontroller.position())
+			local distMag = vec2.mag(distVec)
+			local unitVec = vec2.norm(distVec)
+			local endVec = vec2.add(mcontroller.position(), vec2.mul(unitVec, math.min(rayDist, distMag)))
+			local pos = world.lineCollision(mcontroller.position(), endVec) or endVec
+			world.spawnProjectile("deep_resupplycaller", pos, entity.id())
 		end
 		self.holdTimer = 0
+
 	end
 	
 	if self.flareCount < 4 then
