@@ -12,6 +12,7 @@ function init()
 	self.cooldownFinish = false
 	self.regenFinish = false
 	self.holdTimer = 0
+	self.resupplyTime = config.getParameter("resupplyTime")
 end
 
 function uninit()
@@ -45,23 +46,19 @@ function update(args)
 	end
 
 	if not args.moves["special1"] then
-		if self.holdTimer > 0 then
-			if self.holdTimer < 0.5 and self.fireTimer == 0 and self.flareCount >= 1 then 
-				--throw flare
-				animator.playSound("activate")
-				world.spawnProjectile("deep_flareblue", mcontroller.position(), entity.id(), aimVector(), false)
-				self.fireTimer = self.fireTime
-				self.flashCooldownTimer = self.fireTime
-				self.flareCount = self.flareCount - 1
-				self.cooldownFinish = false
-				self.regenFinish = false
-			end
-			
+		if self.holdTimer > 0 and self.holdTimer < self.resupplyTime and self.fireTimer == 0 and self.flareCount >= 1 then
+			--throw flare
+			animator.playSound("activate")
+			world.spawnProjectile("deep_flareblue", mcontroller.position(), entity.id(), aimVector(), false)
+			self.fireTimer = self.fireTime
+			self.flashCooldownTimer = self.fireTime
+			self.flareCount = self.flareCount - 1
+			self.cooldownFinish = false
+			self.regenFinish = false
 		end
 		self.holdTimer = 0
-
 	end
-	if self.holdTimer > 0.5 then
+	if self.holdTimer > self.resupplyTime then
 		--summon resupply pod
 		local rayDist = 20
 		local distVec = vec2.sub(tech.aimPosition(), mcontroller.position())
@@ -70,7 +67,7 @@ function update(args)
 		local endVec = vec2.add(mcontroller.position(), vec2.mul(unitVec, math.min(rayDist, distMag)))
 		local pos = world.lineCollision(mcontroller.position(), endVec) or endVec
 		world.spawnProjectile("deep_resupplycaller", pos, entity.id())
-		self.holdtimer = -1
+		self.holdTimer = -1
 	end
 	
 	if self.flareCount < 4 then

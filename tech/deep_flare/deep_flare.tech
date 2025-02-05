@@ -5,10 +5,11 @@
   "scripts" : ["deep_flare.lua"],
   "animator" : "deep_flare.animation",
   "fireTime" : 0.5,
+  "flareCount" : 4,
+  "resupplyTime" : 1,
 
   "description" : "Throw Flare ^green;[F]^reset;",
   "shortDescription" : "Flare",
   "rarity" : "Legendary",
-  "icon" : "/tech/deep_flare/deep_flare.png",
-  "flareCount" : 4
+  "icon" : "/tech/deep_flare/deep_flare.png"
 }
