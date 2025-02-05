@@ -95,7 +95,25 @@ end
 
 function update(dt)
   deep_update()
-  --deep_util.print(status.resource("damageAbsorption"))
+  if player.species() == "deep_dwarf" then
+    shield(dt)
+  end
+  --[[
+  if contains(player.primaryHandItemTags(), self.deep_tags.ammo) then
+    deep_util.print(player.primaryHandItem().name)
+  end
+  --]]
+  --world.sendEntityMessage(player.primaryHandItem(), )
+  --deep_util.print(storage.ammoTable.reserve)
+
+  --player.lounge(8)
+end
+
+function uninit()
+  deep_uninit()
+end
+
+function shield(dt)
   if self.lastHealth ~= status.resource("health") or self.lastAbsorb ~= status.resource("damageAbsorption") then
     if self.lastHealth > status.resource("health") or self.lastAbsorb > status.resource("damageAbsorption") then
       self.shieldTimer = 5
@@ -110,20 +128,6 @@ function update(dt)
     status.setResource("damageAbsorption", status.resource("damageAbsorption") + dt * 20)
   end
   status.setResource("energy", status.resource("damageAbsorption"))
-
-  --[[
-  if contains(player.primaryHandItemTags(), self.deep_tags.ammo) then
-    deep_util.print(player.primaryHandItem().name)
-  end
-  --]]
-  --world.sendEntityMessage(player.primaryHandItem(), )
-  --deep_util.print(storage.ammoTable.reserve)
-
-  --player.lounge(8)
-end
-
-function uninit()
-  deep_uninit()
 end
 
 function checkBlocks()

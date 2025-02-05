@@ -24,10 +24,10 @@
       "time" : 0,
       "repeat" : false,
       "action" : "sound",
-      "options" : [ "/sfx/objects/resupply/ResupplyCallInA_1.ogg" ]
+      "options" : [ "/sfx/vehicles/resupply/ResupplyCallInA_1.ogg" ]
    }
   ],
-  "persistentAudio" : "/sfx/objects/resupply/SupplyDropBeaconCombinedA_1.ogg",
+  "persistentAudio" : "/sfx/vehicles/resupply/SupplyDropBeaconCombinedA_1.ogg",
   
   "scripts" : [ "deep_resupplycaller.lua" ]
 
