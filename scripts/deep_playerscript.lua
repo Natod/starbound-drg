@@ -88,9 +88,16 @@ function init()
     end
   end)
 
-  self.lastHealth = status.resource("health")
-  self.lastAbsorb = status.resource("damageAbsorption")
-  self.shieldTimer = 0
+  if player.species() == "deep_dwarf" then
+    local shieldJson = root.assetJson("/player/deep_shield.json")
+    self.shieldRegenBufferTime = shieldJson["shieldRegenBufferTime"]
+    self.shieldRegenRate = shieldJson["shieldRegenRate"]
+    self.shieldMaxHealth = shieldJson["shieldMaxHealth"]
+
+    self.lastHealth = status.resource("health")
+    self.lastAbsorb = status.resource("damageAbsorption")
+    self.shieldTimer = 0
+  end
 end
 
 function update(dt)
@@ -116,15 +123,15 @@ end
 function shield(dt)
   if self.lastHealth ~= status.resource("health") or self.lastAbsorb ~= status.resource("damageAbsorption") then
     if self.lastHealth > status.resource("health") or self.lastAbsorb > status.resource("damageAbsorption") then
-      self.shieldTimer = 5
+      self.shieldTimer = self.shieldRegenBufferTime
     end
     self.lastHealth = status.resource("health")
     self.lastAbsorb = status.resource("damageAbsorption")
   end
   if self.shieldTimer > 0 then
     self.shieldTimer = self.shieldTimer - dt
-  elseif status.resource("damageAbsorption") < 100 then
-    status.setResource("damageAbsorption", status.resource("damageAbsorption") + dt * 20)
+  elseif status.resource("damageAbsorption") < self.shieldMaxHealth then
+    status.setResource("damageAbsorption", status.resource("damageAbsorption") + dt * self.shieldRegenRate)
   end
   status.setResource("energy", status.resource("damageAbsorption"))
 end
