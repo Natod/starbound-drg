@@ -40,31 +40,37 @@ function update(args)
 		end
 	end
 	
-	if args.moves["special1"] then
+	if args.moves["special1"] and self.holdTimer >= 0 then
 		self.holdTimer = self.holdTimer + args.dt
 	end
 
-	if not args.moves["special1"] and self.holdTimer > 0 then
-		if self.holdTimer < 0.5 and self.fireTimer == 0 and self.flareCount >= 1 then 
-			animator.playSound("activate")
-			world.spawnProjectile("deep_flareblue", mcontroller.position(), entity.id(), aimVector(), false)
-			self.fireTimer = self.fireTime
-			self.flashCooldownTimer = self.fireTime
-			self.flareCount = self.flareCount - 1
-			self.cooldownFinish = false
-			self.regenFinish = false
-		end
-		if self.holdTimer > 0.5 then
-			local rayDist = 20
-			local distVec = vec2.sub(tech.aimPosition(), mcontroller.position())
-			local distMag = vec2.mag(distVec)
-			local unitVec = vec2.norm(distVec)
-			local endVec = vec2.add(mcontroller.position(), vec2.mul(unitVec, math.min(rayDist, distMag)))
-			local pos = world.lineCollision(mcontroller.position(), endVec) or endVec
-			world.spawnProjectile("deep_resupplycaller", pos, entity.id())
+	if not args.moves["special1"] then
+		if self.holdTimer > 0 then
+			if self.holdTimer < 0.5 and self.fireTimer == 0 and self.flareCount >= 1 then 
+				--throw flare
+				animator.playSound("activate")
+				world.spawnProjectile("deep_flareblue", mcontroller.position(), entity.id(), aimVector(), false)
+				self.fireTimer = self.fireTime
+				self.flashCooldownTimer = self.fireTime
+				self.flareCount = self.flareCount - 1
+				self.cooldownFinish = false
+				self.regenFinish = false
+			end
+			
 		end
 		self.holdTimer = 0
 
+	end
+	if self.holdTimer > 0.5 then
+		--summon resupply pod
+		local rayDist = 20
+		local distVec = vec2.sub(tech.aimPosition(), mcontroller.position())
+		local distMag = vec2.mag(distVec)
+		local unitVec = vec2.norm(distVec)
+		local endVec = vec2.add(mcontroller.position(), vec2.mul(unitVec, math.min(rayDist, distMag)))
+		local pos = world.lineCollision(mcontroller.position(), endVec) or endVec
+		world.spawnProjectile("deep_resupplycaller", pos, entity.id())
+		self.holdtimer = -1
 	end
 	
 	if self.flareCount < 4 then

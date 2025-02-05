@@ -21,7 +21,7 @@ function init(dt)
 
   self.rackID = config.getParameter("rackID", 0)
   animator.setAnimationState("body", string.format("%s",self.rackID))
-  --vehicle.destroy()
+  vehicle.destroy()
   
   message.setHandler("deep_destroyRack", function(messageName, isLocalEntity)
     vehicle.destroy()
