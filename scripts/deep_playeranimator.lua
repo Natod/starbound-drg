@@ -26,6 +26,7 @@ function init()
     }
     --]]
   }
+  self.deep_imgRender = {}
 
   self.deep_itemStatus = {}
 
@@ -36,6 +37,10 @@ function init()
   message.setHandler("deep_playerAnimatorBarUpdate", function(messageName, isLocalEntity, key, barTable)
     --table.insert(self.deep_barRender, barTable)
     self.deep_barRender[key] = barTable
+  end)
+  message.setHandler("deep_playerAnimatorImgUpdate", function(messageName, isLocalEntity, key, imgTable)
+    --table.insert(self.deep_barRender, barTable)
+    self.deep_imgRender[key] = imgTable
   end)
 
 end
@@ -80,6 +85,15 @@ function update(dt)
       deep_barRender(barTable)
     end
   end
+
+  --render everything in imgTable and clear empties
+  for key,imgTable in pairs(self.deep_imgRender) do 
+    if imgTable.empty then
+      deep_util.removeKey(self.deep_imgRender, key)
+    else
+      deep_imgRender(imgTable)
+    end
+  end
 end
 
 --draw a number filling empty spaces up to "places" with 0
@@ -118,7 +132,8 @@ function deep_barRender(barTable)
       {barTable.length/2, 0}
     },
     width = barTable.width,
-    color = barTable.bgColor
+    color = barTable.bgColor,
+    fullbright = true
   }, "Overlay")
   localAnimator.addDrawable({
     position = barTable.position,
@@ -131,6 +146,16 @@ function deep_barRender(barTable)
       }
     },
     width = barTable.width - 2*barTable.inset,
-    color = barTable.fgColor
+    color = barTable.fgColor,
+    fullbright = true
+  }, "Overlay")
+end
+
+function deep_imgRender(imgTable)
+  localAnimator.addDrawable({
+    position = imgTable.pos,
+    image = imgTable.img,
+    color = imgTable.color,
+    fullbright = true
   }, "Overlay")
 end

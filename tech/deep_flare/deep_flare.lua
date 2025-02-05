@@ -40,10 +40,47 @@ function update(args)
 			tech.setParentDirectives()	
 		end
 	end
-	
+
+	local timerPercent = self.holdTimer / self.resupplyTime
+	local fadeVal = math.min(timerPercent + 0.65, 1)
+	local timerBar = {
+		position = vec2.add(vec2.sub(tech.aimPosition(), mcontroller.position()), {0,-2}),
+		width = 4,
+		inset = 1,
+		length = 5,
+		bgColor = {20, 20, 30, 200},
+		fgColor = {
+			150 + 100 * timerPercent^2, 
+			150 + 100 * timerPercent^2, 
+			150 + 100 * timerPercent^2, 
+			200
+		},
+		progress = timerPercent,
+		empty = false
+	}
+	local callText = {
+		pos = vec2.add(vec2.sub(tech.aimPosition(), mcontroller.position()), {0,-4}),
+		img = "/interface/text/deep_resupplytext.png",
+		color = {
+			255,
+			255,
+			255,
+			0 + fadeVal^2*200
+		},
+		empty = false
+	}
+
 	if args.moves["special1"] and self.holdTimer >= 0 then
 		self.holdTimer = self.holdTimer + args.dt
+		timerBar.empty = false
+		callText.empty = false
+	else
+		timerBar.empty = true
+		callText.empty = true
 	end
+
+	world.sendEntityMessage(entity.id(), "deep_playerAnimatorBarUpdate", "flareTimerBar", timerBar)
+	world.sendEntityMessage(entity.id(), "deep_playerAnimatorImgUpdate", "resupplyAbility", callText)
 
 	if not args.moves["special1"] then
 		if self.holdTimer > 0 and self.holdTimer < self.resupplyTime and self.fireTimer == 0 and self.flareCount >= 1 then
@@ -60,7 +97,7 @@ function update(args)
 	end
 	if self.holdTimer > self.resupplyTime then
 		--summon resupply pod
-		local rayDist = 20
+		local rayDist = 10
 		local distVec = vec2.sub(tech.aimPosition(), mcontroller.position())
 		local distMag = vec2.mag(distVec)
 		local unitVec = vec2.norm(distVec)

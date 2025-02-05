@@ -34,7 +34,7 @@ function init(dt)
   message.setHandler("deep_resupplyEmpty", function(messageName, isLocalEntity)
     storage.rackCount = storage.rackCount - 1
   end)
-
+  vehicle.destroy()
 end
 
 function update(dt)

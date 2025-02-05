@@ -41,7 +41,8 @@ function update(dt)
         {self.barParams.length/2, 0}
       },
       width = self.barParams.width,
-      color = self.barParams.bgColor
+      color = self.barParams.bgColor,
+      fullbright = true
     }, "Overlay")
 
   localAnimator.addDrawable({
@@ -55,6 +56,7 @@ function update(dt)
         }
       },
       width = self.barParams.width - 2*self.barParams.inset,
-      color = self.barParams.color
+      color = self.barParams.color,
+      fullbright = true
     }, "Overlay")
 end
