@@ -4,7 +4,7 @@
   "boundBox" : [-5.0, -16.0, 5.0, 5.0],
   "slaveControlTimeout" : 2.0,
   "slaveControlHeartbeat" : 1.0,
-  "canBeHit" : false,
+  "canBeHit" : true,
   "animation" : "deep_barrel.animation",
   "objectTags" : [],
 

@@ -60,6 +60,38 @@
     }
   },
 
+  "particleEmitters" : {
+    "damageShards" : {
+      "transformationGroups" : [],
+      "emissionRate" : 0.0,
+      "burstCount"  : 30,
+      "offsetRegion" : [-2.5, -1.875, 2.5, 0.5],
+      "particles" : [
+        {
+          "particle" :  {
+            "type" : "animated",
+            "animation" : "/animations/dusttest/dusttest.animation",
+            "approach" : [1, 1],
+            "position" : [0, 1.5],
+            "initialVelocity" : [0, 0],
+            "finalVelocity" : [0, 0],
+            "color" : [170,170,240,60],
+            "timeToLive" : 0.2,
+            "destructionTime" : 1,
+            "destructionAction" : "shrink",
+            "size" : 1.2,
+            "variance" : {
+              "position" : [0, 0.5],
+              "initialVelocity" : [3, 3],
+              "rotation" : 180,
+              "size" : 0.5
+            }
+          }
+        }
+      ]
+    }
+  },
+
   "sounds" : {
     "smash" : ["/sfx/projectiles/throw_item.ogg"]
   }

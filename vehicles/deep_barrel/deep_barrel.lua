@@ -7,10 +7,11 @@ function init(dt)
   self.detectRadius = config.getParameter("detectRadius")
   self.playerPosList = {}
   self.nearbyPlayers = {}
+  storage.health = storage.health or 35
   
   self.movementSettings = config.getParameter("movementSettings")
   vehicle.setPersistent(true)
-  vehicle.setDamageTeam({type = "ghostly"})
+  vehicle.setDamageTeam({type = "passive"})
   vehicle.setInteractive(false)
 
   animator.setAnimationState("body", "idle")
@@ -84,7 +85,28 @@ function update(dt)
       animator.resetTransformationGroup("rotate")
     end
   end
+end
 
-  
+function applyDamage(damageRequest)
+  local damage = 0
+  damage = damage + damageRequest.damage
 
+  local healthLost = math.min(damage, storage.health)
+  storage.health = storage.health - healthLost
+  if storage.health <= 0 then 
+    --animator.setParticleEmitterBurstCount(1)
+    animator.burstParticleEmitter("damageShards")
+    vehicle.destroy()
+  end
+  return {{
+    sourceEntityId = damageRequest.sourceEntityId,
+    targetEntityId = entity.id(),
+    position = mcontroller.position(),
+    damageDealt = damage,
+    healthLost = healthLost,
+    hitType = "Hit",
+    damageSourceKind = damageRequest.damageSourceKind,
+    targetMaterialKind = "robotic",
+    killed = storage.health <= 0
+  }}
 end
