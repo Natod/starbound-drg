@@ -1,0 +1,9 @@
+{
+  "name" : "deep_glyphidgrunt",
+  "category" : "deep_glyphidgrunt",
+  "type" : "body",
+
+  "frames" : {
+    "body" : "deep_glyphidgrunt.png"
+  }
+}
