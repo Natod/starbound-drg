@@ -80,7 +80,6 @@ function update(args)
 		timerBar.empty = true
 		callText.empty = true
 	end
-
 	world.sendEntityMessage(entity.id(), "deep_playerAnimatorBarUpdate", "flareTimerBar", timerBar)
 	world.sendEntityMessage(entity.id(), "deep_playerAnimatorImgUpdate", "resupplyAbility", callText)
 

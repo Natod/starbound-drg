@@ -54,7 +54,6 @@ function update(dt, fireMode, shiftHeld)
       end
 
     else
-      activeItem.setArmAngle(-math.pi/2)
       if self.throwPower > 0.0 then
         if not world.lineCollision(mcontroller.position(),firePosition()) then
           storage.fireTimer = config.getParameter("fireTime", 1.0)
@@ -67,6 +66,9 @@ function update(dt, fireMode, shiftHeld)
     end
   end
 
+  if fireMode ~= "primary" or shiftHeld then
+    activeItem.setArmAngle(-math.pi/2)
+  end
   updateProjectiles()
   updateCursor()
 end
