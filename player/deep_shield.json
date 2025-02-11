@@ -1,5 +1,5 @@
 {
     "shieldRegenBufferTime" : 5,
-    "shieldRegenRate" : 20, // health per second
-    "shieldMaxHealth" : 100
+    "shieldRegenRate" : 15, // health per second
+    "shieldMaxHealth" : 25
 }

@@ -133,7 +133,7 @@ function shield(dt)
   elseif status.resource("damageAbsorption") < self.shieldMaxHealth then
     status.setResource("damageAbsorption", status.resource("damageAbsorption") + dt * self.shieldRegenRate)
   end
-  status.setResource("energy", status.resource("damageAbsorption"))
+  status.setResource("energy", status.resource("damageAbsorption")/self.shieldMaxHealth*status.stat("maxEnergy"))
 end
 
 function checkBlocks()
