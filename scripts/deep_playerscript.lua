@@ -133,7 +133,10 @@ function shield(dt)
   elseif status.resource("damageAbsorption") < self.shieldMaxHealth then
     status.setResource("damageAbsorption", status.resource("damageAbsorption") + dt * self.shieldRegenRate)
   end
-  status.setResource("energy", status.resource("damageAbsorption")/self.shieldMaxHealth*status.stat("maxEnergy"))
+  local energy = status.resource("damageAbsorption")/self.shieldMaxHealth*status.stat("maxEnergy")
+  if not player.isAdmin() or energy > 0 then
+    status.setResource("energy", energy)
+  end
 end
 
 function checkBlocks()
