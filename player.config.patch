@@ -1,9 +1,9 @@
 [
-  { "op" : "add", "path" : "/species", "value" : "deep_dwarf" },
+  { "op" : "add", "path" : "/species/-", "value" : "deep_dwarf" },
   
   { "op" : "add", "path" : "/defaultCodexes/deep_dwarf", "value" : [] },
   
-  { "op" : "add", "path" : "/deploymentConfig/scripts", "value" : "/scripts/deep_playeranimator.lua" },
+  { "op" : "add", "path" : "/deploymentConfig/scripts/-", "value" : "/scripts/deep_playeranimator.lua" },
   
   { "op" : "add", "path" : "/deploymentConfig/speciesStarterMechBody/deep_dwarf", "value" : "mechbodyhumanproto" },
   
