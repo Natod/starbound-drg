@@ -45,7 +45,7 @@
           "body" : {
             "idle" : {
               "properties" : {
-                "image" : "/utility/empty.png"
+                "image" : "/utility/deep/empty.png"
               }
             }
           }

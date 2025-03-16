@@ -19,7 +19,7 @@
   "inventoryIcon" : "deep_barrel.png",
   "orientations" : [
     {
-      "dualImage" : "/utility/empty.png",
+      "dualImage" : "/utility/deep/empty.png",
       "imagePosition" : [0, 0],
 
       "spaceScan" : 0.1,
